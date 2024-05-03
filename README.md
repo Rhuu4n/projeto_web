@@ -2,6 +2,13 @@
 
 Repositório do projeto integrador web, UC 15, do jogo Guilty.
 
+## Como clonar o projeto
+1. Abrir o CMD ou o Git Bash Here
+2. Digitar: `git clone https://github.com/rhuu4n/projeto_web` 
+3. Entrar na pasta: `cd projeto_web`
+4. Baixar o Node: `npm install`
+5. Pronto :)
+
 ## Páginas
 
 - _Página inicial_ (home): Responsável por apresentar o produto e levar o usuário para o download dekstop, autenticação e painel administrador.
