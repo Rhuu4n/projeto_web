@@ -1,13 +1,19 @@
 export default function Criar_Salas(){
     return(
-        <div>
-            <button>Criar Partida</button>
+        <div className="boxPartida ">
 
-            <p>Entre em uma partida:</p>
+            <button className="btn Centralizar">Criar Partida</button>
 
-            <button>Entrar</button>
+            <p className="lblEntrar">Entre em uma partida:</p>
 
-            <input/>
+            <div className="boxEntrar">
+
+                <input className="txtEntrar"/>
+
+                <button className="btnEntrar">Entrar</button>
+
+            </div>
+
         </div>
     );
 }
