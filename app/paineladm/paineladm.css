@@ -1,0 +1,41 @@
+#Tablesadm div{
+    padding: 10px;
+}
+
+#Tablesadm .SeçãoCabeçalho{
+    background-color: aliceblue;
+    
+}
+
+#Tablesadm .SeçãoTabelas{
+    background-color: rgb(254, 214, 255);
+    
+}
+
+#Tablesadm caption{
+    border: 5px;
+    color: aqua;
+    background-color: black;
+}
+
+#Tablesadm tr{
+    border: 100px;
+}
+
+th, td{ 
+    
+    font-size: 15px;
+    border: 1px solid #000;
+    text-align: left;
+    padding: 8px;
+}
+
+table{
+    border-collapse: collapse;  
+    width: 100%;    
+}
+
+
+
+
+
