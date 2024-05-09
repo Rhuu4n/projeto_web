@@ -1,0 +1,6 @@
+#bodylobby{
+    display: flex;
+    height: calc(100vh - 160px);
+    align-items: center;
+    justify-content: center;
+}
