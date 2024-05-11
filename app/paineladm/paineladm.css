@@ -1,4 +1,4 @@
-#Tablesadm div{
+/* /* #Tablesadm div{
     padding: 10px;
 }
 
@@ -35,7 +35,21 @@ table{
     width: 100%;    
 }
 
+.flex-container  .Tabelas{
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline
+}
+caption{
+    background-color: blueviolet;
+}
 
+footer{
+    text-align: end;
+}
 
-
-
+a:hover{
+    color: darkblue;
+} */
