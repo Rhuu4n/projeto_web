@@ -6,9 +6,7 @@ export default function Body () {
 
         <div>
 
-            <button>Jogue agora</button>
-            
-
+            <button>Play Now</button>
 
         </div>
 
