@@ -1,0 +1,91 @@
+/* /* #Tablesadm div{
+    padding: 10px;
+}
+
+#Tablesadm .SeçãoCabeçalho{
+    background-color: aliceblue;
+    
+}
+
+#Tablesadm .SeçãoTabelas{
+    background-color: rgb(254, 214, 255);
+    
+}
+
+#Tablesadm caption{
+    border: 5px;
+    color: aqua;
+    background-color: black;
+}
+
+#Tablesadm tr{
+    border: 100px;
+}
+
+th, td{ 
+    
+    font-size: 15px;
+    border: 1px solid #000;
+    text-align: left;
+    padding: 8px;
+}
+
+table{
+    border-collapse: collapse;  
+    width: 100%;    
+}
+
+.flex-container  .Tabelas{
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline
+}
+caption{
+    background-color: blueviolet;
+}
+
+footer{
+    text-align: end;
+}
+
+a:hover{
+    color: darkblue;
+} */
+
+#PainelLateral{
+    width: 240px;
+    background-color: aqua;
+    margin: 0px;
+    padding: 40px, 10px, 30px, 10px ;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 240px;
+    height: 100%;
+    border-right: 1px solid red;
+}
+
+.Tabelas{
+    margin-left: 250px;
+    margin-right: 10px;
+    display: flex;
+    border: 5px green;
+}
+
+.PaineladmPrincipal{
+    background-color: lightgreen;
+    color: black;
+    margin: 250px , 150px, 100px, 150px;
+    padding: 20px;
+    display: flex;
+    border: 5px red;
+}
+
+a{
+    color: black;
+    font-size: 20px;
+    margin: 15px;
+}
