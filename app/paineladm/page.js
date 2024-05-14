@@ -2,37 +2,35 @@
 import { useState } from "react";
 import "./paineladm.css"
 export default function PainelAdministrativo(){
-    const [selecaoTabela, alteraSelecaoTabela] = useState("Estatisticas");
+const [selecaoTabela, alteraSelecaoTabela] = useState("Estatisticas");
 
-    return(
-        <div className="flex-container">
-            <header>
-                <section className="SeçãoCabeçalho" >
-                <h1>Painel ADM</h1>
+return(
+    <div id="flex-container">
+        <header className="PaineladmPrincipal">
+            <h1>Painel ADM</h1>
                 <nav>
                     <ul>
-                        <li><a href="#">Home</a> <a href="#">Páginas</a> <a href="#">Configurações</a> </li>
+                        <li><a href="#">Home</a><a href="#">Paginas</a><a href="#">Configurações</a></li>
                     </ul>
                 </nav>
-                </section>
-                <br/>
-                <div className="lista-secoes">
-                <h2>Painel de Controle</h2>
-                    <ul>
-                        <li>Estatisticas <button onClick={()=> alteraSelecaoTabela("Estatisticas")} >Acessar</button> </li> 
-                        <li>Ranking <button onClick={()=> alteraSelecaoTabela("Ranking")}>Acessar</button> </li>
-                        <li>Numero de jogadores<button onClick={()=> alteraSelecaoTabela("Numerojogadores")}>Acessar</button> </li>
-                    </ul>
-                </div>
-            </header>
-
-            <main>
-            <section className="Tabelas" >
+        </header>
+        <aside id="PainelLateral" >
+            <br/>
+            <h2>Painel de Controle</h2>
+                <ul>
+                    <li>Estatisticas <button onClick={()=> alteraSelecaoTabela("Estatisticas")} >Acessar</button> </li> 
+                    <li>Ranking <button onClick={()=> alteraSelecaoTabela("Ranking")}>Acessar</button> </li>
+                    <li>Numero de jogadores<button onClick={()=> alteraSelecaoTabela("Numerojogadores")}>Acessar</button> </li>
+                </ul>
+        </aside>
+        <br/>
+        <main>
+            <div className="Tabelas" >
                 {
                 selecaoTabela == "Estatisticas" &&   
                 <div className="TabelaEstatisticas" >
-                <table border={"true"} >
-                <caption>Estatisticas</caption>
+                    <table border={"true"} >
+                    <caption>Estatisticas</caption>
                     <thead>
                         <tr>
                             <th >Numero de partidas</th> <td>20 Partidas</td>
@@ -43,13 +41,13 @@ export default function PainelAdministrativo(){
                             <th >Total de usuários</th> <td>Usuários: 50</td>
                         </tr>
                     </tbody>
-                </table>
+                    </table>
                 </div>
                 }   
                 {
                 selecaoTabela == "Ranking" &&
                 <div className="TabelaNumerojogadores" >
-                <table border={"true"} >
+                    <table border={"true"} >
                     <caption>Ranking</caption>
                     <thead>
                         <tr>
@@ -71,7 +69,7 @@ export default function PainelAdministrativo(){
                 {
                 selecaoTabela == "Numerojogadores" &&
                 <div className="TabelaRanking">
-                <table border={"true"} >
+                    <table border={"true"} >
                     <caption>Numero de jogadores</caption>
                     <thead>
                         <tr>
@@ -84,12 +82,12 @@ export default function PainelAdministrativo(){
                 </table>
                 </div>
                 }
-            </section>
-            </main>
+            </div>
+        </main>
 
-            <footer>
-                <a href="https://github.com/Rhuu4n/projeto_web.git" target="blank" > Game Guilty, algo assim</a>
-            </footer>
-        </div>
-    )
+        <footer>
+            <a href="https://github.com/Rhuu4n/projeto_web.git" target="blank" > Game Guilty, algo assim</a>
+        </footer>
+    </div>
+)
 }
