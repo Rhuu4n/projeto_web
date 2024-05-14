@@ -1,6 +1,6 @@
 export default function Linha(){
     return(
-        <div className="linha1">
+        <div className="linha">
             <input></input>
             <input></input>
             <input></input>
