@@ -1,11 +1,8 @@
+import Letras from "./letras";
 export default function Linha(){
     return(
         <div className="linha">
-            <input></input>
-            <input></input>
-            <input></input>
-            <input></input>
-            <input></input>
+            <Letras/>
         </div>
     );
 }
