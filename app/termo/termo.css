@@ -1,0 +1,13 @@
+#termo .lblTermo{
+    text-align: center;
+    background: purple;
+    color: aliceblue;
+}
+
+#termo input{
+    font-size: 65px;
+    width: 100px;
+    color: white;
+    background: pink;
+    text-align: center;
+}
