@@ -1,0 +1,101 @@
+#salas{
+    background-image: url("https://i.imgur.com/55m44KZ.jpeg");
+    height: 100vh;
+}
+
+ #salas img{
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+    display: block;
+ }
+
+ #salas .boxUser{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+ }
+
+ #salas .lblUser{
+    font-size: 20px;
+    color: black;
+    background: rgb(243, 217, 184);
+ }
+
+ #salas .btn{
+    padding: 10px;
+    margin: 10px;
+    border-radius: 50px;
+    background: purple;
+    color: white;
+    font-size: 20px;
+ }
+
+ #salas .btn:hover{
+    background: pink;
+    transition: 0.3s;
+    transform: scale(1.1);
+ }
+
+ #salas .lblEntrar{
+   text-align: center;
+    display: block;
+    background: rgb(243, 217, 184);
+    color: black;
+    font-size: 25px;
+    margin: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+ }
+ 
+ #salas .lblLogo{
+   text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+    display: block;
+    color: black;
+    background: rgb(243, 217, 184);
+    font-size: 50px;
+ }
+
+ #salas .boxEntrar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+
+ #salas .txtEntrar{
+   font-size: 25px;
+   width: 100px;
+   color: white;
+   background: pink;
+   text-align: center;
+ }
+
+ #salas .txtEntrar:hover{
+   background: purple;
+ }
+
+ #salas .btnEntrar{
+    padding: 10px;
+    margin: 10px;
+    border-radius: 50px;
+    background: purple;
+    color: white;
+    font-size: 20px;
+ }
+
+ #salas .btnEntrar:hover{
+   background: pink;
+   transition: 0.3s;
+   transform: scale(1.1);
+ }
+
+ #salas .Centralizar{
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+    display: block;
+ }
