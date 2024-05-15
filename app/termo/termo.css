@@ -7,11 +7,11 @@
     text-align: center;
 }
 
-#Termo .linha{
+#linha{
     margin-left: auto;
     margin-right: auto;
-    display: flex;
-    position: fixed;
+    width: 600px;
+    background: purple;
 }
 
 #termo .lblTermo{
