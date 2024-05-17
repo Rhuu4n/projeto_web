@@ -5,6 +5,7 @@
     color: white;
     background: pink;
     text-align: center;
+    border-radius: 20px;
 }
 
 #linha{
@@ -18,4 +19,5 @@
     text-align: center;
     background: purple;
     color: aliceblue;
+    font-size: 75px;
 }
