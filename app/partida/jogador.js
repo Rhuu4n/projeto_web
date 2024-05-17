@@ -1,7 +1,11 @@
 const Jogador = (props) => {
+
+
     return (
-        <div>
-            
+        <div className="joguin">
+            <div className="box-cartas">
+                
+            </div>
         </div>
     );
 }

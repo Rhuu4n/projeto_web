@@ -1,0 +1,21 @@
+#termo input{
+    margin: 10px;
+    font-size: 65px;
+    width: 100px;
+    color: white;
+    background: pink;
+    text-align: center;
+}
+
+#Termo .linha{
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    position: fixed;
+}
+
+#termo .lblTermo{
+    text-align: center;
+    background: purple;
+    color: aliceblue;
+}
