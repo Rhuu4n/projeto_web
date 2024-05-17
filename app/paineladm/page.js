@@ -5,16 +5,19 @@ export default function PainelAdministrativo(){
 const [selecaoTabela, alteraSelecaoTabela] = useState("Estatisticas");
 
 return(
-    <div id="flex-container">
-        <header className="PaineladmPrincipal">
-            <h1>Painel ADM</h1>
+    <div id="ADM">
+        <header className="PaineladmHeader">
+        <img></img>
                 <nav>
-                    <ul>
-                        <li><a href="#">Home</a><a href="#">Paginas</a><a href="#">Configurações</a></li>
+                    <ul className="">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Paginas</a></li>
+                        <li><a href="#">Configurações</a></li>
                     </ul>
                 </nav>
         </header>
-        <aside id="PainelLateral" >
+        <main className="Conteudo" >
+        <aside className="PainelLateral" >
             <br/>
             <h2>Painel de Controle</h2>
                 <ul>
@@ -24,7 +27,6 @@ return(
                 </ul>
         </aside>
         <br/>
-        <main>
             <div className="Tabelas" >
                 {
                 selecaoTabela == "Estatisticas" &&   
