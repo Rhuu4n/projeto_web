@@ -8,14 +8,9 @@ export default function Linha(props){
 
     const [campo, alteraCampo] = useState(1);
 
-    const inputsRef = useRef([]);
+    const [Palavras, alteraPalavras] = useState([]);
 
-    let readOnly = [
-        {
-            enable:"",
-            disable: "disable"
-        }
-        ]
+    const inputs = useRef([]);
 
     function inserir(event){
         const value = event.target.value;
@@ -34,18 +29,54 @@ export default function Linha(props){
             if (nextCampo > 5) {
                 alteraCampo(0);
             } else {
-                inputsRef.current[nextCampo - 1].focus();
+                inputs.current[nextCampo - 1].focus();
             }
+            
         }
     };
 
+    function Submit(event, index) {
+        if (event.key === 'Enter') {
+          Palavra(event);
+        } else if (event.key === 'Backspace') {
+          if (inputs.current[index].value !== '') {
+            inputs.current[index].value = '';
+            alteraLetra('');
+          } else {
+            const prevCampo = index - 1;
+            if (prevCampo >= 0) {
+              inputs.current[prevCampo].focus();
+              alteraCampo(prevCampo + 1);
+            }
+          }
+        }
+      }
+
+    function Palavra(event){
+        event.preventDefault();
+
+        const input1 = document.getElementsByClassName(`txt1`)[0].value;
+        const input2 = document.getElementsByClassName(`txt2`)[0].value;
+        const input3 = document.getElementsByClassName(`txt3`)[0].value;
+        const input4 = document.getElementsByClassName(`txt4`)[0].value;
+        const input5 = document.getElementsByClassName(`txt5`)[0].value;
+
+        const palavra = `${input1 + input2 + input3 + input4 +input5}`;
+
+        alert(palavra);
+    }
+
     return(
-        <div id="linha" onSubmit={props.submit}>
+        <form id="linha"  >
+
             {[1, 2, 3, 4, 5].map((num) => (
-            <input  readOnly={readOnly[0].props.readOnly}
+            <input  readOnly={props.habilitado}
                     className={`txt${num}`}
                     onChange={(event)=> inserir(event)}
-                    ref={(el) => (inputsRef.current[num - 1] = el)}/>))}
-        </div>
+                    onKeyDown={(event) => Submit(event, num - 1)}
+                    ref={(el) => (inputs.current[num - 1] = el)}
+                    />
+                    ))}
+        </form>
     );
 }
