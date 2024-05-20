@@ -14,9 +14,9 @@ export default function Jogo(){
 
         <div id="salas">
             
-                <Header_Salas link="img/logo.png" nome="Jorge"/>
+                <Header_Salas nome="Jorge"/>
 
-                <Criar_Salas/>
+                <Criar_Salas link="img/logo.png"/>
         </div>
     )
 }

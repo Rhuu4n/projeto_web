@@ -1,6 +1,7 @@
 import { useState } from "react";
+import Botao from "./botao";
 
-export default function Criar_Salas(){
+export default function Criar_Salas(props){
 
     const [idSala, alteraIdSala] = useState("");
 
@@ -22,9 +23,11 @@ export default function Criar_Salas(){
     }
 
     return(
-        <div className="boxPartida ">
-            <button className="btn Centralizar">Criar Partida</button>
-            <p className="lblEntrar">Entre em uma partida</p>
+        <div className="boxPartida">
+
+            <img src={props.link}/>
+
+            <Botao content="Criar sala"/>
 
             <form onSubmit={(event)=> enviarIdSala(event)}>
 
