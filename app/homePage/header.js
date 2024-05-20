@@ -2,7 +2,7 @@
 
 export default function Header(){
     return(
-        <header>
+        <header id="headerHome">
 
             <nav className="menu">
                 <div className="logoGuilty"> </div>
@@ -15,9 +15,8 @@ export default function Header(){
                     </ul>
                 </div>
 
-                <div >
-                    <button className="btnLogin">Log In</button>
-                </div>
+                <button className="btnLogin">Log In</button>
+
             </nav>
 
 
