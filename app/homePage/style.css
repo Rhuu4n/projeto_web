@@ -24,7 +24,7 @@
 }
 
 #headerHome{
-    padding: 20px;
+    padding: 30px;
 }
 
 #headerHome nav{
@@ -53,6 +53,8 @@
         transition: all 500ms;
     }
 }
+
+
 
 #headerHome .btnLogin{
     border-radius: 14px;
