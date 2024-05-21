@@ -4,11 +4,13 @@ import "./termo.css"
 
 export default function Linha(props){
 
+    const [palavra, alteraPalavra] = useState("");
+    
+    const [submit, alteraSubmit] = useState(0);
+
     const [letra, alteraLetra] = useState();
 
     const [campo, alteraCampo] = useState(1);
-
-    const [Palavras, alteraPalavras] = useState([]);
 
     const inputs = useRef([]);
 
@@ -61,9 +63,13 @@ export default function Linha(props){
         const input4 = document.getElementsByClassName(`txt4`)[0].value;
         const input5 = document.getElementsByClassName(`txt5`)[0].value;
 
-        const palavra = `${input1 + input2 + input3 + input4 +input5}`;
+        alteraPalavra(`${input1 + input2 + input3 + input4 +input5}`);
 
         alert(palavra);
+
+        if (submit > 6){
+          alteraSubmit(0)
+        }
     }
 
     return(
