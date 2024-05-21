@@ -9,6 +9,7 @@ export default function Header(){
 
                 <div className="links">
                     <ul className="navegacao">
+                        <li><a href="#">Games</a> </li>
                         <li><a href="#">Novidades</a> </li>
                         <li><a href="#">Suporte</a> </li>
                         <li><a href="#">Sobre nós</a> </li>
