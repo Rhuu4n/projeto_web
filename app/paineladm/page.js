@@ -1,15 +1,56 @@
 "use client"
-import { useState } from "react";
+import axios from "axios"
+import { useState, useEffect } from "react";
 import "./paineladm.css"
+
 export default function PainelAdministrativo(){
+
 const [selecaoTabela, alteraSelecaoTabela] = useState("Estatisticas");
+
+const [ranking, alteraRanking] = useState (0)
+
+
+function buscaRanking(){
+    axios.get("http://10.60.46.21:5000/users")
+    .then(function(response){
+        console.log(response)
+        //alteraRanking(response.data.message)
+    })
+}
+
+
+
+const Estatisticas = [
+    {
+        NumPartidas: 0,
+        Total_de_usuarios: 0
+    }
+]
+
+const Ranking = [
+
+    {
+        Nome: "",
+        Ranking: 0, 
+        Pontos: 0
+    }
+]
+
+const NumJogadores = [
+    {
+        NumJogadoresTotais: 0,
+        NumJogadoresOnline: 0
+    }
+]
+
+
 
 return(
     <div id="ADM">
         <header className="PaineladmHeader">
         <img></img>
                 <nav>
-                    <ul className="">
+                    <ul>
                         <li><a href="#">Home</a></li>
                         <li><a href="#">Paginas</a></li>
                         <li><a href="#">Configurações</a></li>
@@ -21,9 +62,9 @@ return(
             <br/>
             <h2>Painel de Controle</h2>
                 <ul>
-                    <li>Estatisticas <button onClick={()=> alteraSelecaoTabela("Estatisticas")} >Acessar</button> </li> 
-                    <li>Ranking <button onClick={()=> alteraSelecaoTabela("Ranking")}>Acessar</button> </li>
-                    <li>Numero de jogadores<button onClick={()=> alteraSelecaoTabela("Numerojogadores")}>Acessar</button> </li>
+                    <li onClick={()=> alteraSelecaoTabela("Estatisticas")} >Estatisticas </li> 
+                    <li onClick={()=> alteraSelecaoTabela("Ranking")}>Ranking</li>
+                    <li onClick={()=> alteraSelecaoTabela("Numerojogadores")} >Numero de jogadores</li>
                 </ul>
         </aside>
         <br/>
@@ -40,7 +81,7 @@ return(
                     </thead>
                     <tbody>
                         <tr>
-                            <th >Total de usuários</th> <td>Usuários: 50</td>
+                            <th >Total de usuários</th> <td>50 Usuarios</td>
                         </tr>
                     </tbody>
                     </table>
