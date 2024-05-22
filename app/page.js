@@ -9,11 +9,13 @@ export default function Home() {
     <div>
 
       <div id="homePage">
+
         <Header/>
 
         <Body/>
 
         <Footer/>
+        
       </div>
       
       
