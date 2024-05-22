@@ -2,7 +2,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 50px;
+    height: 40px;
+    padding: 0px 20px;
 }
 
 #header p{

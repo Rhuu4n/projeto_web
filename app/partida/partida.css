@@ -1,5 +1,4 @@
 #partida{
-    padding: 0 2vw;
     width: 100vw;
     height: 100vh;
 
@@ -7,4 +6,25 @@
     background-repeat: no-repeat;
     background-size: cover ;
     background-position: center;
+}
+
+#partida .topo{
+    display: flex;
+    justify-content: center ;
+}
+
+#partida .fim{
+    display: flex;
+    justify-content: center ;
+}
+
+#partida .meio{
+    width: 100vw;
+    display: grid;
+    padding: 0 20px;
+    grid-template-columns: 300px calc(100vw - 640px) 300px;
+}
+
+#partida .topo .box-cartas img{
+    transform: rotateX(180deg);
 }

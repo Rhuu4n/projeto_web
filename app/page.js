@@ -7,12 +7,15 @@ import "./homePage/style.css"
 export default function Home() {
   return (
     <div>
+
+      <div id="homePage">
+        <Header/>
+
+        <Body/>
+
+        <Footer/>
+      </div>
       
-      <Header/>
-
-      <Body/>
-
-      <Footer/>
       
     </div>
   );
