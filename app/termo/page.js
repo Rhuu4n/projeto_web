@@ -1,66 +1,48 @@
 "use client"
-import "./termo.css"
-import Linha from "./linhas";
 
-export default function Termo(props){
+import axios from "axios";
+import Linha from "./linhas";
+import { useEffect, useState } from "react";
+import "./termo.css"
+
+export default function Termo(){
+    
+    const [palavra, alteraPalavra] = useState('')
+ 
+    const [submit, alteraSubmit] = useState(0)
+
+    const [linha, alteraLinha] = useState(0);
 
     let habilitado = [
-        {
-            linha1: "",
-            linha2: "disable",
-            linha3: "disable",
-            linha4: "disable",
-            linha5: "disable",
-            linha6: "disable"
-        },{
-            linha1: "disable",
-            linha2: "",
-            linha3: "disable",
-            linha4: "disable",
-            linha5: "disable",
-            linha6: "disable"
-        },{
-            linha1: "disable",
-            linha2: "disable",
-            linha3: "",
-            linha4: "disable",
-            linha5: "disable",
-            linha6: "disable"
-        },{
-            linha1: "disable",
-            linha2: "disable",
-            linha3: "disable",
-            linha4: "",
-            linha5: "disable",
-            linha6: "disable"
-        },{
-            linha1: "disable",
-            linha2: "disable",
-            linha3: "disable",
-            linha4: "disable",
-            linha5: "",
-            linha6: "disable"
-        },{
-            linha1: "",
-            linha2: "disable",
-            linha3: "disable",
-            linha4: "disable",
-            linha5: "disable",
-            linha6: ""
-        }
+        { linha1: "", linha2: "disable", linha3: "disable", linha4: "disable", linha5: "disable", linha6: "disable" },
+        { linha1: "disable", linha2: "", linha3: "disable", linha4: "disable", linha5: "disable", linha6: "disable" },
+        { linha1: "disable", linha2: "disable", linha3: "", linha4: "disable", linha5: "disable", linha6: "disable" },
+        { linha1: "disable", linha2: "disable", linha3: "disable", linha4: "", linha5: "disable", linha6: "disable" },
+        { linha1: "disable", linha2: "disable", linha3: "disable", linha4: "disable", linha5: "", linha6: "disable" },
+        { linha1: "disable", linha2: "disable", linha3: "disable", linha4: "disable", linha5: "disable", linha6: "" },
+        { linha1: "disable", linha2: "disable", linha3: "disable", linha4: "disable", linha5: "disable", linha6: "disable" }
         ]
+    
+    function mudaLinha(){
+        alteraLinha(linha + 1);
+        alteraPalavra("");
+        
+        if (linha == 5){
+            alteraLinha(0);
+        }
+    }
 
     return(
         <div id="termo">
             <h1 className="lblTermo">Termo</h1>
-
-            <Linha habilitado={habilitado[0].linha1}/>
-            <Linha habilitado={habilitado[0].linha2}/>
-            <Linha habilitado={habilitado[0].linha3}/>
-            <Linha habilitado={habilitado[0].linha4}/>
-            <Linha habilitado={habilitado[0].linha5}/>
-            <Linha habilitado={habilitado[0].linha6}/>
-
+            <div className="boxTermo">
+                <Linha habilitado={habilitado[linha].linha1} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
+                <Linha habilitado={habilitado[linha].linha2} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
+                <Linha habilitado={habilitado[linha].linha3} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
+                <Linha habilitado={habilitado[linha].linha4} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
+                <Linha habilitado={habilitado[linha].linha5} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
+                <Linha habilitado={habilitado[linha].linha6} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
+            </div>
         </div>
     );
 }

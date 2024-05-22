@@ -1,9 +1,13 @@
+#termo .boxTermo{
+    border-radius: 500px;
+}
+
 #termo input{
     margin: 10px;
     font-size: 65px;
     width: 100px;
-    color: white;
-    background: pink;
+    color: aliceblue;
+    background: rgb(56, 54, 54);
     text-align: center;
     border-radius: 20px;
 }
