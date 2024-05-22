@@ -7,10 +7,29 @@ export default function PainelAdministrativo(){
 
 const [selecaoTabela, alteraSelecaoTabela] = useState("Estatisticas");
 
-const [ranking, alteraRanking] = useState (0)
+const [ranking, alteraRanking] = useState (0);
+const [estatisticas, alteraEstatisticas] = useState (0);
+const [numJogadores, alteraNumJogadores] = useState (0);
 
 
 function buscaRanking(){
+    axios.get("http://10.60.46.21:5000/users")
+    .then(function(response){
+        console.log(response)
+        //alteraRanking(response.data.message)
+    })
+}
+
+
+function buscaEstatisticas(){
+    axios.get("http://10.60.46.21:5000/users")
+    .then(function(response){
+        console.log(response)
+        //alteraRanking(response.data.message)
+    })
+}
+
+function buscaNumJogadores(){
     axios.get("http://10.60.46.21:5000/users")
     .then(function(response){
         console.log(response)
@@ -48,7 +67,8 @@ const NumJogadores = [
 return(
     <div id="ADM">
         <header className="PaineladmHeader">
-        <img></img>
+        <img src="https://i.pinimg.com/736x/a9/97/ca/a997ca78d01388ec1aed5c58464efc39.jpg" ></img>
+                <h1>Guilty</h1>
                 <nav>
                     <ul>
                         <li><a href="#">Home</a></li>
