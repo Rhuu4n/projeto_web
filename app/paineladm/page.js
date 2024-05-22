@@ -13,7 +13,11 @@ const [numJogadores, alteraNumJogadores] = useState (0);
 
 
 function buscaRanking(){
-    axios.get("http://10.60.46.21:5000/users")
+    axios.get("http://10.60.46.21:5000/users", {
+        headers:{
+            'Content-type':'aplication/json'
+        }
+    })
     .then(function(response){
         console.log(response)
         //alteraRanking(response.data.message)
@@ -71,6 +75,7 @@ return(
                 <h1>Guilty</h1>
                 <nav>
                     <ul>
+                        <button onClick={()=> buscaRanking()} >Teste</button>
                         <li><a href="#">Home</a></li>
                         <li><a href="#">Paginas</a></li>
                         <li><a href="#">Configurações</a></li>
