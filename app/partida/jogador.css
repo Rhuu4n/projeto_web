@@ -1,1 +1,51 @@
-.joguin{}
+#joguin .box-infos{
+    width: 300px;
+    height: 150px;
+    background-image: url("../../public/img/fundo-text.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 30px 60px;
+    margin-right: 10px;
+}
+
+#joguin .moedas{
+    margin-right: 5px;
+}
+
+#joguin .box-moedas{
+    display: flex;
+    align-items: center;
+}
+
+#joguin{
+    display: flex;
+    align-items: center;
+}
+
+#joguin .box-cartas img{
+    margin-left: 10px;
+}
+
+#joguin.esquerda{
+    flex-direction: column-reverse;
+}
+
+#joguin.esquerda .box-cartas{
+    transform: rotate(90deg);
+    display: flex;
+    align-items: center;
+    height: 300px;
+    margin-bottom: 10px;
+}
+
+#joguin.direita{
+    flex-direction: column-reverse;
+}
+
+#joguin.direita .box-cartas{
+    transform: rotate(-90deg);
+    display: flex;
+    align-items: center;
+    height: 300px;
+    margin-bottom: 10px;
+}

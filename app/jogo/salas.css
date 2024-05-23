@@ -1,6 +1,9 @@
 #salas{
-    background-image: url("https://i.imgur.com/55m44KZ.jpeg");
-    height: 100vh;
+   background-image: url("https://i.imgur.com/55m44KZ.jpeg");
+   height: 100vh;
+   margin: 0px;
+   padding: 0;
+   box-sizing: border-box;
 }
 
  #salas img{
@@ -9,6 +12,11 @@
     width: 250px;
     display: block;
  }
+
+#salas .boxPartida{
+   background-color: aqua;
+   height: calc(100vh - 100px);
+}
 
  #salas .boxUser{
     display: flex;
