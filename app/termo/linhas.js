@@ -71,7 +71,7 @@ import { useRef, useState } from 'react'
             alert("Palavra correta parabéns!");
             alteraLinha(6);
         }
-        else{
+        else if(palavra.length == 5){
             alert("Errou!");
             mudaLinha();
           }

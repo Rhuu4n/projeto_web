@@ -1,5 +1,8 @@
 #termo .boxTermo{
-    border-radius: 500px;
+    background: black;
+    height: 100%;
+    width: 100%;
+    position: fixed;
 }
 
 #termo input{
