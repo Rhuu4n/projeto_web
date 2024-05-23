@@ -1,0 +1,9 @@
+#headerSalas{
+    height: 110px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#headerSalas button{
+    margin-left: 10px;
+}
