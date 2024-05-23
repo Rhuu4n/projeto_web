@@ -13,9 +13,9 @@ const [numJogadores, alteraNumJogadores] = useState (0);
 
 
 function buscaRanking(){
-    axios.get("http://10.60.46.21:5000/users", {
+    axios.get("/api/users", {
         headers:{
-            'Content-type':'aplication/json'
+            'Content-type':'application/json'
         }
     })
     .then(function(response){
