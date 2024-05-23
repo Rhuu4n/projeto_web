@@ -10,7 +10,7 @@ export default function Body () {
     const[numeroJogadores, setNumeroJogadores] = useState([]);
 
     function BuscaJogadoresOnline(){
-        axios.get("http://10.60.46.21:5000/users")
+        axios.get("/api/users")
         .then(function(response){
             setDados(response.data.length);
         })
