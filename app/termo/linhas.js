@@ -11,12 +11,7 @@ import { useRef, useState } from 'react'
     const [palavra_certa, alteraPalavraCerta] = useState([]);
     const inputs = useRef([])
 
-    function VerificaPalavra(){
-
-      axios.get("https://10.60.46.21/termo")
-        .then( function(response){
-            alteraPalavraCerta( response.data.message )
-        })
+    function verificaPalavra(){
     }
  
     function inserir(event) {
@@ -89,6 +84,8 @@ import { useRef, useState } from 'react'
                     ref={(el) => (inputs.current[num - 1] = el)}
                 />
             ))}
+            <button onClick={()=> verificaPalavra()}>Teste</button>
+            {palavra_certa.map(p=>{return(<p>{p}</p>)})}
         </form>
     )
 }
