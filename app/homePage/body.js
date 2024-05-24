@@ -12,7 +12,7 @@ export default function Body () {
     function BuscaJogadoresOnline(){
         axios.get("/api/users")
         .then(function(response){
-            setDados(response.data.length);
+            setNumeroJogadores(response.data.length);
         })
         .catch(function(error){
             console.error("erro")

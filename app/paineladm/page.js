@@ -7,9 +7,9 @@ export default function PainelAdministrativo(){
 
 const [selecaoTabela, alteraSelecaoTabela] = useState("Estatisticas");
 
-const [ranking, alteraRanking] = useState (0);
-const [estatisticas, alteraEstatisticas] = useState (0);
-const [numJogadores, alteraNumJogadores] = useState (0);
+const [ranking, alteraRanking] = useState ([]);
+const [estatisticas, alteraEstatisticas] = useState ([]);
+const [numJogadores, alteraNumJogadores] = useState ([]);
 
 
 function buscaRanking(){
@@ -19,52 +19,43 @@ function buscaRanking(){
         }
     })
     .then(function(response){
-        console.log(response)
-        //alteraRanking(response.data.message)
+        console.log(response.data)
+        alteraRanking(response.data)
     })
 }
 
 
 function buscaEstatisticas(){
-    axios.get("http://10.60.46.21:5000/users")
+    axios.get("/api/matches", {
+        headers:{
+            'Content-type':'application/json'
+        }
+    })
     .then(function(response){
-        console.log(response)
-        //alteraRanking(response.data.message)
+        console.log(response.data)
+        alteraEstatisticas(response.data)
     })
 }
 
 function buscaNumJogadores(){
-    axios.get("http://10.60.46.21:5000/users")
+    axios.get("/api/rooms", {
+        headers:{
+            'Content-type':'application/json'
+        }
+    })
     .then(function(response){
-        console.log(response)
-        //alteraRanking(response.data.message)
+        console.log(response.data)
+        alteraNumJogadores(response.data)
     })
 }
 
 
+useEffect(()=> {
+    buscaRanking();
+    buscaEstatisticas();
+    buscaNumJogadores();
+}, []);
 
-const Estatisticas = [
-    {
-        NumPartidas: 0,
-        Total_de_usuarios: 0
-    }
-]
-
-const Ranking = [
-
-    {
-        Nome: "",
-        Ranking: 0, 
-        Pontos: 0
-    }
-]
-
-const NumJogadores = [
-    {
-        NumJogadoresTotais: 0,
-        NumJogadoresOnline: 0
-    }
-]
 
 
 
@@ -75,7 +66,7 @@ return(
                 <h1>Guilty</h1>
                 <nav>
                     <ul>
-                        <button onClick={()=> buscaRanking()} >Teste</button>
+                        <button onClick={()=> buscaNumJogadores()} >Teste</button>
                         <li><a href="#">Home</a></li>
                         <li><a href="#">Paginas</a></li>
                         <li><a href="#">Configurações</a></li>
@@ -101,13 +92,16 @@ return(
                     <caption>Estatisticas</caption>
                     <thead>
                         <tr>
-                            <th >Numero de partidas</th> <td>20 Partidas</td>
+                            <th >Numero de partidas</th>
+                            <th >Total de usuários</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th >Total de usuários</th> <td>50 Usuarios</td>
-                        </tr>
+                        {estatisticas.map(e => {return <tr>
+                                <td>{e.Jogador_ID}</td>
+                                <td>{e.id_partida}</td>
+                            </tr>
+                        } )}
                     </tbody>
                     </table>
                 </div>
@@ -116,20 +110,23 @@ return(
                 selecaoTabela == "Ranking" &&
                 <div className="TabelaNumerojogadores" >
                     <table border={"true"} >
-                    <caption>Ranking</caption>
                     <thead>
                         <tr>
-                            <th >Nome</th>
-                            <th>Ranking</th>
+                            <th>Nome</th>
+                            <th>Ranking</th> 
                             <th>pontos</th>
+                            <th>email</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Danilo</td>
-                            <td>1°</td>
-                            <td>53</td>
+                        {ranking.map(r => {return <tr>
+                            <td>{r.nome}  </td>
+                            <td>{r.id} </td>
+                            <td>{r.nascimento}</td>
+                            <td>{r.email}</td>
                         </tr>
+                        })}
+                        
                     </tbody>
                     </table>
                 </div>
@@ -141,12 +138,16 @@ return(
                     <caption>Numero de jogadores</caption>
                     <thead>
                         <tr>
-                            <th >Numero de jogadores totais</th>  <td>3500</td>
-                        </tr>
-                        <tr>
-                            <th >Numero de jogadores online</th> <td>150</td>
+                            <th >Numero de jogadores totais</th> 
+                            <th >Numero de jogadores online</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        {numJogadores.map(M => {return <tr>
+                            <td>{M.estadoSala}</td>
+                            <td>{M.numeroJogadores}</td>
+                        </tr>})}
+                    </tbody>
                 </table>
                 </div>
                 }
