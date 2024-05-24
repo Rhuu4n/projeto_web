@@ -1,5 +1,7 @@
 import { useState } from "react";
-import Botao from "./botao";
+import Botao from "../components/botao";
+import "./criar-salas.css"
+import axios from "axios"
 
 export default function Criar_Salas(props){
 
@@ -22,18 +24,22 @@ export default function Criar_Salas(props){
         alert(idSala);
     }
 
+    function criarSalaBanco(){
+        props.alteraIdSala("my egg")
+    }
+
     return(
         <div className="boxPartida">
-
             <img src={props.link}/>
-
-            <Botao content="Criar sala"/>
+            <div className="center">
+                <Botao acao={() => {props.alteraSalaOrLobby('lobby'), criarSalaBanco()}} content="Criar sala"/>
+            </div>
 
             <form onSubmit={(event)=> enviarIdSala(event)}>
 
                 <div className="boxEntrar">
                     <input type="text" className="txtEntrar" onChange={(event)=> alteraInput(event)}/>
-                    <button className="btnEntrar">Entrar</button>
+                    <Botao content="Entrar"/>
                 </div>
             </form>
         </div>

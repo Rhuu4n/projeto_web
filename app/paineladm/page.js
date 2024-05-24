@@ -7,7 +7,7 @@ export default function PainelAdministrativo(){
 
 const [selecaoTabela, alteraSelecaoTabela] = useState("Estatisticas");
 
-const [ranking, alteraRanking] = useState (0);
+const [ranking, alteraRanking] = useState ([]);
 const [estatisticas, alteraEstatisticas] = useState (0);
 const [numJogadores, alteraNumJogadores] = useState (0);
 
@@ -19,25 +19,33 @@ function buscaRanking(){
         }
     })
     .then(function(response){
-        console.log(response)
-        //alteraRanking(response.data.message)
+        console.log(response.data)
+        alteraRanking(response.data)
     })
 }
 
 
 function buscaEstatisticas(){
-    axios.get("http://10.60.46.21:5000/users")
+    axios.get("/api/users", {
+        headers:{
+            'Content-type':'application/json'
+        }
+    })
     .then(function(response){
-        console.log(response)
-        //alteraRanking(response.data.message)
+        console.log(response.data)
+        alteraEstatisticas(response.data)
     })
 }
 
 function buscaNumJogadores(){
-    axios.get("http://10.60.46.21:5000/users")
+    axios.get("/api/users", {
+        headers:{
+            'Content-type':'application/json'
+        }
+    })
     .then(function(response){
-        console.log(response)
-        //alteraRanking(response.data.message)
+        console.log(response.data)
+        alteraNumJogadores(response.data)
     })
 }
 
@@ -65,6 +73,12 @@ const NumJogadores = [
         NumJogadoresOnline: 0
     }
 ]
+
+
+useEffect(()=> {
+    buscaRanking();
+}, []);
+
 
 
 
@@ -116,20 +130,21 @@ return(
                 selecaoTabela == "Ranking" &&
                 <div className="TabelaNumerojogadores" >
                     <table border={"true"} >
-                    <caption>Ranking</caption>
-                    <thead>
-                        <tr>
-                            <th >Nome</th>
-                            <th>Ranking</th>
-                            <th>pontos</th>
-                        </tr>
-                    </thead>
                     <tbody>
                         <tr>
-                            <td>Danilo</td>
-                            <td>1°</td>
-                            <td>53</td>
+                            <th>Nome</th>
+                            <th>Ranking</th> 
+                            <th>pontos</th>
+                            <th>email</th>
                         </tr>
+                        {ranking.map(r => {return <tr>
+                            <td>{r.nome}  </td>
+                            <td>{r.id} </td>
+                            <td>{r.nascimento}</td>
+                            <td>{r.email}</td>
+                        </tr>
+                        })}
+                        
                     </tbody>
                     </table>
                 </div>
