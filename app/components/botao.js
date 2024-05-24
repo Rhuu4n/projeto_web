@@ -2,7 +2,7 @@ import "./botao.css"
 
 const Botao = (props) => {
     return (
-        <button className="botao">{props.content}</button>
+        <button onClick={props.acao} className="botao">{props.content}</button>
     );
 }
  

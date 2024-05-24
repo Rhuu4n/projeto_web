@@ -3,11 +3,11 @@ import BodyLobby from "./components/bodyLobby";
 import FooterLobby from "./components/footerLobby";
 import "./login.css"
 
-export default function Lobby(){
+export default function Lobby(props){
     return(
         <div id="login">
             <div className="container">
-                <HeaderLobby className="container"/>
+                <HeaderLobby idSala={props.idSala} className="container"/>
                 <BodyLobby/>
                 <FooterLobby/>
             </div>

@@ -1,5 +1,10 @@
+"use client"
+
+import axios from "axios";
 import { useState } from "react";
-import Botao from "./botao";
+import Botao from "../components/botao";
+import "./criar-salas.css"
+
 
 export default function Criar_Salas(props){
 
@@ -22,18 +27,41 @@ export default function Criar_Salas(props){
         alert(idSala);
     }
 
+    function criarSalaBanco(){
+
+        const sala = {
+            "id_sala": 15655,
+            "jogadorAtual": 1,
+            "estadoSala": 1,
+            "numeroJogadores": 4
+        }
+
+        axios.post("/api/rooms", sala,{
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(function(response){
+            console.log(response)
+            props.alteraIdSala(response.data.length);
+        })
+        .catch(function(error){
+            console.error("erro")
+        });
+    }
+
     return(
         <div className="boxPartida">
-
             <img src={props.link}/>
-
-            <Botao content="Criar sala"/>
+            <div className="center">
+                <Botao acao={() => {props.alteraSalaOrLobby('lobby'), criarSalaBanco()}} content="Criar sala"/>
+            </div>
 
             <form onSubmit={(event)=> enviarIdSala(event)}>
 
                 <div className="boxEntrar">
                     <input type="text" className="txtEntrar" onChange={(event)=> alteraInput(event)}/>
-                    <button className="btnEntrar">Entrar</button>
+                    <Botao content="Entrar"/>
                 </div>
             </form>
         </div>
