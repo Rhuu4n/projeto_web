@@ -2,16 +2,28 @@
 
 import axios from "axios";
 import './termo.css'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
   export default function Linha( {habilitado, alteraPalavra, alteraSubmit, palavra, submit, mudaLinha, linha, alteraLinha} ) { 
     
     const [letra, alteraLetra] = useState()
     const [campo, alteraCampo] = useState(1)
-    const [palavra_certa, alteraPalavraCerta] = useState([]);
     const inputs = useRef([])
+    const [palavra_certa, alteraPalavraCerta] = useState([]);
+    const [palavra_nova, alteraPalavraNova] = useState([]);
 
-    function verificaPalavra(){
+    function getPalavra(){
+        axios.get("/api/termo", {
+            headers:{
+                'Content-Type':'application/json'
+            }
+        })
+        .then(
+            function(response){
+                console.log( response.data )
+                alteraPalavraCerta( response.data )
+            }
+        )
     }
  
     function inserir(event) {
@@ -47,6 +59,7 @@ import { useRef, useState } from 'react'
     function Submit(event, index) {
         if (event.key === 'Enter') {
             Palavra(event)
+            getPalavra()
         } else if (event.key === 'Backspace') {
             if (inputs.current[index].value !== '') {
                 inputs.current[index].value = ''
@@ -71,12 +84,15 @@ import { useRef, useState } from 'react'
             mudaLinha();
           }
     }
- 
+
+    useEffect(()=> {
+        alteraPalavraCerta();
+    },[]);
+
     return (
         <form id="linha">
             {[1, 2, 3, 4, 5].map((num) => (
                 <input
-                   
                     readOnly={habilitado}
                     className={`txt${num}`}
                     onChange={(event) => inserir(event)}
@@ -84,8 +100,6 @@ import { useRef, useState } from 'react'
                     ref={(el) => (inputs.current[num - 1] = el)}
                 />
             ))}
-            <button onClick={()=> verificaPalavra()}>Teste</button>
-            {palavra_certa.map(p=>{return(<p>{p}</p>)})}
         </form>
     )
 }
