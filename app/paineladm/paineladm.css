@@ -54,10 +54,10 @@ a:hover{
     color: darkblue;
 } */
 
+
 #ADM {
     
 }
-
 
 
 #ADM .PaineladmHeader{
@@ -129,20 +129,45 @@ a:hover{
 
 
 #ADM .Tabelas{
-    margin: 10px 0px 10px 20px ;
     display: flex;
-    border: 5px green;
+    align-items: center;
+    margin: 30px;
+    
 }
 
+
+#ADM table{
+    color: #9d4edd;
+    text-align: center;
+    
+
+}
+#ADM th{
+    color: #9d4edd;
+    text-align: center;
+
+}
+#ADM td{
+    color: #3A434A;
+    
+}
 
 
 #ADM .Conteudo{
     display: flex;
+    background-color: rgba(28, 1, 59, 0);
+    justify-content: space-between;
 }
 
 #ADM footer{
     display: flex;
     justify-content: flex-end;
+    flex-direction: column;
+}
+
+#ADM footer a:hover{
+    color: rgb(255, 187, 0);
+    transition: 400ms all;
 }
 
 #ADM a{

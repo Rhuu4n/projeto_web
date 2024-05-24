@@ -26,7 +26,7 @@ function buscaRanking(){
 
 
 function buscaEstatisticas(){
-    axios.get("/api/matches", {
+    axios.get("/api/rooms", {
         headers:{
             'Content-type':'application/json'
         }
@@ -89,7 +89,6 @@ return(
                 selecaoTabela == "Estatisticas" &&   
                 <div className="TabelaEstatisticas" >
                     <table border={"true"} >
-                    <caption>Estatisticas</caption>
                     <thead>
                         <tr>
                             <th >Numero de partidas</th>
@@ -97,9 +96,9 @@ return(
                         </tr>
                     </thead>
                     <tbody>
-                        {estatisticas.map(e => {return <tr>
-                                <td>{e.Jogador_ID}</td>
-                                <td>{e.id_partida}</td>
+                        {numJogadores.map(e => {return <tr>
+                                <td>{e.estadoSala}</td>
+                                <td>{e.id_sala}</td>
                             </tr>
                         } )}
                     </tbody>
@@ -135,7 +134,6 @@ return(
                 selecaoTabela == "Numerojogadores" &&
                 <div className="TabelaRanking">
                     <table border={"true"} >
-                    <caption>Numero de jogadores</caption>
                     <thead>
                         <tr>
                             <th >Numero de jogadores totais</th> 
@@ -152,11 +150,12 @@ return(
                 </div>
                 }
             </div>
+            <footer>
+            <a href="https://github.com/Rhuu4n/projeto_web.git" target="blank" > Game Guilty</a>
+        </footer>
         </main>
 
-        <footer>
-            <a href="https://github.com/Rhuu4n/projeto_web.git" target="blank" > Game Guilty, algo assim</a>
-        </footer>
+        
     </div>
 )
 }
