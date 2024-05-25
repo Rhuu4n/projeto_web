@@ -1,13 +1,21 @@
 "use client"
 
-import axios from "axios";
+
+
 import { useEffect, useState } from "react"
+import axios from "axios";
 import "./font.css"
+import "./sliderStyle.css"
+
+
 
 
 export default function Body () {
+
+
     
     const[numeroJogadores, setNumeroJogadores] = useState([]);
+
 
     function BuscaJogadoresOnline(){
         axios.get("/api/users")
@@ -30,9 +38,11 @@ export default function Body () {
 
         <div className="Main">
 
-            <div className="imagemPrincipal">
-                <img src="#" alt="#"/>
+            <div className="imgsSlider">
+                <img src="#"/>
+                <img src="#"/>
             </div>
+
 
             <div className="btnJogar">
                 <button>Jogar agora</button>
