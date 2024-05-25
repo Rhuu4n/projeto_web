@@ -4,27 +4,47 @@ import axios from "axios";
 import './termo.css'
 import { useEffect, useRef, useState } from 'react'
 
-  export default function Linha( {habilitado, alteraPalavra, alteraSubmit, palavra, submit, mudaLinha, linha, alteraLinha} ) { 
+  export default function Linha( {palavra_certa, habilitado, alteraPalavra, alteraSubmit, palavra, submit, mudaLinha, linha, alteraLinha} ) { 
     
     const [letra, alteraLetra] = useState()
     const [campo, alteraCampo] = useState(1)
     const inputs = useRef([])
-    const [palavra_certa, alteraPalavraCerta] = useState([]);
     const [palavra_nova, alteraPalavraNova] = useState([]);
+    const [cor, alteraCor] = useState("pink")
+    const [index1, alteraIndex1] = useState(0);
+    const [index2, alteraIndex2] = useState(1);
+    const [index3, alteraIndex3] = useState(2);
+    const [index4, alteraIndex4] = useState(3);
+    const [index5, alteraIndex5] = useState(4);
+    const [caractereExtraido1, alteraCaractere1] = useState("");
+    const [caractereExtraido2, alteraCaractere2] = useState("");
+    const [caractereExtraido3, alteraCaractere3] = useState("");
+    const [caractereExtraido4, alteraCaractere4] = useState("");
+    const [caractereExtraido5, alteraCaractere5] = useState("");
+    let input1 = "";
+    let input2 = "";
+    let input3 = "";
+    let input4 = "";
+    let input5 = "";
 
-    function getPalavra(){
-        axios.get("/api/termo", {
-            headers:{
-                'Content-Type':'application/json'
-            }
+    // api --------------------------------------
+
+    function postPalavra(){
+        const obj = {
+            "palavra":palavra_nova
+        }
+
+        axios.post("/api/termo", obj, {
+            headers:{'Content-Type':'application/json'}
         })
         .then(
             function(response){
-                console.log( response.data )
-                alteraPalavraCerta( response.data )
+                alteraPalavraNova( response.data )
             }
         )
     }
+
+    // api --------------------------------------
  
     function inserir(event) {
         const value = event.target.value
@@ -46,20 +66,21 @@ import { useEffect, useRef, useState } from 'react'
                 inputs.current[nextCampo - 1].focus()
             }
         }
- 
-        const input1 = document.getElementsByClassName(`txt1`)[linha].value
-        const input2 = document.getElementsByClassName(`txt2`)[linha].value
-        const input3 = document.getElementsByClassName(`txt3`)[linha].value
-        const input4 = document.getElementsByClassName(`txt4`)[linha].value
-        const input5 = document.getElementsByClassName(`txt5`)[linha].value
+        input1 = document.getElementsByClassName(`txt1`)[linha].value
+        input2 = document.getElementsByClassName(`txt2`)[linha].value
+        input3 = document.getElementsByClassName(`txt3`)[linha].value
+        input4 = document.getElementsByClassName(`txt4`)[linha].value
+        input5 = document.getElementsByClassName(`txt5`)[linha].value
  
         alteraPalavra(`${input1 + input2 + input3 + input4 + input5}`)
+        alteraPalavraNova(`${input1 + input2 + input3 + input4 + input5}`)
+
     }
  
     function Submit(event, index) {
         if (event.key === 'Enter') {
-            Palavra(event)
-            getPalavra()
+            verificaPalavra(event);
+            confereCor();
         } else if (event.key === 'Backspace') {
             if (inputs.current[index].value !== '') {
                 inputs.current[index].value = ''
@@ -74,10 +95,10 @@ import { useEffect, useRef, useState } from 'react'
         }
     }
  
-    function Palavra() {
-        if (palavra == "JORGE"){
-            alert("Palavra correta parabéns!");
+    function verificaPalavra() {
+        if (palavra == palavra_certa[0].palavra){
             alteraLinha(6);
+            alert("Palavra correta parabéns!");
         }
         else if(palavra.length == 5){
             alert("Errou!");
@@ -85,9 +106,20 @@ import { useEffect, useRef, useState } from 'react'
           }
     }
 
-    useEffect(()=> {
-        alteraPalavraCerta();
-    },[]);
+    function confereCor() {
+        const extracao = palavra_certa[0].palavra.charAt(index1);
+        
+        if (index1 <= palavra_certa[0].palavra.length){
+            alteraCaractere1(extracao);
+        }
+        console.log(caractereExtraido1);
+
+        if (caractereExtraido1 != palavra.charAt(index1)){
+            alteraCor("red")
+        }
+    }
+
+    
 
     return (
         <form id="linha">
@@ -95,6 +127,7 @@ import { useEffect, useRef, useState } from 'react'
                 <input
                     readOnly={habilitado}
                     className={`txt${num}`}
+                    style = {{background : cor}}
                     onChange={(event) => inserir(event)}
                     onKeyDown={(event) => Submit(event, num - 1)}
                     ref={(el) => (inputs.current[num - 1] = el)}
