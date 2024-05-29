@@ -9,6 +9,8 @@ import Lobby from "../lobby/lobby"
 export default function Jogo(){
 
     const [idSala, alteraIdSala] = useState("");
+    const [idUsuario, alteraIdUsuario] = useState("");
+    const [idPartida, alteraIdPartida] = useState();
     const [autenticacao, alteraAutenticacao ] = useState("");
     const [salaOrLobby, alteraSalaOrLobby] = useState("sala");
 
@@ -22,7 +24,7 @@ export default function Jogo(){
                         <Criar_Salas idSala={idSala} alteraIdSala={alteraIdSala} alteraSalaOrLobby={alteraSalaOrLobby} link="img/logo.png"/>
                     </> :
 
-                    <Lobby idSala={idSala}/>
+                    <Lobby alteraIdUsuario={alteraIdUsuario} idUsuario={idUsuario} alteraIdPartida={alteraIdPartida} idPartida={idPartida} idSala={idSala}/>
 
                     
                 }

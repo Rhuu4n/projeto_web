@@ -6,7 +6,6 @@ import Botao from '../components/botao'
 import './criar-salas.css'
 
 export default function Criar_Salas(props) {
-  const [idSala, alteraIdSala] = useState('')
 
   function alteraInput(event) {
     const value = event.target.value
@@ -16,13 +15,17 @@ export default function Criar_Salas(props) {
     const limitedValue = newValue.slice(0, 4)
     // Atualiza o valor do campo
     event.target.value = limitedValue
-    alteraIdSala(limitedValue)
+    props.alteraIdSala(limitedValue)
   }
 
   function enviarIdSala(event) {
     event.preventDefault()
     alteraIdSala()
     alert(idSala)
+  }
+
+  function entrarSala(){
+    
   }
 
   function criarSalaBanco() {
@@ -43,7 +46,7 @@ export default function Criar_Salas(props) {
         props.alteraIdSala(response.data.id_sala)
       })
       .catch(function (error) {
-        console.error('erro')
+        console.error('erro:' + error)
       })
   }
 
@@ -66,7 +69,12 @@ export default function Criar_Salas(props) {
             className="txtEntrar"
             onChange={event => alteraInput(event)}
           />
-          <Botao content="Entrar" />
+          <Botao
+            acao={() => {
+              props.alteraSalaOrLobby('lobby'), entrarSala()
+            }}
+            content="Entrar"
+          />
         </div>
       </form>
     </div>
