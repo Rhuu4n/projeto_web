@@ -11,16 +11,17 @@ import { useEffect, useRef, useState } from 'react'
     const inputs = useRef([])
     const [palavra_nova, alteraPalavraNova] = useState([]);
     const [cor, alteraCor] = useState("pink")
-    const [index1, alteraIndex1] = useState(0);
-    const [index2, alteraIndex2] = useState(1);
-    const [index3, alteraIndex3] = useState(2);
-    const [index4, alteraIndex4] = useState(3);
-    const [index5, alteraIndex5] = useState(4);
     const [caractereExtraido1, alteraCaractere1] = useState("");
     const [caractereExtraido2, alteraCaractere2] = useState("");
     const [caractereExtraido3, alteraCaractere3] = useState("");
     const [caractereExtraido4, alteraCaractere4] = useState("");
     const [caractereExtraido5, alteraCaractere5] = useState("");
+    
+    const index1 = 0;
+    const index2 = 1;
+    const index3 = 2;
+    const index4 = 3;
+    const index5 = 4;
     let input1 = "";
     let input2 = "";
     let input3 = "";
@@ -74,13 +75,11 @@ import { useEffect, useRef, useState } from 'react'
  
         alteraPalavra(`${input1 + input2 + input3 + input4 + input5}`)
         alteraPalavraNova(`${input1 + input2 + input3 + input4 + input5}`)
-
     }
  
     function Submit(event, index) {
         if (event.key === 'Enter') {
             verificaPalavra(event);
-            confereCor();
         } else if (event.key === 'Backspace') {
             if (inputs.current[index].value !== '') {
                 inputs.current[index].value = ''
@@ -103,20 +102,39 @@ import { useEffect, useRef, useState } from 'react'
         else if(palavra.length == 5){
             alert("Errou!");
             mudaLinha();
+            alteraInput();
           }
     }
 
-    function confereCor() {
-        const extracao = palavra_certa[0].palavra.charAt(index1);
-        
-        if (index1 <= palavra_certa[0].palavra.length){
-            alteraCaractere1(extracao);
-        }
-        console.log(caractereExtraido1);
+    function alteraInput(){
+        confereCor(inputs.current[0].value, 0, 1);
+        confereCor(inputs.current[1].value, 1, 2);
+        confereCor(inputs.current[2].value, 2, 3);
+        confereCor(inputs.current[3].value, 3, 4);
+        confereCor(inputs.current[4].value, 4, 5);
+    }
 
-        if (caractereExtraido1 != palavra.charAt(index1)){
-            alteraCor("red")
+    function confereCor(caractere, posicao, num) {
+        const extracao = palavra_certa[0].palavra.charAt(0);
+        alteraCaractere1(extracao);
+        
+        if (posicao <= palavra_certa[0].palavra.length){
         }
+
+        if (caractere == palavra_certa[0].palavra.charAt(index1, index2, index3, index4, index5)) {
+            //input1 = document.querySelector(`.txt${num}`)
+            //input1 = input1.style.background = "green"
+            input1 = document.getElementsByClassName(`txt${num}`)[linha]
+            input1 = input1.style.background = "yellow"
+        }
+
+        if (caractere == palavra_certa[0].palavra.charAt(posicao)) {
+            //input1 = document.querySelector(`.txt${num}`)
+            //input1 = input1.style.background = "yellow"
+            input1 = document.getElementsByClassName(`txt${num}`)[linha]
+            input1 = input1.style.background = "green"
+        }
+
     }
 
     
@@ -127,7 +145,7 @@ import { useEffect, useRef, useState } from 'react'
                 <input
                     readOnly={habilitado}
                     className={`txt${num}`}
-                    style = {{background : cor}}
+                    style = {{background : cor }}
                     onChange={(event) => inserir(event)}
                     onKeyDown={(event) => Submit(event, num - 1)}
                     ref={(el) => (inputs.current[num - 1] = el)}
