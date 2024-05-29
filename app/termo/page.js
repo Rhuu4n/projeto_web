@@ -50,7 +50,7 @@ export default function Termo(){
     },[]);
 
     return(
-        palavra_certa?
+        palavra_certa.length > 0?
         <div id="termo">
             <h1 className="lblTermo">Termo</h1>
             <div className="boxTermo">
@@ -60,9 +60,10 @@ export default function Termo(){
                 <Linha palavra_certa = {palavra_certa} habilitado={habilitado[linha].linha4} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
                 <Linha palavra_certa = {palavra_certa} habilitado={habilitado[linha].linha5} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
                 <Linha palavra_certa = {palavra_certa} habilitado={habilitado[linha].linha6} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
+                <button onClick={()=> getPalavra()}>teste</button>
             </div>
         </div>
         :
-        <p>Carregando</p>
+        <p>Carregando...</p>
     );
 }
