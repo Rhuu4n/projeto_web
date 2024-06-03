@@ -57,23 +57,61 @@ a:hover{
 
 #ADM {
     
+    box-sizing: border-box;
+    margin: 0PX;
+    font-family: sans-serif;
+    
 }
+
+
+#ADM .Conteudo{
+    display: flex;
+    flex-direction: column;
+}
+
+
+#ADM .PainelLateral{
+    background-color: #9d4edd;
+    margin-top: 0px;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+    width: 230px;
+    border-right: 1px solid red;
+    position: fixed;
+}
+
+#ADM .PainelLateral li{
+    padding: 10px;
+
+}
+
+#ADM .PainelLateral li:hover{
+    color: rgb(255, 187, 0);
+    transition: 400ms all;
+}
+
+
 
 
 #ADM .PaineladmHeader{
     background-color: #3A434A;
-    margin-left: 0px;
+    margin-left: 230px;
+    margin-right: 0px;
     padding: 10px;
     border: 5px red;
-    position: sticky;
     display: flex;
+    align-items: flex-end;
     justify-content: space-between;
 }
 
 #ADM .PaineladmHeader img{
     margin-left: 0px;
     width: 235px;
+    max-height: 100px;
     display: block;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 
@@ -82,6 +120,7 @@ a:hover{
     margin-top: 65px;
     list-style-type: none;
     color: #9d4edd;
+    gap: 15px;
 }
 
 #ADM .PaineladmHeader li{
@@ -102,67 +141,64 @@ a:hover{
 }
 
 
-
-
-#ADM .PainelLateral{
-    background-color: #9d4edd;
-    margin-top: 0px;
-    flex-direction: column;
-    width: 245px;
-    height: 750px;
-    border-right: 1px solid red;
-}
-
-#ADM .PainelLateral li{
-    padding: 10px;
-
-}
-
-#ADM .PainelLateral li:hover{
-    color: rgb(255, 187, 0);
-    transition: 400ms all;
-}
-
-
-
-
-
-
 #ADM .Tabelas{
     display: flex;
     align-items: center;
-    margin: 30px;
+    background-color: rgba(28, 1, 59, 0);
+    justify-content: space-between;
+    margin: 20px;
+    margin-left: 250px;
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
     
+   
 }
 
 
 #ADM table{
-    color: #9d4edd;
-    text-align: center;
-    
-
+    width: 80%;
+    border: 1px solid #3A434A ;
+    border-collapse: collapse;
+    min-width: 600px;
+    table-layout: fixed;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #3A434A;
+    color: #ccc;
 }
-#ADM th{
-    color: #9d4edd;
-    text-align: center;
 
+#ADM th, td{
+    border: 1px solid #ccc;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+#ADM th{
+    background-color: #6a1b9a;
+     color: #fff;
+}
+
+
+#ADM tbody tr:nth-child(odd) {
+    background-color: #3A434A; /* Cor ainda mais clara */
+}
+
+#ADM tbody tr:nth-child(even) {
+    background-color: #f3e5f5;
+}
+
+#ADM tbody tr:hover {
+    background-color: #e1bee7;
+    transition: 400ms all;
 }
 #ADM td{
-    color: #3A434A;
-    
+    padding: 12px 15px;
 }
 
 
-#ADM .Conteudo{
-    display: flex;
-    background-color: rgba(28, 1, 59, 0);
-    justify-content: space-between;
-}
 
 #ADM footer{
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
+    margin-left: 240px;
 }
 
 #ADM footer a:hover{
@@ -174,4 +210,28 @@ a:hover{
     color: black;
     font-size: 25px;
     margin: 15px;
+}
+
+
+@media (max-width: 768px) {
+    .PainelLateral {
+        position: absolute;
+        width: 200px;
+        z-index: 10;
+    }
+
+    .Conteudo {
+        margin-left: 0;
+    }
+
+    th, td {
+        padding: 8px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    th, td {
+        padding: 6px 8px;
+        font-size: 14px;
+    }
 }
