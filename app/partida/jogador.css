@@ -1,15 +1,26 @@
 #joguin .box-infos{
-    width: 300px;
-    height: 150px;
+    width: 200px;
+    height: 80px;
     background-image: url("../../public/img/fundo-text.png");
     background-repeat: no-repeat;
     background-size: contain;
-    padding: 30px 60px;
+    padding: 13px 40px;
+    padding-bottom: 0;
     margin-right: 10px;
 }
 
 #joguin .moedas{
     margin-right: 5px;
+}
+
+#joguin .box-cartas{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#joguin .box-cartas img{
+    width: 80px;
 }
 
 #joguin .box-moedas{
@@ -24,28 +35,22 @@
 
 #joguin .box-cartas img{
     margin-left: 10px;
+    margin-right: 10px;
 }
 
 #joguin.esquerda{
+    height: calc(160px + 110px);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     flex-direction: column-reverse;
 }
 
-#joguin.esquerda .box-cartas{
-    transform: rotate(90deg);
-    display: flex;
-    align-items: center;
-    height: 300px;
-    margin-bottom: 10px;
-}
 
 #joguin.direita{
-    flex-direction: column-reverse;
-}
-
-#joguin.direita .box-cartas{
-    transform: rotate(-90deg);
+    height: calc(160px + 110px);
     display: flex;
+    justify-content: space-around;
     align-items: center;
-    height: 300px;
-    margin-bottom: 10px;
+    flex-direction: column;
 }

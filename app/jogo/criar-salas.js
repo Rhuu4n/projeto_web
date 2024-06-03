@@ -6,7 +6,6 @@ import Botao from '../components/botao'
 import './criar-salas.css'
 
 export default function Criar_Salas(props) {
-
   function alteraInput(event) {
     const value = event.target.value
     // Remove todos os caracteres que não são números
@@ -18,14 +17,25 @@ export default function Criar_Salas(props) {
     props.alteraIdSala(limitedValue)
   }
 
-  function enviarIdSala(event) {
+  async function entrarSala(event) {
     event.preventDefault()
-    alteraIdSala()
-    alert(idSala)
-  }
-
-  function entrarSala(){
-    
+    try {
+      const response = await axios.get(`/api/rooms/${props.idSala}`)
+      const numeroJogadores = response.data.numeroJogadores
+      if (numeroJogadores < 4) {
+        props.alteraNumeroJogadores(numeroJogadores + 1)
+        props.alteraSalaOrLobby('lobby')
+      } else {
+        alert('Sala cheia')
+      }
+    } catch (error) {
+      console.log('erro: ' + error)
+      if (error.response && error.response.status === 404) {
+        alert('Sala nao encontrada')
+      } else {
+        alert('Erro ao verificar a sala')
+      }
+    }
   }
 
   function criarSalaBanco() {
@@ -42,8 +52,10 @@ export default function Criar_Salas(props) {
         }
       })
       .then(function (response) {
-        console.log(response.data.id_sala)
         props.alteraIdSala(response.data.id_sala)
+        props.alteraCriadorSala(true)
+        props.alteraNumeroJogadores(1)
+        props.alteraSalaOrLobby('lobby')
       })
       .catch(function (error) {
         console.error('erro:' + error)
@@ -54,27 +66,17 @@ export default function Criar_Salas(props) {
     <div className="boxPartida">
       <img src={props.link} />
       <div className="center">
-        <Botao
-          acao={() => {
-            props.alteraSalaOrLobby('lobby'), criarSalaBanco()
-          }}
-          content="Criar sala"
-        />
+        <Botao acao={() => criarSalaBanco()} content="Criar sala" />
       </div>
 
-      <form onSubmit={event => enviarIdSala(event)}>
+      <form onSubmit={event => entrarSala(event)}>
         <div className="boxEntrar">
           <input
             type="text"
             className="txtEntrar"
             onChange={event => alteraInput(event)}
           />
-          <Botao
-            acao={() => {
-              props.alteraSalaOrLobby('lobby'), entrarSala()
-            }}
-            content="Entrar"
-          />
+          <Botao content="Entrar" />
         </div>
       </form>
     </div>

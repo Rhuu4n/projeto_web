@@ -1,13 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    async rewrites() {
-      return [
-        {
-          source: '/api/:path*',
-          destination: 'http://10.60.46.21:5000/:path*',
-        },
-      ];
-    },
-  };
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'http://127.0.0.1:5000/:path*'
+      }
+    ]
+  }
+}
 
-export default nextConfig;
+export default nextConfig
