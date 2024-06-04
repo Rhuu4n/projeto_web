@@ -5,7 +5,7 @@
 import { useEffect, useState } from "react"
 import axios from "axios";
 import "./font.css"
-import "./sliderStyle.css"
+import "./styleBody.css"
 
 
 
@@ -36,22 +36,34 @@ export default function Body () {
 
     return(
 
-        <div className="Main">
+        <div id="container-body">
 
-            <div className="imgsSlider">
-                <img src="#"/>
-                <img src="#"/>
+            <div className="card">
+
+                <div className="img-box">
+                    <img src="https://c4.wallpaperflare.com/wallpaper/108/140/869/digital-digital-art-artwork-fantasy-art-drawing-hd-wallpaper-thumb.jpg"/>
+                </div>
+
+                <div className="content">
+                    <button>Jogar agora</button>
+                    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+                </div>
+
+                
+                <div className="img-box2">
+                    <img src="https://c4.wallpaperflare.com/wallpaper/175/524/956/digital-digital-art-artwork-fantasy-art-drawing-hd-wallpaper-thumb.jpg"/>
+                </div>
+
+                <div>
+                    <h2>
+                    <button>Jogar agora</button>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </h2>
+                </div>
+
+
             </div>
 
-
-            <div className="btnJogar">
-                <button>Jogar agora</button>
-            </div>
-
-            <div className="numeroJogadores">
-                <h2>Jogadores online agora: {numeroJogadores} </h2>
-            </div>
-            
         </div>
 
     )

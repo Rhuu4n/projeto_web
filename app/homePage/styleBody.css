@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#container-body .Main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    
+}
+
+#container-body .img-box, .img-box2{
+
+    margin: 15px;
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    width: 700px;
+    height: 400px;
+    position: relative;
+    border-radius: 20px;
+}
+
