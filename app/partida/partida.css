@@ -8,6 +8,10 @@
     background-position: center;
 }
 
+#partida .areaPartida{
+    height: calc(100vh - 40px);
+}
+
 #partida .topo{
     display: flex;
     justify-content: center ;
@@ -19,12 +23,30 @@
 }
 
 #partida .meio{
+    height: 350px;
     width: 100vw;
     display: grid;
     padding: 0 20px;
-    grid-template-columns: 300px calc(100vw - 640px) 300px;
+    grid-template-columns: 200px calc(100vw - 440px) 200px;
+}
+
+
+#partida .meio .esquerda .box-cartas{
+    height: 240px;
+}
+
+#partida .meio .esquerda .box-cartas{
+    height: 240px;
 }
 
 #partida .topo .box-cartas img{
     transform: rotateX(180deg);
+}
+
+#partida .esquerda .box-cartas{
+    transform: rotate(90deg);
+}
+
+#partida .direita .box-cartas{
+    transform: rotate(-90deg);
 }
