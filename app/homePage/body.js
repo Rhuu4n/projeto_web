@@ -2,8 +2,8 @@
 
 
 
-import { useEffect, useState } from "react"
-import axios from "axios";
+import { useEffect, useRef, useState } from "react"
+import {motion, useScroll, useSpring} from "framer-motion"
 import "./font.css"
 import "./styleBody.css"
 
@@ -12,57 +12,72 @@ import "./styleBody.css"
 
 export default function Body () {
 
+    const items = [
+        {
+        id: 1,
+        title: "Guilty",
+        img: "https://c4.wallpaperflare.com/wallpaper/892/692/922/howl-s-moving-castle-studio-ghibli-fantasy-art-clouds-daylight-hd-wallpaper-thumb.jpg",
+        description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tempor nisl lectus, molestie ultrices risus sodales id. Mauris sit amet elementum dui. Vivamus tincidunt interdum velit. Cras vel condimentum nisi."
+        },
+        
+        {
+        id: 2,
+        title: "Termo",
+        img: "https://c4.wallpaperflare.com/wallpaper/262/774/423/space-stars-nebula-tylercreatesworlds-wallpaper-thumb.jpg",
+        description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tempor nisl lectus, molestie ultrices risus sodales id. Mauris sit amet elementum dui. Vivamus tincidunt interdum velit. Cras vel condimentum nisi."
+        },
+        {
+        id: 3,
+        title: "Em breve",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6UpMqGGuVEA4rzvlOVec211MdnAj5_ddVS6XTddbKE56tIIrxTsNxaftOOEHlHcZKQw4&usqp=CAU",
+        description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tempor nisl lectus, molestie ultrices risus sodales id. Mauris sit amet elementum dui. Vivamus tincidunt interdum velit. Cras vel condimentum nisi."
+        },
+        {
+        id: 4,
+        title: "Em breve",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6UpMqGGuVEA4rzvlOVec211MdnAj5_ddVS6XTddbKE56tIIrxTsNxaftOOEHlHcZKQw4&usqp=CAU",
+        description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tempor nisl lectus, molestie ultrices risus sodales id. Mauris sit amet elementum dui. Vivamus tincidunt interdum velit. Cras vel condimentum nisi."
+        },
+    ];
 
-    
-    const[numeroJogadores, setNumeroJogadores] = useState([]);
-
-
-    function BuscaJogadoresOnline(){
-        axios.get("/api/users")
-        .then(function(response){
-            setNumeroJogadores(response.data.length);
-        })
-        .catch(function(error){
-            console.error("erro")
-        });
-
-
+    const Single = ({item}) =>{
+        return ( <section> {item.title} </section>)
     }
 
+
+
+    
+
+
     useEffect(()=>{
-        BuscaJogadoresOnline();
     }, []);
 
+
+    const ref= useRef()
+
+    const {scrollYProgress} = useScroll({
+        target:ref, 
+        offset: ["end end", "start start"],
+    });
+
+    const scaleX = useSpring(scrollYProgress,{
+        stiffness:100,
+        damping: 30,
+    })
 
     return(
 
         <div id="container-body">
 
-            <div className="card">
-
-                <div className="img-box">
-                    <img src="https://c4.wallpaperflare.com/wallpaper/108/140/869/digital-digital-art-artwork-fantasy-art-drawing-hd-wallpaper-thumb.jpg"/>
-                </div>
-
-                <div className="content">
-                    <button>Jogar agora</button>
-                    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
-                </div>
-
-                
-                <div className="img-box2">
-                    <img src="https://c4.wallpaperflare.com/wallpaper/175/524/956/digital-digital-art-artwork-fantasy-art-drawing-hd-wallpaper-thumb.jpg"/>
-                </div>
-
-                <div>
-                    <h2>
-                    <button>Jogar agora</button>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </h2>
-                </div>
-
+            <div className="txtMenuJogos" ref={ref}> 
+                <h1> Jogos disponiveis </h1> 
+                <motion.div style={{scaleX:scaleX}} className="ProgressBar"> </motion.div>
 
             </div>
+
+                {items.map(item=>(
+                    < Single item={item} key={item.id} /> 
+                ))}
 
         </div>
 
