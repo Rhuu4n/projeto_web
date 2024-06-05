@@ -76,7 +76,7 @@ return(
                     <h1>Guilty</h1>
                     <nav>
                         <ul>
-                            <button onClick={()=> buscaNumJogadores()} >Teste</button>
+                            <button onClick={()=> buscaRanking()} >Teste</button>
                             <li><a href="#">Home</a></li>
                             <li><a href="#">Paginas</a></li>
                             <li><a href="#">Configurações</a></li>
@@ -98,11 +98,6 @@ return(
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-
-                            <td><p>Teste</p></td>
-                            <td><p>Teste</p></td>
-                            </tr>
                             {numJogadores.map(e => {return <tr>
                                     <td>{e.estadoSala}</td>
                                     <td>{e.id_sala}</td>
@@ -128,7 +123,7 @@ return(
                             {ranking.map(r => {return <tr>
                                 <td>{r.nome}  </td>
                                 <td>{r.id} </td>
-                                <td>{r.nascimento}</td>
+                                <td>{r.id}</td>
                                 <td>{r.email}</td>
                             </tr>
                             })}

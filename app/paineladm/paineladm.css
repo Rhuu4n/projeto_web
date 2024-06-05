@@ -56,17 +56,24 @@ a:hover{
 
 
 #ADM {
-    
     box-sizing: border-box;
     margin: 0PX;
     font-family: sans-serif;
-    
+    display: flex;
+    justify-content: space-between;
+    min-height: 650px;
+    min-width: 850px;
 }
 
 
 #ADM .Conteudo{
     display: flex;
     flex-direction: column;
+    width: 100%;
+    max-width: auto;
+    width: 100%;
+    min-width: 50%;
+    float: right;
 }
 
 
@@ -75,14 +82,31 @@ a:hover{
     margin-top: 0px;
     flex-direction: column;
     align-items: flex-start;
-    height: 100%;
-    width: 230px;
-    border-right: 1px solid red;
-    position: fixed;
+    width: 330px;
+    min-width: 20%;
+    max-width: 50%;
+    min-height: 100%;
+    padding: 10px 15px;
 }
 
-#ADM .PainelLateral li{
+#ADM .PainelLateral h2{
     padding: 10px;
+    margin: 10px 0px;
+    font-size: 30px;
+    color: aqua;
+
+}
+
+
+#ADM .PainelLateral li, ul{
+    padding: 10px;
+    margin: 10px 0px;
+
+}
+
+#ADM .PainelLateral ul{
+    list-style-type: none;
+    font-size: 20px;
 
 }
 
@@ -96,8 +120,10 @@ a:hover{
 
 #ADM .PaineladmHeader{
     background-color: #3A434A;
-    margin-left: 230px;
     margin-right: 0px;
+    max-width: 100%;
+    min-width: 50%;
+    width: 100%;
     padding: 10px;
     border: 5px red;
     display: flex;
@@ -146,10 +172,8 @@ a:hover{
     align-items: center;
     background-color: rgba(28, 1, 59, 0);
     justify-content: space-between;
-    margin: 20px;
-    margin-left: 250px;
-    width: 100%;
-    height: 100%;
+    margin: 10px;
+    
     overflow-x: auto;
     
    
@@ -160,7 +184,7 @@ a:hover{
     width: 80%;
     border: 1px solid #3A434A ;
     border-collapse: collapse;
-    min-width: 600px;
+    min-width: 300px;
     table-layout: fixed;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: #3A434A;
@@ -180,11 +204,13 @@ a:hover{
 
 
 #ADM tbody tr:nth-child(odd) {
-    background-color: #3A434A; /* Cor ainda mais clara */
+    background-color: #3A434A;
+    color: #e1bee7;
 }
 
 #ADM tbody tr:nth-child(even) {
     background-color: #f3e5f5;
+    color: #3A434A;
 }
 
 #ADM tbody tr:hover {
