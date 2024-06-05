@@ -10,12 +10,7 @@ import { useEffect, useRef, useState } from 'react'
     const [campo, alteraCampo] = useState(1)
     const inputs = useRef([])
     const [palavra_nova, alteraPalavraNova] = useState([]);
-    const [cor, alteraCor] = useState("pink")
     const [caractereExtraido1, alteraCaractere1] = useState("");
-    const [caractereExtraido2, alteraCaractere2] = useState("");
-    const [caractereExtraido3, alteraCaractere3] = useState("");
-    const [caractereExtraido4, alteraCaractere4] = useState("");
-    const [caractereExtraido5, alteraCaractere5] = useState("");
     
     const index1 = 0;
     const index2 = 1;
@@ -97,6 +92,7 @@ import { useEffect, useRef, useState } from 'react'
     function verificaPalavra() {
         if (palavra == palavra_certa[0].palavra){
             alteraLinha(6);
+            alteraInput();
             alert("Palavra correta parabéns!");
         }
         else if(palavra.length == 5){
@@ -121,16 +117,16 @@ import { useEffect, useRef, useState } from 'react'
         if (posicao <= palavra_certa[0].palavra.length){
         }
 
-        if (caractere == palavra_certa[0].palavra.charAt(index1, index2, index3, index4, index5)) {
-            //input1 = document.querySelector(`.txt${num}`)
-            //input1 = input1.style.background = "green"
+        if (caractere == palavra_certa[0].palavra.charAt(index1) ||
+            caractere == palavra_certa[0].palavra.charAt(index2) ||
+            caractere == palavra_certa[0].palavra.charAt(index3) ||
+            caractere == palavra_certa[0].palavra.charAt(index4) ||
+            caractere == palavra_certa[0].palavra.charAt(index5)) {
             input1 = document.getElementsByClassName(`txt${num}`)[linha]
             input1 = input1.style.background = "yellow"
         }
 
         if (caractere == palavra_certa[0].palavra.charAt(posicao)) {
-            //input1 = document.querySelector(`.txt${num}`)
-            //input1 = input1.style.background = "yellow"
             input1 = document.getElementsByClassName(`txt${num}`)[linha]
             input1 = input1.style.background = "green"
         }
