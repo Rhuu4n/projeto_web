@@ -41,10 +41,7 @@ function conectaLogin(){
            localStorage.setItem("token",token)
            // localStorage.getItem("token")
             rota.push("/download")
-        } else {
-            alert("Usuário ou senha incorretos!");
-            return null;
-        }
+    }
     }
 
 return(
