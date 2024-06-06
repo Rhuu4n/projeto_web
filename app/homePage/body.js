@@ -3,11 +3,7 @@
 
 
 import { useEffect, useRef, useState } from "react"
-import "./font.css"
 import "./styleBody.css"
-
-
-
 
 export default function Body () {
 
