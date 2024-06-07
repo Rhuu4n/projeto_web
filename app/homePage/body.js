@@ -26,6 +26,7 @@ export default function Body () {
 
             </div>
             <button className="btnVerjogos">Ver jogos </button>
+            
         </div>
 
     )
