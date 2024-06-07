@@ -63,6 +63,8 @@ a:hover{
     justify-content: space-between;
     min-height: 650px;
     min-width: 850px;
+    background-color: #0c0d0e;
+    color: #fff;
 }
 
 
@@ -78,23 +80,24 @@ a:hover{
 
 
 #ADM .PainelLateral{
-    background-color: #9d4edd;
+    background-color: #3A434A;
+    background-color: #00152c;
+    color: #fff;
     margin-top: 0px;
     flex-direction: column;
     align-items: flex-start;
     width: 330px;
-    min-width: 20%;
-    max-width: 50%;
+    min-width: 150px;
+    max-width: 250px;
     min-height: 100%;
     padding: 10px 15px;
+    border-right: 1px solid #fff;
 }
 
 #ADM .PainelLateral h2{
     padding: 10px;
     margin: 10px 0px;
     font-size: 30px;
-    color: aqua;
-
 }
 
 
@@ -108,12 +111,16 @@ a:hover{
     list-style-type: none;
     font-size: 20px;
     padding-left: 0px;
-    border-bottom: 1px solid white;
+}
+#ADM .PainelLateral li{
+    list-style-type: none;
+    font-size: 20px;
+    border-bottom: 1px solid white ;
 
 }
 
 #ADM .PainelLateral li:hover{
-    color: rgb(255, 187, 0);
+    color: aqua;
     transition: 400ms all;
     cursor: pointer;
 }
@@ -122,16 +129,15 @@ a:hover{
 
 
 #ADM .PaineladmHeader{
-    background-color: #3A434A;
     margin-right: 0px;
     max-width: 100%;
     min-width: 50%;
     width: 100%;
     padding: 10px;
-    border: 5px red;
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
+    border-bottom: 1px solid #fff;
 }
 
 #ADM .PaineladmHeader img{
@@ -148,16 +154,12 @@ a:hover{
     display: flex;
     margin-top: 65px;
     list-style-type: none;
-    color: #9d4edd;
     gap: 15px;
 }
 
-#ADM .PaineladmHeader li{
-    color: #9d4edd;
-}
 
 #ADM .PaineladmHeader a:hover{
-    color: rgb(255, 187, 0);
+    color: aqua;
     transition: 400ms all;
 }
 
@@ -166,22 +168,18 @@ a:hover{
     margin-top: auto;
     margin-bottom: auto;
     margin-right: 0px;
-    color: #9d4edd;
 }
 
 
 #ADM .Tabelas{
     display: flex;
     align-items: center;
-    background-color: rgba(28, 1, 59, 0);
     justify-content: space-between;
     margin: 10px;
-    
     overflow-x: auto;
     
    
 }
-
 
 #ADM table{
     width: 80%;
@@ -191,7 +189,7 @@ a:hover{
     table-layout: fixed;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: #3A434A;
-    color: #ccc;
+    font-size: 20px;
 }
 
 #ADM th, td{
@@ -201,23 +199,23 @@ a:hover{
 }
 
 #ADM th{
-    background-color: #6a1b9a;
      color: #fff;
+     background-color: #00152c;
 }
 
 
 #ADM tbody tr:nth-child(odd) {
     background-color: #3A434A;
-    color: #e1bee7;
+    color: #f3e5f5;
 }
 
 #ADM tbody tr:nth-child(even) {
     background-color: #f3e5f5;
-    color: #3A434A;
+    color: #00152c;
 }
 
 #ADM tbody tr:hover {
-    background-color: #e1bee7;
+    color: aqua;
     transition: 400ms all;
 }
 #ADM td{
@@ -231,14 +229,14 @@ a:hover{
 }
 
 #ADM footer a:hover{
-    color: rgb(255, 187, 0);
+    color: aqua;
     transition: 400ms all;
 }
 
 #ADM a{
-    color: black;
     font-size: 25px;
     margin: 15px;
+    color: #fff
 }
 
 
