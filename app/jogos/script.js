@@ -1,3 +1,6 @@
+
+
+/*
 let FazAlturaWin = function(){
     let vh = $(window).height();
     let jogos = vh/2;
@@ -13,3 +16,4 @@ $(document).ready(function(){
 $(window).resize(function(){
     FazAlturaWin();
 });
+*/

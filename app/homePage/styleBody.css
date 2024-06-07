@@ -23,18 +23,42 @@
 
 
 
-#container-body .txtinicial {
+#container-body .txtinicial p {
+    border-right: solid 7px rgba(0, 0, 0, 0.75);
+    white-space: nowrap;
+    overflow: hidden; 
     font-family: "Reddit Mono", sans-serif;
     font-size: 48px;
-    color: #ffffff;
-    flex: 1;
-    padding: 96px;
+    color: rgba(255,255,255,.70);
+    padding: 88px;
     text-align: center;
 }
 
+  
+  /* animacao */
+.txtinicial p {
+    animation: animacaoTexto 2s steps(29,end) 0.5s 1 normal both,
+               animacaodoCursor 1200ms steps(29,end) infinite;
+}
+  
+  /* animacao do texto */
+@keyframes animacaoTexto{
+    from{width: 0%;}
+    to{width: 100%;}
+  }
+
+  /* animacao d cursor */
+@keyframes animacaodoCursor{
+    from{border-right-color: rgba(255, 255, 255, 0.75);}
+    to{border-right-color: transparent;}
+  }
 
 
-#container-body .btnVerjogos  {
+
+
+  
+
+  #container-body .btnVerjogos  {
     position: absolute;
     top: 50%; 
     left: 50%; 
@@ -63,5 +87,3 @@
                 0 0 200px #4a00d4;
      -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
 }
-
-
