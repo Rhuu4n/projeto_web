@@ -1,10 +1,10 @@
-
+import "./footer.css"
 
 export default function Footer(){
     return(
         <footer>
 
-            <p> Guilty™ - 2024</p>
+            <p> H1R4™ - 2024</p>
             
         </footer>
 
