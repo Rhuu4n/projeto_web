@@ -1,10 +1,11 @@
 import BoxJogadores from './boxJogadores'
 import './bodyLobby.css'
+import { useState } from 'react'
 
 const BodyLobby = props => {
   const [jogadores, alteraJogadores] = useState([
     'jogador1',
-    'jogador2',
+    'jogador2', 
     'jogador3',
     'jogador4'
   ])

@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 
 export default function Header(){
@@ -9,13 +10,13 @@ export default function Header(){
 
                 <div className="links">
                     <ul className="navegacao">
-                        <li><a href="#">Novidades</a> </li>
-                        <li><a href="#">Suporte</a> </li>
-                        <li><a href="#">Sobre nós</a> </li>
+                        <li><Link href="./Novidades">Novidades</Link> </li>
+                        <li><Link href="./Novidades">Suporte</Link> </li>
+                        <li><Link href="./Novidades">Sobre nós</Link> </li>
                     </ul>
                 </div>
 
-                <button className="btnLogin">Log In</button>
+                <Link href="./autenticacao"> <button className="btnLogin">Log In</button> </Link>
 
             </nav>
 
