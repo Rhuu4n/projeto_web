@@ -51,7 +51,7 @@ return(
         <h1>Login</h1>
         <input onChange={(e)=>alteraNome(e.target.value) } name="u" placeholder="Username" required="required" />
         <input onChange={(e)=>alteraSenha(e.target.value)} type="password" name="p" placeholder="Password" required="required" />
-        <button onClick={conectaLogin} type="submit" class="btn btn-primary btn-block btn-large">Conecte-se</button>
+        <button onClick={conectaLogin} type="submit" className="btn btn-primary btn-block btn-large">Conecte-se</button>
 
     </div>
  
