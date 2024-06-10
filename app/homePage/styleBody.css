@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 
 
@@ -23,18 +24,42 @@
 
 
 
-#container-body .txtinicial {
-    font-family: "Reddit Mono", sans-serif;
-    font-size: 38px;
-    color: #ffffff;
-    flex: 1;
-    padding: 96px;
+#container-body .txtinicial p {
+    border-right: solid 7px rgba(0, 0, 0, 0.75);
+    white-space: nowrap;
+    overflow: hidden; 
+    font-family: "Space Mono", sans-serif;
+    font-size: 48px;
+    color: rgba(255,255,255,.70);
+    padding: 88px;
     text-align: center;
 }
 
+  
+  /* animacao */
+.txtinicial p {
+    animation: animacaoTexto 3.5s steps(29,end) 0.5s 1 normal both,
+               animacaodoCursor 1200ms steps(29,end) infinite;
+}
+  
+  /* animacao do texto */
+@keyframes animacaoTexto{
+    from{width: 0%;}
+    to{width: 100%;}
+  }
+
+  /* animacao d cursor(efeito typewritting) */
+@keyframes animacaodoCursor{
+    from{border-right-color: rgba(255, 255, 255, 0.75);}
+    to{border-right-color: transparent;}
+  }
 
 
-#container-body .btnVerjogos  {
+
+
+  
+
+  #container-body .btnVerjogos  {
     position: absolute;
     top: 50%; 
     left: 50%; 
@@ -65,3 +90,28 @@
 }
 
 
+
+/* animacao do ponteiro do mouse */
+#container-body .cursor {
+  z-index: 999;
+  position: fixed;
+  background: #4a00d4;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 0 20px #4a00d4,
+              0 0 60px #4a00d4, 
+              0 0 100px #4a00d4;
+}
+
+#container-body .cursor::before {
+  content: '';
+  position: absolute;
+  background: #4a00d4;
+  width: 50px;
+  height: 50px;
+  opacity: 0.2;
+  transform: translate(-30%, -30%);
+  border-radius: 50%;
+}

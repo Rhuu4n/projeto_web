@@ -55,89 +55,124 @@ a:hover{
 } */
 
 
+
+
 #ADM {
+    height: 100vh;
     box-sizing: border-box;
     margin: 0PX;
     font-family: sans-serif;
     display: flex;
     justify-content: space-between;
     min-height: 650px;
-    min-width: 850px;
+    background-color: #0c0d0e;
+    color: #fff;
 }
 
 
 #ADM .Conteudo{
     display: flex;
     flex-direction: column;
-    width: 100%;
     max-width: auto;
-    width: 100%;
     min-width: 50%;
     float: right;
 }
 
+.diminuir{
+    width: 80px;
+}
+
+
 
 #ADM .PainelLateral{
-    background-color: #9d4edd;
-    margin-top: 0px;
+    flex: 1 1 auto;
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    width: 330px;
-    min-width: 20%;
-    max-width: 50%;
-    min-height: 100%;
-    padding: 10px 15px;
+    background-color: #00152c;
+    border-right: #ccc 1px solid;
 }
-
-#ADM .PainelLateral h2{
+#ADM  .AreasPainelLateral {
     padding: 10px;
     margin: 10px 0px;
-    font-size: 30px;
-    color: aqua;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    transition: 0.35s all;
+}
 
+#ADM .PainelLateral img{
+    margin-left: 0px;
+    width: 100px;
+    height: 50px;
+    max-height: 100px;
+    display: block;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 10px 0;
+    margin-left: 25%;
+    transition: width 0.5s ease
+}
+
+#ADM .PainelLateral img:hover{
+    transform: scale(1.1);
 }
 
 
-#ADM .PainelLateral li, ul{
-    padding: 10px;
-    margin: 10px 0px;
-
+#ADM .PainelLateral button {
+    height: 60px;
+    font-size: 15px;
+    background-color: transparent;
+    border: 0;
+    color: #fff;
+    padding: 0px;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 40px;
+    transition: all 0.2ms;
 }
 
-#ADM .PainelLateral ul{
-    list-style-type: none;
-    font-size: 20px;
 
+
+#ADM .PainelLateral button > span {
+    font-size: 25px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    height: 48px;
+    padding: 0px 15px 0 10px;
+    border-radius: 24px;
+    line-height: 1;
+    transition: all 0.2s;
 }
 
-#ADM .PainelLateral li:hover{
-    color: rgb(255, 187, 0);
-    transition: 400ms all;
+#ADM .PainelLateral button:hover {
+    background: #0c0d0e;
+    transition: all 400ms;
 }
+
+#ADM .PainelLateral button i{
+    position: relative;
+    font-size: 28px;
+    transition: 0.2ms;
+}
+
+
+
 
 
 
 
 #ADM .PaineladmHeader{
-    background-color: #3A434A;
     margin-right: 0px;
     max-width: 100%;
     min-width: 50%;
     width: 100%;
     padding: 10px;
-    border: 5px red;
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-}
-
-#ADM .PaineladmHeader img{
-    margin-left: 0px;
-    width: 235px;
-    max-height: 100px;
-    display: block;
-    object-fit: cover;
-    border-radius: 50%;
+    border-bottom: 1px solid #fff;
 }
 
 
@@ -145,16 +180,12 @@ a:hover{
     display: flex;
     margin-top: 65px;
     list-style-type: none;
-    color: #9d4edd;
     gap: 15px;
 }
 
-#ADM .PaineladmHeader li{
-    color: #9d4edd;
-}
 
 #ADM .PaineladmHeader a:hover{
-    color: rgb(255, 187, 0);
+    color: aqua;
     transition: 400ms all;
 }
 
@@ -163,22 +194,18 @@ a:hover{
     margin-top: auto;
     margin-bottom: auto;
     margin-right: 0px;
-    color: #9d4edd;
 }
 
 
 #ADM .Tabelas{
     display: flex;
     align-items: center;
-    background-color: rgba(28, 1, 59, 0);
     justify-content: space-between;
     margin: 10px;
-    
     overflow-x: auto;
     
    
 }
-
 
 #ADM table{
     width: 80%;
@@ -188,7 +215,7 @@ a:hover{
     table-layout: fixed;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: #3A434A;
-    color: #ccc;
+    font-size: 20px;
 }
 
 #ADM th, td{
@@ -198,23 +225,23 @@ a:hover{
 }
 
 #ADM th{
-    background-color: #6a1b9a;
      color: #fff;
+     background-color: #00152c;
 }
 
 
 #ADM tbody tr:nth-child(odd) {
     background-color: #3A434A;
-    color: #e1bee7;
+    color: #f3e5f5;
 }
 
 #ADM tbody tr:nth-child(even) {
     background-color: #f3e5f5;
-    color: #3A434A;
+    color: #00152c;
 }
 
 #ADM tbody tr:hover {
-    background-color: #e1bee7;
+    color: aqua;
     transition: 400ms all;
 }
 #ADM td{
@@ -228,18 +255,36 @@ a:hover{
 }
 
 #ADM footer a:hover{
-    color: rgb(255, 187, 0);
+    color: aqua;
     transition: 400ms all;
 }
 
 #ADM a{
-    color: black;
     font-size: 25px;
     margin: 15px;
+    color: #fff
 }
 
+@media (width < 960px){
+    #ADM .PainelLateral{
+        max-width: 80px;
+    }
 
-@media (max-width: 768px) {
+    #ADM .PainelLateral button > i {
+        width: 50px;
+    }
+    #ADM .PainelLateral button > span {
+        opacity: 0;
+        visibility: hidden;
+    }
+    #ADM .PainelLateral img {
+        max-width: 50px;
+        margin-left: 5%;
+        margin-right: 50px;
+    }
+}
+
+/* /* @media (max-width: 768px) {
     .PainelLateral {
         position: absolute;
         width: 200px;
@@ -261,3 +306,44 @@ a:hover{
         font-size: 14px;
     }
 }
+
+
+
+export default function PainelAdministrativo() {
+    const [painelLateralDiminuido, setPainelLateralDiminuido] = useState(false);
+
+    const alternarDimensaoPainel = () => {
+        setPainelLateralDiminuido(!painelLateralDiminuido);
+    };
+
+    return (
+        <div className={painelLateralDiminuido ? "painel-lateral diminuido" : "painel-lateral"}>
+            <img src="URL_DA_IMAGEM" alt="Logo" onClick={alternarDimensaoPainel} />
+            {/Restante do conteúdo do painel lateral }
+            </div>
+            );
+        }
+
+
+        .painel-lateral {
+    width: 240px;
+    transition: width 0.5s ease;  Adiciona uma transição suave na mudança de largura 
+}
+
+.painel-lateral.diminuido {
+    width: 80px; Define a largura desejada quando o painel é clicado 
+}
+
+
+
+background-color: #00152c;
+    color: #fff;
+    margin-top: 0px;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 330px;
+    min-height: 100%;
+    padding: 10px 15px;
+    border-right: 1px solid #fff;
+*/
+
