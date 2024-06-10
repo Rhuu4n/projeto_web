@@ -57,22 +57,36 @@ useEffect(()=> {
 }, []);
 
 
-
+function diminuirTudo(){
+    painel.classList.toggle("diminuir")
+}
 
 return(
     <div id="ADM">
          <aside className="PainelLateral" >
             <br/>
-            <h2>Painel de Controle</h2>
-                <ul>
-                    <li onClick={()=> alteraSelecaoTabela("Estatisticas")} >↗  Estatisticas </li> 
-                    <li onClick={()=> alteraSelecaoTabela("Ranking")}> 🏆 Ranking</li>
-                    <li onClick={()=> alteraSelecaoTabela("Numerojogadores")}> 🎮 Numero de jogadores</li>
-                </ul>
+            <header>
+            <img id="painelmenor" src="https://i.pinimg.com/736x/a9/97/ca/a997ca78d01388ec1aed5c58464efc39.jpg"  onClick={diminuirTudo()} ></img>
+            </header>
+            <div className="AreasPainelLateral">
+                <button onClick={() => alteraSelecaoTabela("Estatisticas")}>
+                <i>↗</i>
+                <span>Estatísticas</span>
+                </button>
+
+                <button onClick={() => alteraSelecaoTabela("Ranking")}>
+                    <i>🏆</i>
+                    <span>Ranking</span> 
+                </button>
+
+                <button onClick={() => alteraSelecaoTabela("Numerojogadores")}>
+                <i>🎮</i>
+                <span> Jogadores</span>
+                </button>
+            </div>
         </aside>
         <div className="Conteudo" >
             <header className="PaineladmHeader">
-            <img src="https://i.pinimg.com/736x/a9/97/ca/a997ca78d01388ec1aed5c58464efc39.jpg" ></img>
                     <h1>Guilty</h1>
                     <nav>
                         <ul>
