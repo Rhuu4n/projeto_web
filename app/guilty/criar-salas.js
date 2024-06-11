@@ -4,8 +4,11 @@ import axios from 'axios'
 import { useState } from 'react'
 import Botao from '../components/botao'
 import './criar-salas.css'
+import { useRouter } from 'next/navigation'
 
 export default function Criar_Salas(props) {
+  const router = useRouter()
+
   function alteraInput(event) {
     const value = event.target.value
     // Remove todos os caracteres que não são números
@@ -19,7 +22,9 @@ export default function Criar_Salas(props) {
 
   async function entrarSala(event) {
     event.preventDefault()
+    console.log('tentou')
     try {
+      console.log('tentou')
       const response = await axios.get(`/api/rooms/${props.idSala}`)
       const numeroJogadores = response.data.numeroJogadores
       if (numeroJogadores < 4) {
@@ -52,13 +57,22 @@ export default function Criar_Salas(props) {
         }
       })
       .then(function (response) {
+        console.log('tentou')
         props.alteraIdSala(response.data.id_sala)
         props.alteraCriadorSala(true)
         props.alteraNumeroJogadores(1)
         props.alteraSalaOrLobby('lobby')
       })
       .catch(function (error) {
-        console.error('erro:' + error)
+        if (error.response && error.response.status === 401) {
+          // Lógica específica para o erro 401
+          console.error(
+            'Erro 401: Usuário não autenticado. Redirecionando para a página de login...'
+          )
+          router.push('/autenticacao')
+        } else {
+          console.error('Erro:' + error)
+        }
       })
   }
 
