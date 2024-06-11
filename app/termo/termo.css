@@ -1,8 +1,20 @@
-#termo .boxTermo{
-    background: black;
+#termo .boxJogo{
+    background-color:hsla(0,0%,0%,1);
+    background-image:
+    radial-gradient(at 16% 21%, hsla(285,100%,32%,1) 0px, transparent 50%),
+    radial-gradient(at 93% 87%, hsla(264,100%,24%,1) 0px, transparent 50%);
     height: 100%;
     width: 100%;
     position: fixed;
+}
+
+#termo .boxTermo{
+    width: 700px;
+    height: 630px;
+    padding-top: 15px;
+    border-radius: 50px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #termo input{
@@ -19,15 +31,12 @@
     margin-left: auto;
     margin-right: auto;
     width: 600px;
-    background: purple;
 }
 
 #termo .lblTermo{
     text-align: center;
-    background: purple;
     color: aliceblue;
-    font-size: 75px;
-}
+    font-size: 75px;}
 
 #termo p{
     color: aliceblue;

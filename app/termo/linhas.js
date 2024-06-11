@@ -4,14 +4,13 @@ import axios from "axios";
 import './termo.css'
 import { useEffect, useRef, useState } from 'react'
 
-  export default function Linha( {palavra_certa, habilitado, alteraPalavra, alteraSubmit, palavra, submit, mudaLinha, linha, alteraLinha} ) { 
+  export default function Linha( {palavra_certa, habilitado, alteraPalavra, alteraSubmit, palavra, submit, mudaLinha, linha, alteraLinha, vetor} ) { 
     
     const [letra, alteraLetra] = useState()
     const [campo, alteraCampo] = useState(1)
     const inputs = useRef([])
     const [palavra_nova, alteraPalavraNova] = useState([]);
     const [caractereExtraido1, alteraCaractere1] = useState("");
-    
     const index1 = 0;
     const index2 = 1;
     const index3 = 2;
@@ -86,20 +85,37 @@ import { useEffect, useRef, useState } from 'react'
                     alteraCampo(prevCampo + 1)
                 }
             }
+        } else if (event.key === 'ArrowLeft'){
+            const prevCampo = index - 1
+                if (prevCampo >= 0) {
+                    inputs.current[prevCampo].focus()
+                    alteraCampo(prevCampo + 1)
+                }
+        }  else if (event.key === 'ArrowRight'){
+            const proxCampo = index + 1
+                if (proxCampo >= 0 && index < 4) {
+                    inputs.current[proxCampo].focus()
+                    alteraCampo(proxCampo - 1)
+                }
         }
     }
  
     function verificaPalavra() {
-        if (palavra == palavra_certa[0].palavra){
-            alteraLinha(6);
-            alteraInput();
-            alert("Palavra correta parabéns!");
+
+        for(let i = 0; i < vetor.length; i++){
+            if (vetor[i].palavra == palavra){
+                if (palavra == palavra_certa[0].palavra){
+                    alteraLinha(6);
+                    alteraInput();
+                }
+                else if(palavra.length == 5){
+                    mudaLinha();
+                    alteraInput();
+                  }
+                return true;
+            }
         }
-        else if(palavra.length == 5){
-            alert("Errou!");
-            mudaLinha();
-            alteraInput();
-          }
+        return false;
     }
 
     function alteraInput(){
@@ -141,7 +157,6 @@ import { useEffect, useRef, useState } from 'react'
                 <input
                     readOnly={habilitado}
                     className={`txt${num}`}
-                    style = {{background : cor }}
                     onChange={(event) => inserir(event)}
                     onKeyDown={(event) => Submit(event, num - 1)}
                     ref={(el) => (inputs.current[num - 1] = el)}
