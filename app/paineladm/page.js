@@ -67,15 +67,15 @@ return(
             </header>
             <div className="AreasPainelLateral">
                 <button onClick={() => alteraSelecaoTabela("Estatisticas")}>
-                <i>↗</i>
+                <i>↗</i> 
                 <span>Estatísticas</span>
                 </button>
-
+                <hr/>
                 <button onClick={() => alteraSelecaoTabela("Ranking")}>
                     <i>🏆</i>
                     <span>Ranking</span> 
                 </button>
-
+                <hr/>
                 <button onClick={() => alteraSelecaoTabela("Numerojogadores")}>
                 <i>🎮</i>
                 <span> Jogadores</span>
