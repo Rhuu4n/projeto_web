@@ -44,16 +44,26 @@ export default function Criar_Salas(props) {
   }
 
   function criarSalaBanco() {
+    const token = localStorage.getItem('token')
     const sala = {
       jogadorAtual: 1,
       estadoSala: 1,
       numeroJogadores: 1
     }
 
+    if (!token) {
+      console.error(
+        'Token não encontrado. Redirecionando para a página de login...'
+      )
+      router.push('/autenticacao')
+      return
+    }
+
     axios
       .post('/api/rooms', sala, {
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          token: `${token}` // Inclui o token nos headers
         }
       })
       .then(function (response) {
