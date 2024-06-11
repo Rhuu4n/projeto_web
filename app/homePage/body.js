@@ -1,9 +1,9 @@
 "use client"
 
 
-
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react"
-import "./styleBody.css"
+import "./body.css"
 
 export default function Body () {
 
@@ -43,7 +43,11 @@ export default function Body () {
                 </div>
 
             </div>
-            <button className="btnVerjogos">Ver jogos </button>
+
+            <Link href="./jogos"> <button className="btnVerjogos"> Ver jogos </button> </Link>
+            
+
+            
             
         </div>
 

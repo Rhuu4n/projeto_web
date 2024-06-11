@@ -1,7 +1,6 @@
 "use client"
 
-import { Parallax } from 'react-parallax';
-import $ from 'jquery';
+
 import "./jogos.css"
 
 
