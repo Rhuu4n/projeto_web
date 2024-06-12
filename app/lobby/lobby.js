@@ -26,6 +26,8 @@ export default function Lobby(props) {
   }
 
   async function cadastraPartida() {
+    const token = localStorage.getItem('token');
+    
     const partida = {
       Jogador_ID: props.idUsuario,
       id_sala: props.idSala,
@@ -40,7 +42,8 @@ export default function Lobby(props) {
     await axios
       .post('/api/matches', partida, {
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'token': token
         }
       })
       .then(function (response) {
@@ -48,21 +51,36 @@ export default function Lobby(props) {
         props.alteraIdPartida(response.data.idPartida)
       })
       .catch(function (error) {
+        if (error.response && error.response.status === 401) {
+          console.error('erro:' + error)
+          router.push("/autenticacao")
+      } else {
         console.error('erro:' + error)
+      }
       })
   }
 
   async function atualizaSala() {
+    const token = localStorage.getItem('token');
+    
     try {
       const response = await axios.put(`/api/rooms/${props.idSala}`, {
         numeroJogadores: props.numeroJogadores
+      }, 
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'token': token
+        }
       })
       console.log(response.data)
       alert('Número de jogadores atualizado com sucesso!')
     } catch (error) {
-      console.error('Erro ao atualizar o número de jogadores:', error)
-      if (error.response) {
-        console.error('Resposta do servidor:', error.response.data)
+      if (error.response && error.response.status === 401) {
+        console.error('erro:' + error)
+        router.push("/autenticacao")
+      } else {
+      console.error('erro:' + error)
       }
     }
   }

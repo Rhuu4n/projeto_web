@@ -4,8 +4,10 @@ import axios from 'axios'
 import { useState } from 'react'
 import Botao from '../components/botao'
 import './criar-salas.css'
+import { useRouter } from 'next/navigation'
 
 export default function Criar_Salas(props) {
+  const router = useRouter()
   function alteraInput(event) {
     const value = event.target.value
     // Remove todos os caracteres que não são números
@@ -18,9 +20,15 @@ export default function Criar_Salas(props) {
   }
 
   async function entrarSala(event) {
+    const token = localStorage.getItem('token');
     event.preventDefault()
     try {
-      const response = await axios.get(`/api/rooms/${props.idSala}`)
+      const response = await axios.get(`/api/rooms/${props.idSala}`, {
+        headers: {
+          'Content-Type': 'application/json',
+          'token': token
+        }
+      } )
       const numeroJogadores = response.data.numeroJogadores
       if (numeroJogadores < 4) {
         props.alteraNumeroJogadores(numeroJogadores + 1)
@@ -32,13 +40,18 @@ export default function Criar_Salas(props) {
       console.log('erro: ' + error)
       if (error.response && error.response.status === 404) {
         alert('Sala nao encontrada')
-      } else {
+      } else if(error.response && error.response.status === 401){
+        console.error('erro:' + error)
+        router.push("/autenticacao")
+      }else {
         alert('Erro ao verificar a sala')
       }
     }
   }
 
   function criarSalaBanco() {
+    const token = localStorage.getItem('token');
+
     const sala = {
       jogadorAtual: 1,
       estadoSala: 1,
@@ -48,7 +61,8 @@ export default function Criar_Salas(props) {
     axios
       .post('/api/rooms', sala, {
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'token': token
         }
       })
       .then(function (response) {
@@ -58,7 +72,12 @@ export default function Criar_Salas(props) {
         props.alteraSalaOrLobby('lobby')
       })
       .catch(function (error) {
+        if (error.response && error.response.status === 401) {
+          console.error('erro:' + error)
+          router.push("/autenticacao")
+      } else {
         console.error('erro:' + error)
+      }
       })
   }
 
