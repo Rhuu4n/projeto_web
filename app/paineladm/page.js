@@ -109,7 +109,7 @@ return(
                             </tr>
                         </thead>
                         <tbody>
-                        {numJogadores.map (e => {return <tr>
+                        { numJogadores.map (e => {return <tr>
                                     <td>{e.estadoSala}</td>
                                     <td>{e.id_sala}</td>
                                 </tr>
