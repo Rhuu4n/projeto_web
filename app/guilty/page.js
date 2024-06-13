@@ -9,6 +9,7 @@ import Lobby from '../lobby/lobby'
 export default function Jogo() {
   const [idSala, alteraIdSala] = useState('')
   const [idUsuario, alteraIdUsuario] = useState(0)
+  const [nomeUsuario, alteraNomeUsuario] = useState(0)
   const [idPartida, alteraIdPartida] = useState()
   const [autenticacao, alteraAutenticacao] = useState('')
   const [salaOrLobby, alteraSalaOrLobby] = useState('sala')
@@ -39,6 +40,8 @@ export default function Jogo() {
         <Lobby
           alteraIdUsuario={alteraIdUsuario}
           idUsuario={idUsuario}
+          nomeUsuario={nomeUsuario}
+          alteraNomeUsuario={alteraNomeUsuario}
           alteraIdPartida={alteraIdPartida}
           idPartida={idPartida}
           idSala={idSala}
