@@ -1,7 +1,8 @@
 import Body from './homePage/body'
-import Footer from './homePage/footer'
-import Header from './homePage/header'
-import './homePage/style.css'
+import Footer from './homePage/components/footer'
+import Header from './homePage/components/header'
+import './homePage/components/style.css'
+import './homePage/components/header.css'
 
 
 

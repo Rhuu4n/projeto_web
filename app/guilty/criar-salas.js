@@ -4,8 +4,10 @@ import axios from 'axios'
 import { useState } from 'react'
 import Botao from '../components/botao'
 import './criar-salas.css'
+import { useRouter } from 'next/navigation'
 
 export default function Criar_Salas(props) {
+  const router = useRouter()
   function alteraInput(event) {
     const value = event.target.value
     // Remove todos os caracteres que não são números
@@ -18,9 +20,16 @@ export default function Criar_Salas(props) {
   }
 
   async function entrarSala(event) {
+    const token = localStorage.getItem('token')
     event.preventDefault()
+    console.log('tentou')
     try {
-      const response = await axios.get(`/api/rooms/${props.idSala}`)
+      const response = await axios.get(`/api/rooms/${props.idSala}`, {
+        headers: {
+          'Content-Type': 'application/json',
+          token: token
+        }
+      })
       const numeroJogadores = response.data.numeroJogadores
       if (numeroJogadores < 4) {
         props.alteraNumeroJogadores(numeroJogadores + 1)
@@ -32,6 +41,9 @@ export default function Criar_Salas(props) {
       console.log('erro: ' + error)
       if (error.response && error.response.status === 404) {
         alert('Sala nao encontrada')
+      } else if (error.response && error.response.status === 401) {
+        console.error('erro:' + error)
+        router.push('/autenticacao')
       } else {
         alert('Erro ao verificar a sala')
       }
@@ -39,26 +51,46 @@ export default function Criar_Salas(props) {
   }
 
   function criarSalaBanco() {
+    const token = localStorage.getItem('token')
+
     const sala = {
       jogadorAtual: 1,
       estadoSala: 1,
       numeroJogadores: 1
     }
 
+    if (!token) {
+      console.error(
+        'Token não encontrado. Redirecionando para a página de login...'
+      )
+      router.push('/autenticacao')
+      return
+    }
+
     axios
       .post('/api/rooms', sala, {
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          token: token
         }
       })
       .then(function (response) {
+        console.log('tentou')
         props.alteraIdSala(response.data.id_sala)
         props.alteraCriadorSala(true)
         props.alteraNumeroJogadores(1)
         props.alteraSalaOrLobby('lobby')
       })
       .catch(function (error) {
-        console.error('erro:' + error)
+        if (error.response && error.response.status === 401) {
+          // Lógica específica para o erro 401
+          console.error(
+            'Erro 401: Usuário não autenticado. Redirecionando para a página de login...'
+          )
+          router.push('/autenticacao')
+        } else {
+          console.error('Erro:' + error)
+        }
       })
   }
 

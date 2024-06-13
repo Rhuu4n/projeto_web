@@ -69,6 +69,16 @@ a:hover{
     color: #fff;
 }
 
+#ADM { 
+    background-attachment: fixed;
+    background-color:hsla(327,0%,0%,1);
+    background-image:
+    radial-gradient(at 89% 86%, hsla(240,100%,8%,1) 0px, transparent 50%),
+    radial-gradient(at 95% 38%, hsla(285,0%,0%,1) 0px, transparent 50%),
+    radial-gradient(at 6% 12%, hsla(332,100%,15%,1) 0px, transparent 50%);
+    height: 100vh;
+}
+
 
 #ADM .Conteudo{
     display: flex;
@@ -78,18 +88,13 @@ a:hover{
     float: right;
 }
 
-.diminuir{
-    width: 80px;
-}
-
-
 
 #ADM .PainelLateral{
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
-    background-color: #00152c;
     border-right: #ccc 1px solid;
+    transition: 0.35s all;
 }
 #ADM  .AreasPainelLateral {
     padding: 10px;
@@ -99,6 +104,7 @@ a:hover{
     flex-direction: column;
     gap: 25px;
     transition: 0.35s all;
+    
 }
 
 #ADM .PainelLateral img{
@@ -143,10 +149,10 @@ a:hover{
     padding: 0px 15px 0 10px;
     border-radius: 24px;
     line-height: 1;
-    transition: all 0.2s;
+    transition:  0.35s all;
 }
 
-#ADM .PainelLateral button:hover {
+#ADM .PainelLateral button:hover > span {
     background: #0c0d0e;
     transition: all 400ms;
 }
@@ -154,14 +160,9 @@ a:hover{
 #ADM .PainelLateral button i{
     position: relative;
     font-size: 28px;
+    border-radius: 30px;
     transition: 0.2ms;
 }
-
-
-
-
-
-
 
 #ADM .PaineladmHeader{
     margin-right: 0px;
@@ -226,7 +227,7 @@ a:hover{
 
 #ADM th{
      color: #fff;
-     background-color: #00152c;
+     background-color: #0c0d0e;
 }
 
 
@@ -269,9 +270,14 @@ a:hover{
     #ADM .PainelLateral{
         max-width: 80px;
     }
+    #ADM .PainelLateral hr {
+        max-width: 60px;
+    }
 
     #ADM .PainelLateral button > i {
         width: 50px;
+        padding: 5px;
+        margin: 3px;
     }
     #ADM .PainelLateral button > span {
         opacity: 0;
@@ -281,6 +287,12 @@ a:hover{
         max-width: 50px;
         margin-left: 5%;
         margin-right: 50px;
+    }
+
+    #ADM .PainelLateral i:hover {
+        background: #0c0d0e;
+        transition: all 400ms;
+        font-size: 40px;
     }
 }
 

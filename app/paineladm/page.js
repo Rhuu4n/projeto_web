@@ -57,28 +57,25 @@ useEffect(()=> {
 }, []);
 
 
-function diminuirTudo(){
-    painel.classList.toggle("diminuir")
-}
 
 return(
     <div id="ADM">
          <aside className="PainelLateral" >
             <br/>
             <header>
-            <img id="painelmenor" src="https://i.pinimg.com/736x/a9/97/ca/a997ca78d01388ec1aed5c58464efc39.jpg"  onClick={diminuirTudo()} ></img>
+            <img id="painelmenor" src="https://i.pinimg.com/736x/a9/97/ca/a997ca78d01388ec1aed5c58464efc39.jpg"></img>
             </header>
             <div className="AreasPainelLateral">
                 <button onClick={() => alteraSelecaoTabela("Estatisticas")}>
-                <i>↗</i>
+                <i>↗</i> 
                 <span>Estatísticas</span>
                 </button>
-
+                <hr/>
                 <button onClick={() => alteraSelecaoTabela("Ranking")}>
                     <i>🏆</i>
                     <span>Ranking</span> 
                 </button>
-
+                <hr/>
                 <button onClick={() => alteraSelecaoTabela("Numerojogadores")}>
                 <i>🎮</i>
                 <span> Jogadores</span>
@@ -112,7 +109,7 @@ return(
                             </tr>
                         </thead>
                         <tbody>
-                            {numJogadores.map(e => {return <tr>
+                        {numJogadores.map (e => {return <tr>
                                     <td>{e.estadoSala}</td>
                                     <td>{e.id_sala}</td>
                                 </tr>
