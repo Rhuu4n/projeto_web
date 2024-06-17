@@ -39,8 +39,7 @@ function conectaLogin(){
 
     function verificaUser() {
         if (token != "") {
-           localStorage.setItem("token",token)
-           // localStorage.getItem("token")
+            localStorage.setItem("token",token)
             rota.push("/cadastro")
     }
     }
