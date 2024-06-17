@@ -218,10 +218,7 @@ a:hover{
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: #3A434A;
     font-size: 20px;
-<<<<<<< HEAD
-    margin-top: 35vh;
-=======
->>>>>>> 068de6799da54ad94121c84014c39b05a74dbac4
+    margin-top: 35px;
 }
 
 #ADM th, td{
