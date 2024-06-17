@@ -2,7 +2,11 @@ import HeaderPartida from './headerPartida'
 import Jogador from './jogador'
 import './partida.css'
 
-const Partida = () => {
+const Partida = props => {
+  useEffect(() => {
+    console.log(props.ordemJogadores)
+  }, [])
+
   return (
     <div id="partida">
       <HeaderPartida />

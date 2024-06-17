@@ -5,6 +5,7 @@ import Criar_Salas from './criar-salas'
 import './salas.css'
 import { useState } from 'react'
 import Lobby from '../lobby/lobby'
+import Partida from '../partida/partida'
 
 export default function Jogo() {
   const [idSala, alteraIdSala] = useState('')
@@ -15,10 +16,16 @@ export default function Jogo() {
   const [salaOrLobby, alteraSalaOrLobby] = useState('sala')
   const [criadorSala, alteraCriadorSala] = useState(false)
   const [numeroJogadores, alteraNumeroJogadores] = useState(0)
+  const [ordemJogadores, alteraOrdemJogadores] = useState([
+    'jogador1',
+    'jogador2',
+    'jogador3',
+    'jogador4'
+  ])
 
-  return (
-    <div id="salas">
-      {salaOrLobby == 'sala' ? (
+  function verificaPagina() {
+    if (salaOrLobby == 'sala') {
+      return (
         <>
           <Header_Salas
             autenticacao={autenticacao}
@@ -36,7 +43,9 @@ export default function Jogo() {
             alteraNumeroJogadores={alteraNumeroJogadores}
           />
         </>
-      ) : (
+      )
+    } else if (salaOrLobby == 'lobby') {
+      return (
         <Lobby
           alteraIdUsuario={alteraIdUsuario}
           idUsuario={idUsuario}
@@ -49,8 +58,20 @@ export default function Jogo() {
           alteraCriadorSala={alteraCriadorSala}
           numeroJogadores={numeroJogadores}
           alteraNumeroJogadores={alteraNumeroJogadores}
+          alteraSalaOrLobby={alteraSalaOrLobby}
+          ordemJogadores={ordemJogadores}
+          alteraOrdemJogadores={alteraOrdemJogadores}
         />
-      )}
-    </div>
-  )
+      )
+    } else {
+      return (
+        <Partida
+          ordemJogadores={ordemJogadores}
+          alteraOrdemJogadores={alteraOrdemJogadores}
+        />
+      )
+    }
+  }
+
+  return <div id="salas">{verificaPagina()}</div>
 }

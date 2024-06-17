@@ -3,12 +3,13 @@
 import HeaderLobby from './components/headerLobby'
 import BodyLobby from './components/bodyLobby'
 import FooterLobby from './components/footerLobby'
-import './login.css'
+import './lobby.css'
 import { useEffect, useRef, useState } from 'react'
 import axios from 'axios'
 
 export default function Lobby(props) {
   const [ordem, alteraOrdem] = useState(0)
+  const [cheia, alteraCheia] = useState(false)
   const [userInfoLoaded, setUserInfoLoaded] = useState(false)
   const [ordemUpdated, setOrdemUpdated] = useState(false)
   const initialized = useRef(false)
@@ -142,10 +143,15 @@ export default function Lobby(props) {
   }, [ordemUpdated])
 
   return (
-    <div id="login">
+    <div id="lobby">
       <div className="container">
         <HeaderLobby idSala={props.idSala} className="container" />
         <BodyLobby
+          ordemJogadores={props.ordemJogadores}
+          ordem={ordem}
+          alteraOrdemJogadores={props.alteraOrdemJogadores}
+          cheia={cheia}
+          alteraCheia={alteraCheia}
           alteraIdUsuario={props.alteraIdUsuario}
           idUsuario={props.idUsuario}
           alteraIdPartida={props.alteraIdPartida}
@@ -155,8 +161,13 @@ export default function Lobby(props) {
           alteraCriadorSala={props.alteraCriadorSala}
           numeroJogadores={props.numeroJogadores}
           alteraNumeroJogadores={props.alteraNumeroJogadores}
+          alteraSalaOrLobby={props.alteraSalaOrLobby}
         />
-        <FooterLobby />
+        {props.criadorSala ? (
+          <FooterLobby cheia={cheia} idSala={props.idSala} />
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   )

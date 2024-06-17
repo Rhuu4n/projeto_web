@@ -2,8 +2,10 @@ import BoxJogadores from './boxJogadores'
 import './bodyLobby.css'
 import { useState, useRef, useEffect } from 'react'
 import axios from 'axios'
+import { useRouter } from 'next/navigation'
 
 const BodyLobby = props => {
+  const router = useRouter()
   const [attribute, setAttribute] = useState(false)
   const [jogadores, alteraJogadores] = useState([
     'jogador1',
@@ -16,8 +18,6 @@ const BodyLobby = props => {
   function main() {
     const interval = setInterval(async () => {
       const token = localStorage.getItem('token')
-
-      console.log('oi')
       try {
         const response = await axios.get(
           `/api/matches/room?room=${props.idSala}`,
@@ -29,18 +29,62 @@ const BodyLobby = props => {
           }
         )
 
+        const response_room = await axios.get(`/api/rooms/${props.idSala}`, {
+          headers: {
+            'Content-Type': 'application/json',
+            token: token
+          }
+        })
+
         let jogadoresNovo = ['jogador1', 'jogador2', 'jogador3', 'jogador4']
-        let controleJogador = 1
+        let controleJogador = 0
         for (let res of response.data) {
           let nome = await pegaUser(res.Jogador_ID)
-          console.log(`jogador ${controleJogador}: ${nome}`)
-          jogadoresNovo[controleJogador - 1] = nome
+          jogadoresNovo[controleJogador] = nome
           controleJogador++
         }
 
-        alteraJogadores(jogadoresNovo)
+        let nomeJogadores = [
+          props.idUsuario,
+          'jogador2',
+          'jogador3',
+          'jogador4'
+        ]
 
-        console.log(response.data)
+        let jogador1 = response.data[0].Jogador_ID
+        let jogador2 = response.data[1].Jogador_ID
+        let jogador3 = response.data[2].Jogador_ID
+        let jogador4 = response.data[3].Jogador_ID
+
+        if (props.ordem == 1) {
+          nomeJogadores[1] = jogador2 == undefined ? 'jogador' : jogador2
+          nomeJogadores[2] = jogador3 == undefined ? 'jogador' : jogador3
+          nomeJogadores[3] = jogador4 == undefined ? 'jogador' : jogador4
+        } else if (props.ordem == 2) {
+          nomeJogadores[1] = jogador3 == undefined ? 'jogador' : jogador3
+          nomeJogadores[2] = jogador4 == undefined ? 'jogador' : jogador4
+          nomeJogadores[3] = jogador1 == undefined ? 'jogador' : jogador1
+        } else if (props.ordem == 3) {
+          nomeJogadores[1] = jogador4 == undefined ? 'jogador' : jogador4
+          nomeJogadores[2] = jogador1 == undefined ? 'jogador' : jogador1
+          nomeJogadores[3] = jogador2 == undefined ? 'jogador' : jogador2
+        } else if (props.ordem == 4) {
+          nomeJogadores[1] = jogador1 == undefined ? 'jogador' : jogador1
+          nomeJogadores[2] = jogador2 == undefined ? 'jogador' : jogador2
+          nomeJogadores[3] = jogador3 == undefined ? 'jogador' : jogador3
+        }
+
+        props.alteraOrdemJogadores(nomeJogadores)
+
+        if (controleJogador == 4) {
+          props.alteraCheia(true)
+        }
+
+        if (response_room.data.estadoSala == 2) {
+          props.alteraSalaOrLobby('partida')
+        }
+
+        alteraJogadores(jogadoresNovo)
       } catch (error) {
         console.log('erro: ' + error)
         if (error.response && error.response.status === 404) {
@@ -53,9 +97,6 @@ const BodyLobby = props => {
         }
       }
 
-      // Aqui você pode executar sua rotina
-      console.log('Rotina executada')
-
       // Simulação de atualização do atributo
       // No seu caso, você pode fazer uma chamada API ou outra lógica
       const newValue = false
@@ -67,6 +108,8 @@ const BodyLobby = props => {
       }
     }, 1500) // Executa a rotina a cada segundo
   }
+
+  async function organiza() {}
 
   async function pegaUser(id) {
     const token = localStorage.getItem('token')
@@ -101,9 +144,7 @@ const BodyLobby = props => {
     }
   }, [])
 
-  useEffect(() => {
-    console.log('array mudou')
-  }, [jogadores])
+  useEffect(() => {}, [jogadores])
 
   const checkAttribute = () => {
     // Lógica para verificar o atributo
