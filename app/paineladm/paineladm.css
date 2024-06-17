@@ -280,6 +280,7 @@ a:hover{
     }
     #ADM .PainelLateral img {
         max-width: 50px;
+        
         margin-left: 5%;
         margin-right: 50px;
     }
@@ -292,6 +293,7 @@ a:hover{
 
     #ADM table {
         margin-top:  33vh;
+        max-width: 950px;
     }
 
 
