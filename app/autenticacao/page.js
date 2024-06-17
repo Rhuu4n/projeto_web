@@ -6,7 +6,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
-import {BsLock,BsPersonLock } from 'react-icons/bs'
+import {BsLock, BsPersonLock } from 'react-icons/bs'
 
 export default function Autenticacao(){
     const [token, alteraToken] = useState("");
@@ -54,7 +54,7 @@ return(
             <BsPersonLock style={{ position: "absolute", top: "23%", fontSize: "22px" , transform: "translateY(-50%)", right: "15px", color: "#777" }}/>
             <input onChange={(e) => alteraNome(e.target.value)} type="name" placeholder="Username" required="required" style={{ paddingRight:"30px" }}/>
 
-            <BsLock style={{ position: "absolute", top: "38%", fontSize: "20px" , transform: "translateY(-50%)", right: "15px", color: "#777;"}}/>
+            <BsLock style={{ position: "absolute", top: "38%", fontSize: "20px" , transform: "translateY(-50%)", right: "15px", color: "#777"}}/>
             <input onChange={(e) => alteraSenha(e.target.value)} type="password" placeholder="Password" required="required" style={{ paddingRight:"30px" }}/>
 
             <button onClick={conectaLogin} type="submit" className="btn btn-primary btn-block btn-large">Conecte-se</button>
