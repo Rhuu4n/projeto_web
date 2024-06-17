@@ -29,6 +29,7 @@ html { width: 100%; height:100%; overflow:hidden; }
   text-transform: uppercase;
   letter-spacing: 2px;
   text-shadow: 2px 2px 4px #000000;
+  margin-bottom: 12px;
   
 }
 
@@ -52,7 +53,28 @@ html { width: 100%; height:100%; overflow:hidden; }
 	transition: box-shadow .5s ease;
 }
 
+#login p{
+  font-size: 11.8px;
+  margin-top: 23px;
+  color: #eee; 
+  text-align:center; 
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 5px 2px 4px #000000;
+  margin-bottom: 12px;
+  line-height: 1.5;
 
+}
+
+#login a{
+  text-decoration: none;
+  color: #6eb6de; 
+  transition: all 0.3s ease;
+}
+
+#login a :hover{
+  text-shadow: 0px 0px 5px red;
+}
 
 body { 
   width: 100%;
@@ -70,3 +92,4 @@ body {
 #login .btn-primary {background-image: -webkit-linear-gradient(top, #6eb6de, #4a77d4);background-image: linear-gradient(top, #6eb6de, #4a77d4); background-repeat: repeat-x;  border: 1px solid #3762bc; text-shadow: 1px 5px 5px black }
 #login .btn-primary:hover, .btn-primary:active, .btn-primary.active, .btn-primary.disabled, .btn-primary[disabled] { filter: none; background-color: #4a77d4; }
 #login .btn-block { width: 100%; display:block; }
+
