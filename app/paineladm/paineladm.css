@@ -83,8 +83,9 @@ a:hover{
 #ADM .Conteudo{
     display: flex;
     flex-direction: column;
-    max-height: 80vh;
-    
+    max-width: auto;
+    min-width: 50%;
+    float: right;
 }
 
 
@@ -201,21 +202,26 @@ a:hover{
 #ADM .Tabelas{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin: 10px;
-    max-height: 80vh;
     overflow-x: auto;
+    
+   
 }
 
 #ADM table{
-    width: 90%;
+    width: 80%;
     border: 1px solid #3A434A ;
     border-collapse: collapse;
-    min-width: 480px;
+    min-width: 300px;
     table-layout: fixed;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: #3A434A;
     font-size: 20px;
+<<<<<<< HEAD
     margin-top: 35vh;
+=======
+>>>>>>> 068de6799da54ad94121c84014c39b05a74dbac4
 }
 
 #ADM th, td{
@@ -244,6 +250,10 @@ a:hover{
     color: aqua;
     transition: 400ms all;
 }
+#ADM td{
+    padding: 12px 15px;
+}
+
 
 
 #ADM footer{

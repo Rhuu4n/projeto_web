@@ -1,14 +1,158 @@
 import BoxJogadores from './boxJogadores'
 import './bodyLobby.css'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
+import axios from 'axios'
+import { useRouter } from 'next/navigation'
 
 const BodyLobby = props => {
+  const router = useRouter()
+  const [attribute, setAttribute] = useState(false)
   const [jogadores, alteraJogadores] = useState([
     'jogador1',
-    'jogador2', 
+    'jogador2',
     'jogador3',
     'jogador4'
   ])
+  const initialized = useRef(false)
+
+  function main() {
+    const interval = setInterval(async () => {
+      const token = localStorage.getItem('token')
+      try {
+        const response = await axios.get(
+          `/api/matches/room?room=${props.idSala}`,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              token: token
+            }
+          }
+        )
+
+        const response_room = await axios.get(`/api/rooms/${props.idSala}`, {
+          headers: {
+            'Content-Type': 'application/json',
+            token: token
+          }
+        })
+
+        let jogadoresNovo = ['jogador1', 'jogador2', 'jogador3', 'jogador4']
+        let controleJogador = 0
+        for (let res of response.data) {
+          let nome = await pegaUser(res.Jogador_ID)
+          jogadoresNovo[controleJogador] = nome
+          controleJogador++
+        }
+
+        let nomeJogadores = [
+          props.idUsuario,
+          'jogador2',
+          'jogador3',
+          'jogador4'
+        ]
+
+        let jogador1 = response.data[0].Jogador_ID
+        let jogador2 = response.data[1].Jogador_ID
+        let jogador3 = response.data[2].Jogador_ID
+        let jogador4 = response.data[3].Jogador_ID
+
+        if (props.ordem == 1) {
+          nomeJogadores[1] = jogador2 == undefined ? 'jogador' : jogador2
+          nomeJogadores[2] = jogador3 == undefined ? 'jogador' : jogador3
+          nomeJogadores[3] = jogador4 == undefined ? 'jogador' : jogador4
+        } else if (props.ordem == 2) {
+          nomeJogadores[1] = jogador3 == undefined ? 'jogador' : jogador3
+          nomeJogadores[2] = jogador4 == undefined ? 'jogador' : jogador4
+          nomeJogadores[3] = jogador1 == undefined ? 'jogador' : jogador1
+        } else if (props.ordem == 3) {
+          nomeJogadores[1] = jogador4 == undefined ? 'jogador' : jogador4
+          nomeJogadores[2] = jogador1 == undefined ? 'jogador' : jogador1
+          nomeJogadores[3] = jogador2 == undefined ? 'jogador' : jogador2
+        } else if (props.ordem == 4) {
+          nomeJogadores[1] = jogador1 == undefined ? 'jogador' : jogador1
+          nomeJogadores[2] = jogador2 == undefined ? 'jogador' : jogador2
+          nomeJogadores[3] = jogador3 == undefined ? 'jogador' : jogador3
+        }
+
+        props.alteraOrdemJogadores(nomeJogadores)
+
+        if (controleJogador == 4) {
+          props.alteraCheia(true)
+        }
+
+        if (response_room.data.estadoSala == 2) {
+          props.alteraSalaOrLobby('partida')
+        }
+
+        alteraJogadores(jogadoresNovo)
+      } catch (error) {
+        console.log('erro: ' + error)
+        if (error.response && error.response.status === 404) {
+          alert('Sala nao encontrada')
+        } else if (error.response && error.response.status === 401) {
+          console.error('erro:' + error)
+          router.push('/autenticacao')
+        } else {
+          alert('Erro ao resgatar dados da partida')
+        }
+      }
+
+      // Simulação de atualização do atributo
+      // No seu caso, você pode fazer uma chamada API ou outra lógica
+      const newValue = false
+      setAttribute(newValue)
+
+      if (attribute) {
+        clearInterval(interval) // Para a rotina se o atributo mudar
+        console.log('Atributo mudou, rotina parada')
+      }
+    }, 1500) // Executa a rotina a cada segundo
+  }
+
+  async function organiza() {}
+
+  async function pegaUser(id) {
+    const token = localStorage.getItem('token')
+    try {
+      const response = await axios.get(`/api/users/${id}`, {
+        headers: {
+          'Content-Type': 'application/json',
+          token: token
+        }
+      })
+      return response.data.nome
+    } catch (error) {
+      console.log('erro: ' + error)
+      if (error.response && error.response.status === 404) {
+        alert('Sala nao encontrada')
+      } else if (error.response && error.response.status === 401) {
+        console.error('erro:' + error)
+        router.push('/autenticacao')
+      } else {
+        alert('Erro ao atualizar a sala')
+      }
+    }
+  }
+
+  useEffect(() => {
+    if (!initialized.current) {
+      initialized.current = true
+
+      main()
+
+      return () => setAttribute(true) // Limpeza do intervalo quando o componente for desmontado
+    }
+  }, [])
+
+  useEffect(() => {}, [jogadores])
+
+  const checkAttribute = () => {
+    // Lógica para verificar o atributo
+    // Por exemplo, fazer uma chamada API ou checar uma condição
+    // Vamos simular que após 5 segundos, o atributo muda para verdadeiro
+    const randomValue = Math.random() > 0.8 // Simulação de mudança de atributo
+    return randomValue
+  }
 
   return (
     <main id="bodylobby">

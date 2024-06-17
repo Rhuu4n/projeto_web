@@ -1,29 +1,29 @@
-#login{
+#lobby{
     background-image: url("https://i.imgur.com/55m44KZ.jpeg");
     height: 100vh;
     position: relative;
 }
 
-#login .container{
+#lobby .container{
     margin: 0 7vw;
 }
 
-#login p, #login h2{
-    background-color: rgb(236, 236, 197);
+#lobby p, #lobby h2{
+    background-color: rgb(255, 255, 255);
     padding: 8px 17px;
     display: inline-block;
     width: 250px;
 }
 
-#login ul{
+#lobby ul{
     list-style: none;
 }
 
-#login ul li{
+#lobby ul li{
     margin-top: 10px;
 }
 
-#login footer{
+#lobby footer{
     position: absolute;
     bottom: 0;
 }
