@@ -45,30 +45,30 @@ const BodyLobby = props => {
         }
 
         let nomeJogadores = [
-          props.idUsuario,
+          'jogador1',
           'jogador2',
           'jogador3',
           'jogador4'
         ]
 
-        let jogador1 = response.data[0].Jogador_ID
-        let jogador2 = response.data[1].Jogador_ID
-        let jogador3 = response.data[2].Jogador_ID
-        let jogador4 = response.data[3].Jogador_ID
+        let jogador1 = response.data[0] == undefined ? 'jogador' : response.data[0].Jogador_ID
+        let jogador2 = response.data[1] == undefined ? 'jogador' : response.data[1].Jogador_ID
+        let jogador3 = response.data[2] == undefined ? 'jogador' : response.data[2].Jogador_ID
+        let jogador4 = response.data[3] == undefined ? 'jogador' : response.data[3].Jogador_ID
 
-        if (props.ordem == 1) {
+        if (props.numeroJogadores == 1) {
           nomeJogadores[1] = jogador2 == undefined ? 'jogador' : jogador2
           nomeJogadores[2] = jogador3 == undefined ? 'jogador' : jogador3
           nomeJogadores[3] = jogador4 == undefined ? 'jogador' : jogador4
-        } else if (props.ordem == 2) {
+        } else if (props.numeroJogadores == 2) {
           nomeJogadores[1] = jogador3 == undefined ? 'jogador' : jogador3
           nomeJogadores[2] = jogador4 == undefined ? 'jogador' : jogador4
           nomeJogadores[3] = jogador1 == undefined ? 'jogador' : jogador1
-        } else if (props.ordem == 3) {
+        } else if (props.numeroJogadores == 3) {
           nomeJogadores[1] = jogador4 == undefined ? 'jogador' : jogador4
           nomeJogadores[2] = jogador1 == undefined ? 'jogador' : jogador1
           nomeJogadores[3] = jogador2 == undefined ? 'jogador' : jogador2
-        } else if (props.ordem == 4) {
+        } else if (props.numeroJogadores == 4) {
           nomeJogadores[1] = jogador1 == undefined ? 'jogador' : jogador1
           nomeJogadores[2] = jogador2 == undefined ? 'jogador' : jogador2
           nomeJogadores[3] = jogador3 == undefined ? 'jogador' : jogador3

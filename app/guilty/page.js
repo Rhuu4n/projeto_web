@@ -23,6 +23,13 @@ export default function Jogo() {
     'jogador4'
   ])
 
+  const [jogadoresIdPartida, alteraJogadoresIdPartida] = useState([
+    'jogador1',
+    'jogador2',
+    'jogador3',
+    'jogador4'
+  ])
+
   function verificaPagina() {
     if (salaOrLobby == 'sala') {
       return (
@@ -61,6 +68,8 @@ export default function Jogo() {
           alteraSalaOrLobby={alteraSalaOrLobby}
           ordemJogadores={ordemJogadores}
           alteraOrdemJogadores={alteraOrdemJogadores}
+          jogadoresIdPartida={jogadoresIdPartida}
+          alteraJogadoresIdPartida={alteraJogadoresIdPartida}
         />
       )
     } else {

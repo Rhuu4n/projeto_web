@@ -11,10 +11,11 @@ body{
 
 #novidadesPage{
    height: 100vh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
     
 }
-
-
 
 #novidadesPage h1 {
     font-size: 22px;

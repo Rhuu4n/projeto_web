@@ -89,8 +89,6 @@
      -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
 }
 
-
-
 /* animacao do ponteiro do mouse */
 #container-body .cursor {
   z-index: 999;
