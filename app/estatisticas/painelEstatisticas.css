@@ -145,9 +145,7 @@
     align-items: center;
     justify-content: space-between;
     margin: 10px;
-    overflow-x: auto;
-    
-   
+
 }
 
 #ADM table{
@@ -216,6 +214,9 @@
     #ADM .PainelLateral hr {
         max-width: 60px;
     }
+    #ADM .Conteudo {
+        max-height: 350px;
+    }
 
     #ADM .PainelLateral button > i {
         width: 50px;
@@ -241,6 +242,7 @@
     #ADM table {
         margin-top:  3vh;
         max-width: 950px;
+        max-height: 350px;
     }
 
 

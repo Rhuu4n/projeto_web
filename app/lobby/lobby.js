@@ -162,6 +162,8 @@ export default function Lobby(props) {
           numeroJogadores={props.numeroJogadores}
           alteraNumeroJogadores={props.alteraNumeroJogadores}
           alteraSalaOrLobby={props.alteraSalaOrLobby}
+          jogadoresIdPartida={props.jogadoresIdPartida}
+          alteraJogadoresIdPartida={props.alteraJogadoresIdPartida}
         />
         {props.criadorSala ? (
           <FooterLobby cheia={cheia} idSala={props.idSala} />
