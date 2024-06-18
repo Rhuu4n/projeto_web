@@ -96,7 +96,7 @@ import { useEffect, useRef, useState } from 'react'
             const proxCampo = index + 1
                 if (proxCampo >= 0 && index < 4) {
                     inputs.current[proxCampo].focus()
-                    alteraCampo(proxCampo - 1)
+                    alteraCampo(proxCampo + 1)
                 }
         }
     }
