@@ -1,21 +1,43 @@
+#termo .boxJogo{
+    background-color:hsla(0,0%,0%,1);
+    background-image:
+    radial-gradient(at 16% 21%, hsla(285,100%,32%,1) 0px, transparent 50%),
+    radial-gradient(at 93% 87%, hsla(264,100%,24%,1) 0px, transparent 50%);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+}
+
+#termo .boxTermo{
+    width: 700px;
+    height: 630px;
+    padding-top: 15px;
+    border-radius: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #termo input{
     margin: 10px;
     font-size: 65px;
     width: 100px;
-    color: white;
-    background: pink;
+    color: aliceblue;
+    background: rgb(56, 54, 54);
     text-align: center;
+    border-radius: 20px;
 }
 
-#Termo .linha{
+#linha{
     margin-left: auto;
     margin-right: auto;
-    display: flex;
-    position: fixed;
+    width: 600px;
 }
 
 #termo .lblTermo{
     text-align: center;
-    background: purple;
+    color: aliceblue;
+    font-size: 75px;}
+
+#termo p{
     color: aliceblue;
 }
