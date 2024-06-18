@@ -10,8 +10,8 @@ export default function Header(){
 
                 <div className="links">
                     <ul className="navegacao">
-                        <li><Link href="./Novidades">Novidades</Link> </li>
-                        <li><Link href="./Novidades">Suporte</Link> </li>
+                        <li><Link href="./Novidades">Forúm</Link> </li>
+                        <li><Link href="./estatisticas">Estatisticas</Link> </li>
                         <li><Link href="./Novidades">Sobre nós</Link> </li>
                     </ul>
                 </div>
