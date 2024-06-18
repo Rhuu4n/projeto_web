@@ -47,15 +47,15 @@ export default function Termo(){
         })
         .then(
             function(response){
-                alteraPalavraCerta( response.data )
-                console.log(palavra_certa)
+                alteraPalavraCerta( response.data );
+                Aleatorio();
+                console.log(palavra_certa);
             }
         )
     }
 
     useEffect(()=> {
         getPalavra();
-        Aleatorio();
     },[]);
 
     return(

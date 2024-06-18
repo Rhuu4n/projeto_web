@@ -139,7 +139,7 @@ import { useEffect, useRef, useState } from 'react'
             caractere == palavra_certa[i].palavra.charAt(index4) ||
             caractere == palavra_certa[i].palavra.charAt(index5)) {
             input1 = document.getElementsByClassName(`txt${num}`)[linha]
-            input1 = input1.style.background = "yellow"
+            input1 = input1.style.background = "rgb(207, 204, 0)"
         }
 
         if (caractere == palavra_certa[i].palavra.charAt(posicao)) {
