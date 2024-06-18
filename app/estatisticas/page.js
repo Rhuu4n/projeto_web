@@ -1,7 +1,7 @@
 "use client"
 import axios from "axios"
 import { useState, useEffect } from "react";
-import "./paineladm.css"
+import "./painelEstatisticas.css"
 
 export default function PainelAdministrativo(){
 
