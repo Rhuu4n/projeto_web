@@ -1,12 +1,15 @@
 "use client"
 
 import "./cadastro.css"
-import {BsCalendar, BsCardHeading,BsLock,BsPersonLock } from 'react-icons/bs'
+import { BsFillDoorOpenFill, BsCalendar, BsCardHeading, BsLock, BsPersonLock } from 'react-icons/bs'
 
 export default function Cadastro(){
     return(
 
     <div id="cadastro">
+
+        <a href= "/" > <BsFillDoorOpenFill style={{ position: "fixed" , top: "45px" , right: "45px" , color: "#777" , fontSize: "46px" , cursor: "pointer"}}/> <p style={{position: "fixed" , top: "75px" , right: "19px" , color: "#777" , fontSize: "10.9px" , cursor: "pointer"}}>Voltar Para <br/> Tela Inicíal</p> </a>
+
 
         <h1>Cadastro</h1>
 
@@ -25,9 +28,10 @@ export default function Cadastro(){
 
             <button type="submit" class="btn btn-primary btn-block btn-large">Cadastre-se</button> 
 
+            <p>Já Tem uma Conta ?  <a href='/autenticacao'>Faça Login </a></p>
+
         </div>
 
-           
         </div>
     )
 }
