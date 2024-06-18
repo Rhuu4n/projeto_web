@@ -1,8 +1,9 @@
+import { useEffect } from 'react'
 import HeaderPartida from './headerPartida'
 import Jogador from './jogador'
 import './partida.css'
 
-const Partida = props => {
+const Partida = props => { 
   useEffect(() => {
     console.log(props.ordemJogadores)
   }, [])
