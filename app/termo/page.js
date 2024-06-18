@@ -11,6 +11,8 @@ export default function Termo(){
     const [submit, alteraSubmit] = useState(0)
     const [linha, alteraLinha] = useState(0);
     const [palavra_certa, alteraPalavraCerta] = useState([]);
+    const [i, alterai] = useState(null);
+    let random = Math.floor(Math.random() * 6) + 0;
 
     let habilitado = [
         { linha1: "", linha2: "disable", linha3: "disable", linha4: "disable", linha5: "disable", linha6: "disable" },
@@ -21,6 +23,12 @@ export default function Termo(){
         { linha1: "disable", linha2: "disable", linha3: "disable", linha4: "disable", linha5: "disable", linha6: "" },
         { linha1: "disable", linha2: "disable", linha3: "disable", linha4: "disable", linha5: "disable", linha6: "disable" }
         ]
+
+    function Aleatorio(){
+        if (i == null){
+            alterai(random);
+        }
+    }
     
     function mudaLinha(){
         alteraLinha(linha + 1);
@@ -47,6 +55,7 @@ export default function Termo(){
 
     useEffect(()=> {
         getPalavra();
+        Aleatorio();
     },[]);
 
     return(
@@ -55,12 +64,12 @@ export default function Termo(){
             <div className="boxJogo">
                 <h1 className="lblTermo">Termo</h1>
                 <div className="boxTermo">
-                    <Linha palavra_certa = {palavra_certa} habilitado={habilitado[linha].linha1} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
-                    <Linha palavra_certa = {palavra_certa} habilitado={habilitado[linha].linha2} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
-                    <Linha palavra_certa = {palavra_certa} habilitado={habilitado[linha].linha3} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
-                    <Linha palavra_certa = {palavra_certa} habilitado={habilitado[linha].linha4} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
-                    <Linha palavra_certa = {palavra_certa} habilitado={habilitado[linha].linha5} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
-                    <Linha palavra_certa = {palavra_certa} habilitado={habilitado[linha].linha6} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
+                    <Linha i = {i} palavra_certa = {palavra_certa} habilitado={habilitado[linha].linha1} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
+                    <Linha i = {i} palavra_certa = {palavra_certa} habilitado={habilitado[linha].linha2} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
+                    <Linha i = {i} palavra_certa = {palavra_certa} habilitado={habilitado[linha].linha3} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
+                    <Linha i = {i} palavra_certa = {palavra_certa} habilitado={habilitado[linha].linha4} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
+                    <Linha i = {i} palavra_certa = {palavra_certa} habilitado={habilitado[linha].linha5} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
+                    <Linha i = {i} palavra_certa = {palavra_certa} habilitado={habilitado[linha].linha6} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
                 </div>
             </div>
         </div>

@@ -4,7 +4,7 @@ import axios from "axios";
 import './termo.css'
 import { useEffect, useRef, useState } from 'react'
 
-  export default function Linha( {palavra_certa, habilitado, alteraPalavra, alteraSubmit, palavra, submit, mudaLinha, linha, alteraLinha, vetor} ) { 
+  export default function Linha( {i, palavra_certa, habilitado, alteraPalavra, alteraSubmit, palavra, submit, mudaLinha, linha, alteraLinha, vetor} ) { 
     
     const [letra, alteraLetra] = useState()
     const [campo, alteraCampo] = useState(1)
@@ -106,7 +106,7 @@ import { useEffect, useRef, useState } from 'react'
         console.log(validarPalavra(palavra));
 
         if (validarPalavra(palavra) == false){
-            if (palavra == palavra_certa[0].palavra){
+            if (palavra == palavra_certa[i].palavra){
                 alteraLinha(6);
                 alteraInput();
                 alert("Acertou!!")
@@ -130,19 +130,19 @@ import { useEffect, useRef, useState } from 'react'
         const extracao = palavra_certa[0].palavra.charAt(0);
         alteraCaractere1(extracao);
         
-        if (posicao <= palavra_certa[0].palavra.length){
+        if (posicao <= palavra_certa[i].palavra.length){
         }
 
-        if (caractere == palavra_certa[0].palavra.charAt(index1) ||
-            caractere == palavra_certa[0].palavra.charAt(index2) ||
-            caractere == palavra_certa[0].palavra.charAt(index3) ||
-            caractere == palavra_certa[0].palavra.charAt(index4) ||
-            caractere == palavra_certa[0].palavra.charAt(index5)) {
+        if (caractere == palavra_certa[i].palavra.charAt(index1) ||
+            caractere == palavra_certa[i].palavra.charAt(index2) ||
+            caractere == palavra_certa[i].palavra.charAt(index3) ||
+            caractere == palavra_certa[i].palavra.charAt(index4) ||
+            caractere == palavra_certa[i].palavra.charAt(index5)) {
             input1 = document.getElementsByClassName(`txt${num}`)[linha]
             input1 = input1.style.background = "yellow"
         }
 
-        if (caractere == palavra_certa[0].palavra.charAt(posicao)) {
+        if (caractere == palavra_certa[i].palavra.charAt(posicao)) {
             input1 = document.getElementsByClassName(`txt${num}`)[linha]
             input1 = input1.style.background = "green"
         }
