@@ -36,6 +36,7 @@ export default function Jogos(){
                                     </div>
 
                                     <div className="more"> <i className="demo-icon icon-plus" ></i></div>
+                                    
                                 </div>
 
                                 <div className="fundo-img" style={{backgroundImage: `url(${jogo.imgUrl})`}}></div>
