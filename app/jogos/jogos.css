@@ -5,6 +5,7 @@
 }
 
 html body{
+    overflow: hidden;
     background-attachment: fixed;
     background-color:hsla(327,0%,0%,1);
     background-image:
@@ -26,19 +27,29 @@ html body{
     position: relative;
     align-items: center;
     justify-content: center;
-    gap: 50px;
-}
-
-.jogos-grid .jogos {
-    position: relative;
-    height: 150px;
-    width: 150px;
+    gap: 60px;
 }
 
 .jogos-grid .jogo-img{
+    position: relative;
     height: 150px;
     width: 150px;
     border-radius: 8px;
+    transition: 0.4s;
+    box-shadow: 0 20px 50px #000000;
+}
+
+.jogo-img:hover{
+    height: 200px;
+    width: 200px;
+}
+
+.jogos h3{
+    visibility: hidden;
+}
+
+.jogos h3:hover{
+    visibility: visible;
 }
 
 
