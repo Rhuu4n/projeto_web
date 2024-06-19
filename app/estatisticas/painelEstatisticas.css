@@ -60,6 +60,7 @@
     margin: 10px 0;
     margin-left: 25%;
     transition: width 0.5s ease
+
 }
 
 #ADM .PainelLateral img:hover{
@@ -95,7 +96,8 @@
 }
 
 #ADM .PainelLateral button:hover > span {
-    background: #0c0d0e;
+    color: #0c0d0e;
+    background-color: #f3e5f5;
     transition: all 400ms;
 }
 
