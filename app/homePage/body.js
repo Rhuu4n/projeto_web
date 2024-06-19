@@ -45,10 +45,7 @@ export default function Body () {
             </div>
 
             <Link href="./jogos"> <button className="btnVerjogos"> Ver jogos </button> </Link>
-            
 
-            
-            
         </div>
 
     )
