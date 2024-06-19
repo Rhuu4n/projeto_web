@@ -27,19 +27,19 @@ export default function Autenticacao() {
         }
       })
       .then(function (response) {
-        console.log(response);
-        alteraToken(response.data.token);
-        verificaUser(response.data.token);
+        console.log(response)
+        alteraToken(response.data.token)
+        verificaUser()
+        rota.push('/')
       })
       .catch(function (error) {
         console.error('erro:' + error);
       });
   }
 
-  function verificaUser(token) {
-    if (token !== '') {
-      localStorage.setItem('token', token);
-      rota.push('/login');
+  function verificaUser() {
+    if (token != '') {
+      localStorage.setItem('token', token)
     }
   }
 

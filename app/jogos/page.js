@@ -1,8 +1,10 @@
 'use client'
 import React from 'react';
 import './jogos.css'
+import Header from '../homePage/components/header'
+import '../homePage/components/header.css'
 import AnimatedCursor from '../components/cursorAnimado'
-import { useEffect, useRef, useState } from "react";
+
 
 const jogos = [
   { id: 1, title: "Guilty", imgUrl: "https://preview.redd.it/kxov0rcoi4p21.png?auto=webp&s=8edd6e729acc84e01d55ad0853c7d5c07d86bada", link: "/guilty" },
@@ -15,6 +17,9 @@ const jogos = [
 const Jogos = () => (
     <div id="container-jogos">
         <AnimatedCursor/>
+        <Header/>
+
+
 
         <h1>Jogos</h1>
 
@@ -24,7 +29,7 @@ const Jogos = () => (
 
         <div key={jogo.id} className="jogos">
 
-                <a href={jogo.link ? jogo.link : '#'} target={jogo.link ? '_blank' : '_self'}>
+                <a href={jogo.link ? jogo.link : '#'} >
 
                     <img src={jogo.imgUrl} alt={jogo.title} className="jogo-img" />
                     <h3>{jogo.title}</h3>
