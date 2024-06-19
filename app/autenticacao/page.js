@@ -9,16 +9,16 @@ import { useRouter } from 'next/navigation'
 import { BsFillDoorOpenFill, BsLock, BsPersonLock } from 'react-icons/bs'
 
 export default function Autenticacao() {
-  const [token, alteraToken] = useState('')
-  const [nome, alteraNome] = useState()
-  const [senha, alteraSenha] = useState()
-  const rota = useRouter()
+  const [token, alteraToken] = useState('');
+  const [nome, alteraNome] = useState('');
+  const [senha, alteraSenha] = useState('');
+  const rota = useRouter();
 
   function conectaLogin() {
     const obj = {
       nome: nome,
       senha: senha
-    }
+    };
 
     axios
       .post('/api/login', obj, {
@@ -27,19 +27,19 @@ export default function Autenticacao() {
         }
       })
       .then(function (response) {
-        console.log(response)
-        alteraToken(response.data.token)
-        verificaUser()
+        console.log(response);
+        alteraToken(response.data.token);
+        verificaUser(response.data.token);
       })
       .catch(function (error) {
-        console.error('erro:' + error)
-      })
+        console.error('erro:' + error);
+      });
   }
 
-  function verificaUser() {
-    if (token != '') {
-      localStorage.setItem('token', token)
-      rota.push('/cadastro')
+  function verificaUser(token) {
+    if (token !== '') {
+      localStorage.setItem('token', token);
+      rota.push('/login');
     }
   }
 
@@ -113,7 +113,7 @@ export default function Autenticacao() {
         />
 
         <button
-          onClick={conectaLogin}
+          onClick={()=> rota.push('../')}
           type="submit"
           className="btn btn-primary btn-block btn-large"
         >
@@ -121,7 +121,7 @@ export default function Autenticacao() {
         </button>
 
         <p>
-          Não Tem Conta Ainda ? <a href="/cadastro">Crie Agora</a>
+          <p>Criar conta</p>
         </p>
       </div>
     </div>
