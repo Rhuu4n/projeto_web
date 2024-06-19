@@ -130,6 +130,10 @@
     gap: 15px;
 }
 
+#ADM .PaineladmHeader h1{
+    
+}
+
 
 #ADM .PaineladmHeader a:hover{
     color: aqua;
@@ -263,6 +267,8 @@
         width: 200px;
         z-index: 10;
     }
+
+    <button onClick={()=> buscaRanking()} >Teste</button>
 
     .Conteudo {
         margin-left: 0;
