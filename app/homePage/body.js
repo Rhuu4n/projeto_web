@@ -8,7 +8,7 @@ import AnimatedCursor from "../components/cursorAnimado";
 
 export default function Body () {
 
-    const cursorRef = useRef(null);
+   
 
 
 
