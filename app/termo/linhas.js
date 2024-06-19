@@ -76,7 +76,6 @@ import { useEffect, useRef, useState } from 'react'
             verificaPalavra(event);
         } else if (event.key === 'Backspace') {
             if (inputs.current[index].value !== '') {
-                inputs.current[index].value = ''
                 alteraLetra('')
             }
              else {
@@ -90,13 +89,25 @@ import { useEffect, useRef, useState } from 'react'
             const prevCampo = index - 1
                 if (prevCampo >= 0) {
                     inputs.current[prevCampo].focus()
-                    alteraCampo(prevCampo + 1)
+                    alteraCampo(prevCampo)
+                } else if (index == 0) {
+                    inputs.current[index + 4].focus()
+                    alteraCampo(4)
                 }
         }  else if (event.key === 'ArrowRight'){
-            const proxCampo = index + 1
-                if (proxCampo >= 0 && index < 4) {
-                    inputs.current[proxCampo].focus()
-                    alteraCampo(proxCampo + 1)
+            const prevCampo = index + 1
+                if (prevCampo >= 0 && index < 4) {
+                    const currentIndex = inputs.current.indexOf(event.target);
+                    inputs.current[currentIndex].focus();
+                    setTimeout(() => inputs.current[currentIndex + 1].setSelectionRange(0, 0), 0);
+                    inputs.current[prevCampo].focus()
+                    alteraCampo(prevCampo)
+                } else if (index >= 4) {
+                    const currentIndex = inputs.current.indexOf(event.target);
+                    inputs.current[currentIndex].focus();
+                    setTimeout(() => inputs.current[currentIndex - 4].setSelectionRange(0, 0), 0);
+                    alteraCampo(0)
+                    inputs.current[index - 4].focus()
                 }
         }
     }
