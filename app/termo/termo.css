@@ -25,6 +25,8 @@
     background: rgb(56, 54, 54);
     text-align: center;
     border-radius: 20px;
+    text-shadow: 2px 2px 0px #000;
+    caret-color: transparent;
 }
 
 #linha{

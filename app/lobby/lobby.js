@@ -8,7 +8,6 @@ import { useEffect, useRef, useState } from 'react'
 import axios from 'axios'
 
 export default function Lobby(props) {
-  const [ordem, alteraOrdem] = useState(0)
   const [cheia, alteraCheia] = useState(false)
   const [userInfoLoaded, setUserInfoLoaded] = useState(false)
   const [ordemUpdated, setOrdemUpdated] = useState(false)
@@ -17,10 +16,10 @@ export default function Lobby(props) {
   function avaliaInicio() {
     if (props.criadorSala == true) {
       console.log('criador')
-      alteraOrdem(1)
+      props.alteraOrdem(1)
       setOrdemUpdated(true)
     } else {
-      alteraOrdem(props.numeroJogadores)
+      props.alteraOrdem(props.numeroJogadores)
       setOrdemUpdated(true)
       console.log(
         'm$2b$12$UUHV3tb4EwJSDcapdpu9heL2xCOzbq6oI1kv733vrqWXc3FlF48uuembro'
@@ -36,7 +35,7 @@ export default function Lobby(props) {
     const partida = {
       Jogador_ID: props.idUsuario,
       id_sala: props.idSala,
-      Ordem: ordem,
+      Ordem: props.ordem,
       Moedas: 0,
       Carta_1: 1,
       Carta_2: 1,
@@ -148,7 +147,7 @@ export default function Lobby(props) {
         <HeaderLobby idSala={props.idSala} className="container" />
         <BodyLobby
           ordemJogadores={props.ordemJogadores}
-          ordem={ordem}
+          ordem={props.ordem}
           alteraOrdemJogadores={props.alteraOrdemJogadores}
           cheia={cheia}
           alteraCheia={alteraCheia}

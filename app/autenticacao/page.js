@@ -6,7 +6,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
-import {BsLock, BsPersonLock } from 'react-icons/bs'
+import { BsFillDoorOpenFill, BsLock, BsPersonLock } from 'react-icons/bs'
 
 export default function Autenticacao(){
     const [token, alteraToken] = useState("");
@@ -46,6 +46,9 @@ function conectaLogin(){
 
 return(
     <div id="login">
+
+        <a className='' href= "/" > <BsFillDoorOpenFill style={{ position: "fixed" , top: "45px" , right: "45px" , color: "#777" , fontSize: "46px" , cursor: "pointer", transition: "color 0.3s ease" }}/> 
+        <p style={{position: "fixed" , top: "75px" , right: "19px" , color: "#777" , fontSize: "10.9px" , cursor: "pointer", transition: "color 0.3s ease" }}>Voltar Para <br/> Tela Inicíal</p> </a>
 
 
     <h1>Login</h1>

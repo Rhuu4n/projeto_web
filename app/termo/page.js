@@ -47,15 +47,15 @@ export default function Termo(){
         })
         .then(
             function(response){
-                alteraPalavraCerta( response.data )
-                console.log(palavra_certa)
+                alteraPalavraCerta( response.data );
+                Aleatorio();
+                console.log(palavra_certa);
             }
         )
     }
 
     useEffect(()=> {
         getPalavra();
-        Aleatorio();
     },[]);
 
     return(
@@ -74,6 +74,10 @@ export default function Termo(){
             </div>
         </div>
         :
-        <p>Carregando...</p>
+        <div id="termo">
+            <div className="boxJogo">
+                <h1 className="lblTermo">Carregando...</h1>
+            </div>
+        </div>
     );
 }
