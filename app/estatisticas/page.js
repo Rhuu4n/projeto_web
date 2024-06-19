@@ -100,7 +100,8 @@ return(
                 <div className="Tabelas"   >
                     {
                     selecaoTabela == "Estatisticas" &&   
-                    <div className="TabelaEstatisticas" >
+                    <div className="TabelaEstatisticas" > 
+                    <h1>Jogadores Guilty</h1>
                         <table border={"true"} >
                         <thead>
                             <tr>
@@ -121,6 +122,7 @@ return(
                     {
                     selecaoTabela == "Ranking" &&
                     <div className="TabelaNumerojogadores" >
+                        <h1>Ranking Guilty 👑</h1>
                         <table border={"true"} >
                         <thead>
                             <tr>
@@ -146,6 +148,7 @@ return(
                     {
                     selecaoTabela == "Numerojogadores" &&
                     <div className="TabelaRanking">
+                        <h1>Todos os jogadores do Guilty</h1>
                         <table border={"true"} >
                         <thead>
                             <tr>
