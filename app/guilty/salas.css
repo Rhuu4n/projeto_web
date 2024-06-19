@@ -6,12 +6,6 @@
    box-sizing: border-box;
 }
 
- #salas img{
-    margin-left: auto;
-    margin-right: auto;
-    width: 250px;
-    display: block;
- }
 
 #salas .boxPartida{
    height: calc(100vh - 110px);
