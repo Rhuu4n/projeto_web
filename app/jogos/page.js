@@ -1,16 +1,20 @@
+'use client'
 import React from 'react';
 import './jogos.css'
+import AnimatedCursor from '../components/cursorAnimado'
+import { useEffect, useRef, useState } from "react";
 
 const jogos = [
   { id: 1, title: "Guilty", imgUrl: "https://preview.redd.it/kxov0rcoi4p21.png?auto=webp&s=8edd6e729acc84e01d55ad0853c7d5c07d86bada", link: "/guilty" },
-  { id: 2, title: "Termo", imgUrl: "https://initiate.alphacoders.com/images/135/cropped-200-200-1351040.png?9091", link: "/termo" },
-  { id: 3, title: "Em breve", imgUrl: "#" },
-  { id: 4, title: "Em breve", imgUrl: "#" },
-  { id: 5, title: "Em breve", imgUrl: "#" },
+  { id: 2, title: "Termo", imgUrl: "https://c4.wallpaperflare.com/wallpaper/236/687/679/digital-digital-art-illustration-artwork-drawing-hd-wallpaper-preview.jpg", link: "/termo" },
+  { id: 3, title: "Em breve", imgUrl: "https://c4.wallpaperflare.com/wallpaper/236/687/679/digital-digital-art-illustration-artwork-drawing-hd-wallpaper-preview.jpg" },
+  { id: 4, title: "Em breve", imgUrl: "https://c4.wallpaperflare.com/wallpaper/236/687/679/digital-digital-art-illustration-artwork-drawing-hd-wallpaper-preview.jpg" },
+  { id: 5, title: "Em breve", imgUrl: "https://c4.wallpaperflare.com/wallpaper/236/687/679/digital-digital-art-illustration-artwork-drawing-hd-wallpaper-preview.jpg" },
 ];
 
 const Jogos = () => (
     <div id="container-jogos">
+        <AnimatedCursor/>
 
         <h1>Jogos</h1>
 
@@ -18,7 +22,7 @@ const Jogos = () => (
 
             {jogos.map((jogo) => (
 
-                <div key={jogo.id} className="jogos">
+        <div key={jogo.id} className="jogos">
 
                 <a href={jogo.link ? jogo.link : '#'} target={jogo.link ? '_blank' : '_self'}>
 
