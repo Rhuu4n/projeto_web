@@ -1,18 +1,59 @@
+import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import './jogador.css'
 
 const Jogador = props => {
+  const [carta1, alteraCarta1] = useState('carta.png')
+  const [carta2, alteraCarta2] = useState('carta.png')
+  const [acao1, alteraAcao1] = useState(0)
+  const [acao2, alteraAcao2] = useState(0)
+
+  const showToastMessage = () => {
+    toast.success('Sua vez!')
+  }
+
+  useEffect(() => {
+    if (props.podeJogarRef === true) {
+      let num1 = Math.floor(Math.random() * 2) + 1
+      let num2 = Math.floor(Math.random() * 2) + 1
+
+      if (num1 === 1) {
+        alteraAcao1(1)
+        alteraCarta1('mineradora.jpg')
+      } else if (num1 === 2) {
+        alteraAcao1(2)
+        alteraCarta1('saqueador.jpg')
+      } else {
+        alert('1 outro numero' + num1)
+      }
+
+      if (num2 === 1) {
+        alteraAcao2(1)
+        alteraCarta2('mineradora.jpg')
+      } else if (num2 === 2) {
+        alteraAcao2(2)
+        alteraCarta2('saqueador.jpg')
+      } else {
+        alert('2 outro numero' + num2)
+      }
+
+      showToastMessage()
+    }
+  }, [props.podeJogarRef])
+
   return (
     <div id="joguin" className={props.position}>
       <div className="box-infos">
-        <p>Jogador 1</p>
+        <p>{props.nome}</p>
         <div className="box-moedas">
           <p className="moedas">0x</p>
           <img src="img/moedas.png" />
         </div>
       </div>
       <div className="box-cartas">
-        <img src="img/carta.png" />
-        <img src="img/carta.png" />
+        <img onclick={() => {}} src={'img/' + carta1} />
+        <img onclick={() => {}} src={'img/' + carta2} />
       </div>
     </div>
   )

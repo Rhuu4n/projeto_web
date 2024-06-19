@@ -96,7 +96,7 @@ export default function Criar_Salas(props) {
 
   return (
     <div className="boxPartida">
-      <img src={props.link} />
+      <img className='logo' src={props.link} />
       <div className="center">
         <Botao acao={() => criarSalaBanco()} content="Criar sala" />
       </div>

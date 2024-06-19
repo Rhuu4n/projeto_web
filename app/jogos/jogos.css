@@ -4,119 +4,67 @@
     box-sizing: border-box;
 }
 
-
-#container-jogos a {
-    text-decoration: none;
-    color: #fff;
-}
-
-#container-jogos h2{
-    font-family: "Reddit Mono", sans-serif;
-    text-transform: uppercase;
-    margin: 0;
-}
-
-#container-jogos #scene {
+html body{
+    overflow: hidden;
+    background-attachment: fixed;
+    background-color:hsla(327,0%,0%,1);
+    background-image:
+    radial-gradient(at 89% 86%, hsla(240,100%,8%,1) 0px, transparent 50%),
+    radial-gradient(at 95% 38%, hsla(285,0%,0%,1) 0px, transparent 50%),
+    radial-gradient(at 6% 12%, hsla(332,100%,15%,1) 0px, transparent 50%);
     height: 100vh;
-    background-color: #304056;
-    width: 100%;
+}
+
+#container-jogos h1{
+    text-align: center;
+    margin: 40px;
+    font-size: 60px;
+    color: #cacaca;
+}
+    
+.jogos-grid{
+    display: flex;
     position: relative;
-    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
 }
 
-#container-jogos layer principal{
-    pointer-events: none;
-}
-
-#container-jogos col{
-    display: inline-block;
-    overflow: hidden;
+.jogos-grid .jogo-img{
     position: relative;
-    width: 12.5%;
-    pointer-events: all;
-    overflow: initial;
-    margin: 0 0 30px;
-}
- 
-/*  
-#container-jogos layer principal{   
-    width: 150%;
-    position: absolute;
-    z-index: 1;
-    padding: 20px;
+    height: 150px;
+    width: 150px;
+    border-radius: 8px;
+    transition: 0.4s;
+    box-shadow: 0 20px 50px #000000;
 }
 
-#container-jogos col a{
-    display: block;
-    margin: 15px;
-    overflow: hidden;
-    box-shadow:  0px 16px 32px rgba(0, 0, 0, 0.37);
+.jogo-img:hover{
+    height: 200px;
+    width: 200px;
 }
 
-#container-jogos col a hover{
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    bottom: -15px;
-    left: 15px;
-    z-index: 1;
-    color: white;
-    background: -moz-linear-gradient(45deg, rgba(0, 0, 0, 0.47) 0%, rgba(0, 0, 0, 0) 100%);
-    background: -webkit-linear-gradient(45deg, rgba(0, 0, 0, 0.47) 0%, rgba(0, 0, 0, 0) 100%);
-    background: linear-gradient(45deg, rgba(0, 0, 0, 0.47) 0%, rgba(0, 0, 0, 0) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#78000000', endColorstr='#00000000', GradientType=1);
+.jogos h3{
+    visibility: hidden;
 }
 
-#container-jogos col a hover:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    display: block;
-    background: rgb(235, 116, 152);
-    opacity: 0;
-    transition: 0.35s ease;
+.jogos h3:hover{
+    visibility: visible;
 }
 
-#container-jogos col a hover:hover:after {
-    opacity: 0.85;
-    transition: 0.35s ease;
-}
 
-#container-jogos align-botao {
-    position: absolute;
-    width: 100%;
-    bottom: 0%;
-    z-index: 2;
-    padding: 15px 20px;
-}
 
-#container-jogos fundo-img {
-    padding: 0px;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-size: cover;
-    background-position: 50% 50%;
-}
 
-@media only screen and (max-width: 1200px) {
-    layer-principal col {
-      width: 16.666%;
-    }
-  }
 
-@media only screen and (max-width: 650px) {
-    layer-principal col {
-      width: 25%;
-    }
-  }
 
-*/
+
+
+
+
+
+
+
+
 
 
 

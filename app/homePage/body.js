@@ -4,27 +4,11 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react"
 import "./body.css"
+import AnimatedCursor from "../components/cursorAnimado";
 
 export default function Body () {
 
     const cursorRef = useRef(null);
-
-    useEffect(() => {
-        const handleMouseMove = (e) => {
-            const cursor = cursorRef.current;
-            if (cursor) {
-                cursor.style.top = e.pageY + "px";
-                cursor.style.left = e.pageX + "px";
-            }
-        };
-
-        document.addEventListener("mousemove", handleMouseMove);
-
-        
-        return () => {
-            document.removeEventListener("mousemove", handleMouseMove);
-        };
-    }, []);
 
 
 
@@ -34,7 +18,9 @@ export default function Body () {
 
         <div id="container-body">
 
-            <div ref={cursorRef} className="cursor"></div>
+            <AnimatedCursor/>
+
+            
 
             <div className="contentBody">
 
@@ -45,10 +31,7 @@ export default function Body () {
             </div>
 
             <Link href="./jogos"> <button className="btnVerjogos"> Ver jogos </button> </Link>
-            
 
-            
-            
         </div>
 
     )

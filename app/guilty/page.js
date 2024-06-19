@@ -8,6 +8,7 @@ import Lobby from '../lobby/lobby'
 import Partida from '../partida/partida'
 
 export default function Jogo() {
+  const [ordem, alteraOrdem] = useState(0)
   const [idSala, alteraIdSala] = useState('')
   const [idUsuario, alteraIdUsuario] = useState(0)
   const [nomeUsuario, alteraNomeUsuario] = useState(0)
@@ -70,6 +71,8 @@ export default function Jogo() {
           alteraOrdemJogadores={alteraOrdemJogadores}
           jogadoresIdPartida={jogadoresIdPartida}
           alteraJogadoresIdPartida={alteraJogadoresIdPartida}
+          ordem={ordem}
+          alteraOrdem={alteraOrdem}
         />
       )
     } else {
@@ -77,6 +80,11 @@ export default function Jogo() {
         <Partida
           ordemJogadores={ordemJogadores}
           alteraOrdemJogadores={alteraOrdemJogadores}
+          jogadoresIdPartida={jogadoresIdPartida}
+          alteraJogadoresIdPartida={alteraJogadoresIdPartida}
+          ordem={ordem}
+          idPartida={idPartida}
+          idSala={idSala}
         />
       )
     }

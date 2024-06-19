@@ -8,3 +8,10 @@
 .boxPartida input{
     margin-right: 10px;
 }
+
+.boxPartida .logo{
+    width: 250px;   
+     margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
