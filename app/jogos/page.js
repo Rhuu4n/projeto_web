@@ -1,55 +1,40 @@
-"use client"
-
-
-import "./jogos.css"
-
+import React from 'react';
+import './jogos.css'
 
 const jogos = [
-    { id: 1, title: "Guilty", imgUrl: "https://images.pexels.com/photos/421129/pexels-photo-421129.jpeg?auto=compress&cs=tinysrgb&w=600" },
-    { id: 2, title: "Termo", imgUrl: "https://images.pexels.com/photos/2902536/pexels-photo-2902536.jpeg?auto=compress&cs=tinysrgb&w=600" },
-    { id: 3, title: "Em breve", imgUrl: "#" },
-    { id: 4, title: "Em breve", imgUrl: "#" },
-    { id: 5, title: "Em breve", imgUrl: "#" },
-  ];
+  { id: 1, title: "Guilty", imgUrl: "https://preview.redd.it/kxov0rcoi4p21.png?auto=webp&s=8edd6e729acc84e01d55ad0853c7d5c07d86bada", link: "/guilty" },
+  { id: 2, title: "Termo", imgUrl: "https://initiate.alphacoders.com/images/135/cropped-200-200-1351040.png?9091", link: "/termo" },
+  { id: 3, title: "Em breve", imgUrl: "#" },
+  { id: 4, title: "Em breve", imgUrl: "#" },
+  { id: 5, title: "Em breve", imgUrl: "#" },
+];
 
+const Jogos = () => (
+    <div id="container-jogos">
 
-export default function Jogos(){
-    return(
-        <div id="container-jogos">
+        <h1>Jogos</h1>
 
-            <section id="scene" data-pointer-events="true" data-x-origin="0.5" data-y-origin="0.5" data-scalar-y="150.0" data-scalar-x="100.0" data-friction-x="0.05" data-friction-y="0.05">
+        <div className="jogos-grid">
 
-                <div className="layer principal" data-depth="1.0">
+            {jogos.map((jogo) => (
 
-                    {jogos.map((jogo)=>(
-                        
-                        <div className="col" key={jogo.id}>
+                <div key={jogo.id} className="jogos">
 
-                            <a href="#">
+                <a href={jogo.link ? jogo.link : '#'} target={jogo.link ? '_blank' : '_self'}>
 
-                                <div className="hover">
+                    <img src={jogo.imgUrl} alt={jogo.title} className="jogo-img" />
+                    <h3>{jogo.title}</h3>
 
-                                    <div className="pad align-botao">
-
-                                        <h2>{jogo.title}</h2>
-                                        
-                                    </div>
-
-                                    <div className="more"> <i className="demo-icon icon-plus" ></i></div>
-                                    
-                                </div>
-
-                                <div className="fundo-img" style={{backgroundImage: `url(${jogo.imgUrl})`}}></div>
-                            </a>
-
-                        </div>
-
-                    ))}
-
-                </div>
-
-            </section>
+                </a>
 
         </div>
-    )
-}
+
+        ))}
+
+        </div>
+
+    </div>
+);
+
+
+export default Jogos;
