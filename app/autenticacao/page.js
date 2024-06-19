@@ -115,7 +115,7 @@ export default function Autenticacao() {
         </button>
 
         <p>
-          <p>Criar conta</p>
+          Não tem conta? <a href='/cadastro'> Crie uma aqui!</a>
         </p>
       </div>
     </div>
