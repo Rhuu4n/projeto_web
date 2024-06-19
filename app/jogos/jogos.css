@@ -16,13 +16,15 @@ html body{
 }
 
 #container-jogos h1{
+
     text-align: center;
-    margin: 40px;
+    margin: 60px;
     font-size: 60px;
     color: #cacaca;
 }
     
 .jogos-grid{
+    height: 500px;
     display: flex;
     position: relative;
     align-items: center;
@@ -40,12 +42,22 @@ html body{
 }
 
 .jogo-img:hover{
-    height: 200px;
-    width: 200px;
+    height: 250px;
+    width: 250px;
 }
 
+.jogo-img:hover > .jogo-img:not(:hover){
+    opacity: 0.5 !important;
+   
+}
+
+.jogo-img{
+    opacity: 1;
+}
+
+
 .jogos h3{
-    visibility: hidden;
+
 }
 
 .jogos h3:hover{

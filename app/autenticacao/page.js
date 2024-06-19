@@ -30,6 +30,7 @@ export default function Autenticacao() {
         console.log(response)
         alteraToken(response.data.token)
         verificaUser()
+        rota.push('/')
       })
       .catch(function (error) {
         console.error('erro:' + error)
@@ -39,7 +40,6 @@ export default function Autenticacao() {
   function verificaUser() {
     if (token != '') {
       localStorage.setItem('token', token)
-      rota.push('/cadastro')
     }
   }
 
