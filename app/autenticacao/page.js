@@ -29,18 +29,12 @@ export default function Autenticacao() {
       .then(function (response) {
         console.log(response)
         alteraToken(response.data.token)
-        verificaUser()
+        localStorage.setItem('token', token)
         rota.push('/')
       })
       .catch(function (error) {
         console.error('erro:' + error);
       });
-  }
-
-  function verificaUser() {
-    if (token != '') {
-      localStorage.setItem('token', token)
-    }
   }
 
   return (
