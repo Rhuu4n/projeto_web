@@ -8,16 +8,11 @@ import AnimatedCursor from "../components/cursorAnimado";
 
 export default function Body () {
 
-   
-
-
-
-
-
     return(
 
         <div id="container-body">
 
+            
             <AnimatedCursor/>
 
             

@@ -1,4 +1,4 @@
-.btnLogin::before{
+#animatedbutton .btnLogin::before{
     content: "";
     background: linear-gradient(
         45deg,
@@ -26,28 +26,23 @@
 }
 
 /* hover do botao login */
-#headerHome .btnLogin:hover::before{
+#animatedbutton .btnLogin:hover::before{
     opacity: 1;
     filter: blur(12px);
 
 }
 
-#headerHome .btnLogin:hover::after{
+#animatedbutton .btnLogin:hover::after{
     background: transparent;
     transition: all 2s;
 }
 
-#headerHome .btnLogin:active::after{
+#animatedbutton .btnLogin:active::after{
     background: transparent;
 }
 
-#headerHome .btnLogin:active{
+#animatedbutton .btnLogin:active{
     color: black;
     transition: all 10ms;
 }
 
-#headerHome .logoGuilty img {
-    border-radius: 8px;
-    height: 52px;
-    width: 52px;
-}

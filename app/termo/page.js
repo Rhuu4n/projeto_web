@@ -79,6 +79,7 @@ export default function Termo(){
         <div id="termo">
             <div className="boxJogo">
                 <h1 className="lblTermo">Carregando...</h1>
+                
             </div>
         </div>
     );
