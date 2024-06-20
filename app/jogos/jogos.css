@@ -1,28 +1,26 @@
-#container-jogos * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+#container-jogos { 
+  height: 100vh;
+  background-color:hsla(261,0%,0%,1);
+  background-image:
+  radial-gradient(at 65% 100%, hsla(240,100%,14%,1) 0px, transparent 50%),
+  radial-gradient(at 35% 100%, hsla(240,100%,14%,1) 0px, transparent 50%);
 }
 
-html body{
-    overflow: hidden;
-    background-attachment: fixed;
-    background-color:hsla(327,0%,0%,1);
-    background-image:
-    radial-gradient(at 89% 86%, hsla(240,100%,8%,1) 0px, transparent 50%),
-    radial-gradient(at 95% 38%, hsla(285,0%,0%,1) 0px, transparent 50%),
-    radial-gradient(at 6% 12%, hsla(332,100%,15%,1) 0px, transparent 50%);
-    height: 100vh;
+
+#container-jogos header{
+    justify-content: space-between;
+    margin: 20px;
+    padding: 20px;
 }
 
-#container-jogos h1{
-    text-align: center;
-    margin: 40px;
-    font-size: 60px;
-    color: #cacaca;
-}
+
+
+
+
     
-.jogos-grid{
+#container-jogos .jogos-grid{
+    height: 500px;
     display: flex;
     position: relative;
     align-items: center;
@@ -30,27 +28,32 @@ html body{
     gap: 60px;
 }
 
-.jogos-grid .jogo-img{
+#container-jogos .jogos-grid .jogo-img{
     position: relative;
     height: 150px;
     width: 150px;
     border-radius: 8px;
-    transition: 0.4s;
-    box-shadow: 0 20px 50px #000000;
+    transition: 0.6s;
+    box-shadow: 0 1px 20px #333333;
 }
 
-.jogo-img:hover{
-    height: 200px;
-    width: 200px;
+#container-jogos .jogo-img:hover{
+    height: 300px;
+    width: 300px;
 }
 
-.jogos h3{
-    visibility: hidden;
+#container-jogos .jogo-img:hover > .jogo-img:not(:hover){
+    opacity: 0.5 !important;
+   
 }
 
-.jogos h3:hover{
-    visibility: visible;
+#container-jogos .jogo-img{
+    opacity: 1;
 }
+
+
+
+
 
 
 

@@ -1,5 +1,7 @@
 "use client"
+
 import axios from "axios"
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import "./painelEstatisticas.css"
 
@@ -63,7 +65,7 @@ return(
          <aside className="PainelLateral" >
             <br/>
             <header>
-            <img id="painelmenor" src="https://i.pinimg.com/736x/a9/97/ca/a997ca78d01388ec1aed5c58464efc39.jpg" ></img>
+            <img id="painelmenor" src="https://i.pinimg.com/736x/a9/97/ca/a997ca78d01388ec1aed5c58464efc39.jpg"></img>
             </header>
             <div className="AreasPainelLateral">
                 <button onClick={() => alteraSelecaoTabela("Estatisticas")}>
@@ -84,13 +86,12 @@ return(
         </aside>
         <div className="Conteudo" >
             <header className="PaineladmHeader">
-                    <h1>Guilty</h1>
+            <h1><Link href="./">Guilty</Link> </h1>
+            
                     <nav>
                         <ul>
-                            <button onClick={()=> buscaRanking()} >Teste</button>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Paginas</a></li>
-                            <li><a href="#">Configurações</a></li>
+                            <li><a href="./">Home</a></li>
+                            <li><a href="./jogos">Paginas</a></li>
                         </ul>
                     </nav>
             </header>
@@ -100,7 +101,8 @@ return(
                 <div className="Tabelas"   >
                     {
                     selecaoTabela == "Estatisticas" &&   
-                    <div className="TabelaEstatisticas" >
+                    <div className="TabelaEstatisticas" > 
+                    <h1>Jogadores Guilty</h1>
                         <table border={"true"} >
                         <thead>
                             <tr>
@@ -121,6 +123,7 @@ return(
                     {
                     selecaoTabela == "Ranking" &&
                     <div className="TabelaNumerojogadores" >
+                        <h1>Ranking Guilty 👑</h1>
                         <table border={"true"} >
                         <thead>
                             <tr>
@@ -146,6 +149,7 @@ return(
                     {
                     selecaoTabela == "Numerojogadores" &&
                     <div className="TabelaRanking">
+                        <h1>Todos os jogadores do Guilty</h1>
                         <table border={"true"} >
                         <thead>
                             <tr>

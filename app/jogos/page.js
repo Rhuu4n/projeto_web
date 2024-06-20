@@ -1,8 +1,13 @@
 'use client'
+
 import React from 'react';
-import './jogos.css'
-import AnimatedCursor from '../components/cursorAnimado'
-import { useEffect, useRef, useState } from "react";
+import './jogos.css';
+import '../homePage/components/header.css';
+import '../components/AnimatedButton.css';
+import AnimatedCursor from '../components/cursorAnimado';
+import AnimatedButton from '../components/AnimatedButton';
+
+
 
 const jogos = [
   { id: 1, title: "Guilty", imgUrl: "https://preview.redd.it/kxov0rcoi4p21.png?auto=webp&s=8edd6e729acc84e01d55ad0853c7d5c07d86bada", link: "/guilty" },
@@ -16,15 +21,27 @@ const Jogos = () => (
     <div id="container-jogos">
         <AnimatedCursor/>
 
-        <h1>Jogos</h1>
+        <header> 
+            
+        </header>
+        
+        
+
+        
+        
+        {/* <div className='logoGames'> }
+            <img src='./img/jogosGIF.gif' />
+
+        </div>*/}
 
         <div className="jogos-grid">
+            
 
             {jogos.map((jogo) => (
 
         <div key={jogo.id} className="jogos">
 
-                <a href={jogo.link ? jogo.link : '#'} target={jogo.link ? '_blank' : '_self'}>
+                <a href={jogo.link ? jogo.link : '#'} >
 
                     <img src={jogo.imgUrl} alt={jogo.title} className="jogo-img" />
                     <h3>{jogo.title}</h3>

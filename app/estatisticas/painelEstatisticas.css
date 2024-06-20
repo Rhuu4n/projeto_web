@@ -25,7 +25,8 @@
     display: flex;
     flex-direction: column;
     max-width: auto;
-    min-width: 82%;
+    min-width: 72%;
+    min-height: auto;
     float: right;
 }
 
@@ -60,6 +61,7 @@
     margin: 10px 0;
     margin-left: 25%;
     transition: width 0.5s ease
+
 }
 
 #ADM .PainelLateral img:hover{
@@ -95,7 +97,8 @@
 }
 
 #ADM .PainelLateral button:hover > span {
-    background: #0c0d0e;
+    color: #0c0d0e;
+    background-color: #f3e5f5;
     transition: all 400ms;
 }
 
@@ -116,7 +119,7 @@
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    border: 1px solid #fff;
+    border-bottom: 1px solid #fff;
 }
 
 
@@ -125,6 +128,10 @@
     margin-top: 65px;
     list-style-type: none;
     gap: 15px;
+}
+
+#ADM .PaineladmHeader h1{
+    
 }
 
 
@@ -153,10 +160,10 @@
 #ADM table{
     width: fit-content;
     margin-left: 0px;
-    border: 10px solid #3A434A ;
+    border: 1px solid #3A434A ;
     border-collapse: collapse;
     min-width: 150px;
-    max-height: 750px;
+    max-height: 700px;
     display: block;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-size: 20px;
@@ -212,7 +219,7 @@
     color: #fff
 }
 
-@media (width < 1020px){
+@media (width < 960px){
     #ADM .PainelLateral{
         max-width: 80px;
     }
@@ -239,7 +246,6 @@
     }
 
     #ADM .PainelLateral i:hover {
-        background: #0c0d0e;
         transition: all 400ms;
         font-size: 40px;
     }
@@ -261,6 +267,8 @@
         width: 200px;
         z-index: 10;
     }
+
+    <button onClick={()=> buscaRanking()} >Teste</button>
 
     .Conteudo {
         margin-left: 0;
