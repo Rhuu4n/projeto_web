@@ -28,11 +28,13 @@ export default function Autenticacao() {
       })
       .then(function (response) {
         console.log(response)
-        alteraToken(response.data.token)
-        localStorage.setItem('token', token)
+        let tok = response.data.token
+        alteraToken(tok)
+        localStorage.setItem('token', tok)
         rota.push('/')
       })
       .catch(function (error) {
+        alert("Usuário ou senha incorretos...");
         console.error('erro:' + error);
       });
   }
@@ -107,7 +109,7 @@ export default function Autenticacao() {
         />
 
         <button
-          onClick={()=> rota.push('../')}
+          onClick={()=> conectaLogin()}
           type="submit"
           className="btn btn-primary btn-block btn-large"
         >
