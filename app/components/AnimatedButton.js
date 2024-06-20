@@ -1,10 +1,14 @@
 import Link from "next/link";
 import './AnimatedButton.css'
 
-const AnimatedButton = () => {
+const AnimatedButton = ({nickname}) => {
     return ( 
-        <div>
-            <Link href="./autenticacao"> <button className="btnLogin"></button> </Link>
+        <div id="animatedbutton">
+            <Link href="./autenticacao"> 
+                <button className="btnLogin">
+                    {nickname ? nickname: 'Log In'}
+                </button>
+            </Link>
         </div>
        
      );

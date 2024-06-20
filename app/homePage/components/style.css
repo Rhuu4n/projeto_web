@@ -12,15 +12,97 @@ html, body {
 
 
 /* estilizando background  */
-#homePage  { 
-    background-attachment: fixed;
-    background-color:hsla(327,0%,0%,1);
-    background-image:
-    radial-gradient(at 89% 86%, hsla(240,100%,8%,1) 0px, transparent 50%),
-    radial-gradient(at 95% 38%, hsla(285,0%,0%,1) 0px, transparent 50%),
-    radial-gradient(at 6% 12%, hsla(332,100%,15%,1) 0px, transparent 50%);
+:root {
+    --diameter: 35vmax; /* Defina o valor desejado para o diâmetro */
+  }
+  
+  #homePage * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+#homePage{
+    background: #000;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
     height: 100vh;
 }
+  
+#homePage:before,
+#homePage:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    border-radius: 100%;
+    opacity: 0.18;
+}
+  
+#homePage:before {
+    box-shadow: 0 0 var(--diameter) var(--diameter) rgb(0, 33, 182);
+    animation: hue 5s 0s linear infinite, move1 10s 0s linear infinite;
+}
+  
+#homePage:after {
+    box-shadow: 0 0 var(--diameter) var(--diameter) rgb(74, 0, 170);
+    animation: hue 10s 0s linear infinite, move2 20s 0s linear infinite;
+}
+  
+@keyframes hue {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+    100% {
+      filter: hue-rotate(360deg);
+    }
+}
+  
+@keyframes move1 {
+    0% {
+      top: 0vh;
+      left: 50vw;
+    }
+    25% {
+      left: 0vw;
+    }
+    50% {
+      top: 100vh;
+    }
+    75% {
+      left: 100vw;
+    }
+    100% {
+      top: 0vh;
+      left: 50vw;
+    }
+}
+  
+@keyframes move2 {
+    0% {
+      top: 50vh;
+      left: 100vw;
+    }
+    25% {
+      top: 100vh;
+    }
+    50% {
+      left: 0vw;
+    }
+    75% {
+      top: 0vh;
+    }
+    100% {
+      top: 50vh;
+      left: 100vw;
+    }
+}
+
+
+
+
 
 /* ------------------------------------- */
 

@@ -1,9 +1,19 @@
+'use client'
 import AnimatedButton from "@/app/components/AnimatedButton";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react"
 
 
 
 export default function Header(){
+
+    const [user, setUser] = useState(null);
+
+    const handleLogin = (user) => {
+        //  tem q mudar para o `user` pro nome q ta na api 
+        setUser(user);
+    };
+    
     return(
 
         <header id="headerHome">
@@ -19,7 +29,7 @@ export default function Header(){
                     </ul>
                 </div>
 
-                <Link href="./autenticacao"> <button className="btnLogin">Log In</button> </Link>
+                <AnimatedButton nickname={user ? user.nickname : null} />
 
             </nav>
 

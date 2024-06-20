@@ -40,9 +40,11 @@ export default function Termo(){
     }
 
     function getPalavra(){
+        const token = localStorage.getItem('token')
         axios.get("/api/termo", {
             headers:{
-                'Content-Type':'application/json'
+                'Content-Type':'application/json',
+                'token': token
             }
         })
         .then(
@@ -77,6 +79,7 @@ export default function Termo(){
         <div id="termo">
             <div className="boxJogo">
                 <h1 className="lblTermo">Carregando...</h1>
+                
             </div>
         </div>
     );
