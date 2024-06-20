@@ -44,7 +44,7 @@ export default function Termo(){
         axios.get("/api/termo", {
             headers:{
                 'Content-Type':'application/json',
-                'token': '$2b$12$pr49czcb.2njRhe4mVgfA.JcIquIQ/fIUrJmtwgkfFnK8gwyt/d9K'
+                'token': token
             }
         })
         .then(
