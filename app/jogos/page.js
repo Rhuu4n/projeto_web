@@ -1,9 +1,12 @@
 'use client'
+
 import React from 'react';
-import './jogos.css'
-import Header from '../homePage/components/header'
-import '../homePage/components/header.css'
-import AnimatedCursor from '../components/cursorAnimado'
+import './jogos.css';
+import '../homePage/components/header.css';
+import '../components/AnimatedButton.css';
+import AnimatedCursor from '../components/cursorAnimado';
+import AnimatedButton from '../components/AnimatedButton';
+
 
 
 const jogos = [
@@ -17,13 +20,22 @@ const jogos = [
 const Jogos = () => (
     <div id="container-jogos">
         <AnimatedCursor/>
-        <Header/>
 
+        <header> 
+            
+        </header>
+        
+        
 
+        
+        
+        {/* <div className='logoGames'> }
+            <img src='./img/jogosGIF.gif' />
 
-        <h1>Jogos</h1>
+        </div>*/}
 
         <div className="jogos-grid">
+            
 
             {jogos.map((jogo) => (
 
