@@ -44,29 +44,43 @@ const BodyLobby = props => {
           controleJogador++
         }
 
-        let nomeJogadores = [
-          'jogador1',
-          'jogador2',
-          'jogador3',
-          'jogador4'
-        ]
+        let nomeJogadores = ['jogador1', 'jogador2', 'jogador3', 'jogador4']
 
-        let idJogadores = [
-          'jogador1',
-          'jogador2',
-          'jogador3',
-          'jogador4'
-        ]
+        let idJogadores = ['jogador1', 'jogador2', 'jogador3', 'jogador4']
 
-        let jogador1 = response.data[0] == undefined ? 'jogador' : await pegaUser(response.data[0].Jogador_ID)
-        let jogador2 = response.data[1] == undefined ? 'jogador' : await pegaUser(response.data[1].Jogador_ID)
-        let jogador3 = response.data[2] == undefined ? 'jogador' : await pegaUser(response.data[2].Jogador_ID)
-        let jogador4 = response.data[3] == undefined ? 'jogador' : await pegaUser(response.data[3].Jogador_ID)
+        let jogador1 =
+          response.data[0] == undefined
+            ? 'jogador'
+            : await pegaUser(response.data[0].Jogador_ID)
+        let jogador2 =
+          response.data[1] == undefined
+            ? 'jogador'
+            : await pegaUser(response.data[1].Jogador_ID)
+        let jogador3 =
+          response.data[2] == undefined
+            ? 'jogador'
+            : await pegaUser(response.data[2].Jogador_ID)
+        let jogador4 =
+          response.data[3] == undefined
+            ? 'jogador'
+            : await pegaUser(response.data[3].Jogador_ID)
 
-        let id1 = response.data[0] == undefined ? 'jogador' : response.data[0].id_partida
-        let id2 = response.data[1] == undefined ? 'jogador' : response.data[1].id_partida
-        let id3 = response.data[2] == undefined ? 'jogador' : response.data[2].id_partida
-        let id4 = response.data[3] == undefined ? 'jogador' : response.data[3].id_partida
+        let id1 =
+          response.data[0] == undefined
+            ? 'jogador'
+            : response.data[0].id_partida
+        let id2 =
+          response.data[1] == undefined
+            ? 'jogador'
+            : response.data[1].id_partida
+        let id3 =
+          response.data[2] == undefined
+            ? 'jogador'
+            : response.data[2].id_partida
+        let id4 =
+          response.data[3] == undefined
+            ? 'jogador'
+            : response.data[3].id_partida
 
         if (props.numeroJogadores == 1) {
           nomeJogadores[0] = jogador1 == undefined ? 'jogador' : jogador1
@@ -83,7 +97,7 @@ const BodyLobby = props => {
           nomeJogadores[1] = jogador3 == undefined ? 'jogador' : jogador3
           nomeJogadores[2] = jogador4 == undefined ? 'jogador' : jogador4
           nomeJogadores[3] = jogador1 == undefined ? 'jogador' : jogador1
-          
+
           idJogadores[0] = id2 == undefined ? 'jogador' : id2
           idJogadores[1] = id3 == undefined ? 'jogador' : id3
           idJogadores[2] = id4 == undefined ? 'jogador' : id4
@@ -93,7 +107,7 @@ const BodyLobby = props => {
           nomeJogadores[1] = jogador4 == undefined ? 'jogador' : jogador4
           nomeJogadores[2] = jogador1 == undefined ? 'jogador' : jogador1
           nomeJogadores[3] = jogador2 == undefined ? 'jogador' : jogador2
-          
+
           idJogadores[0] = id3 == undefined ? 'jogador' : id3
           idJogadores[1] = id4 == undefined ? 'jogador' : id4
           idJogadores[2] = id1 == undefined ? 'jogador' : id1
@@ -103,7 +117,7 @@ const BodyLobby = props => {
           nomeJogadores[1] = jogador1 == undefined ? 'jogador' : jogador1
           nomeJogadores[2] = jogador2 == undefined ? 'jogador' : jogador2
           nomeJogadores[3] = jogador3 == undefined ? 'jogador' : jogador3
-          
+
           idJogadores[0] = id4 == undefined ? 'jogador' : id4
           idJogadores[1] = id1 == undefined ? 'jogador' : id1
           idJogadores[2] = id2 == undefined ? 'jogador' : id2
@@ -113,15 +127,16 @@ const BodyLobby = props => {
         props.alteraOrdemJogadores(nomeJogadores)
         props.alteraJogadoresIdPartida(idJogadores)
 
+        alteraJogadores(jogadoresNovo)
+
         if (controleJogador == 4) {
           props.alteraCheia(true)
         }
 
         if (response_room.data.estadoSala == 2) {
+          clearInterval(interval)
           props.alteraSalaOrLobby('partida')
         }
-
-        alteraJogadores(jogadoresNovo)
       } catch (error) {
         console.log('erro: ' + error)
         if (error.response && error.response.status === 404) {

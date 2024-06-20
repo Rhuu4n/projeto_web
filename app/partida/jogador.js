@@ -1,7 +1,10 @@
+'use client'
+
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import './jogador.css'
+import axios from 'axios'
 
 const Jogador = props => {
   const [carta1, alteraCarta1] = useState('carta.png')
@@ -11,6 +14,62 @@ const Jogador = props => {
 
   const showToastMessage = () => {
     toast.success('Sua vez!')
+  }
+
+  async function acao(param) {
+    if (props.position == 'eu') {
+      if (props.podeJogarRef === false) {
+        toast.warning('N e sua vez!')
+      } else {
+        if (param == 1) {
+          const token = localStorage.getItem('token')
+          try {
+            const response = await axios.put(
+              `/api/matches/${props.idPartida}`,
+              {
+                Moedas: 2,
+                Afetado: 0
+              },
+              {
+                headers: {
+                  'Content-Type': 'application/json',
+                  token: token
+                }
+              }
+            )
+
+            console.log(props.ordem)
+
+            const response_room = await axios.put(
+              `/api/rooms/${props.idSala}`,
+              {
+                jogadorAtual: props.ordem == 4 ? 1 : props.ordem + 1
+              },
+              {
+                headers: {
+                  'Content-Type': 'application/json',
+                  token: token
+                }
+              }
+            )
+
+            console.log(response.data)
+            console.log(response_room.data)
+            props.updatePodeJogarRef(false)
+          } catch (error) {
+            console.log('erro: ' + error)
+            if (error.response && error.response.status === 404) {
+              alert('Partida nao encontrada')
+            } else if (error.response && error.response.status === 401) {
+              console.error('erro:' + error)
+              router.push('/autenticacao')
+            } else {
+              alert('Erro ao atualizar a partida')
+            }
+          }
+        }
+      }
+    }
   }
 
   useEffect(() => {
@@ -52,8 +111,8 @@ const Jogador = props => {
         </div>
       </div>
       <div className="box-cartas">
-        <img onclick={() => {}} src={'img/' + carta1} />
-        <img onclick={() => {}} src={'img/' + carta2} />
+        <img onClick={() => acao(acao1)} src={'img/' + carta1} />
+        <img onClick={() => acao(acao2)} src={'img/' + carta2} />
       </div>
     </div>
   )
