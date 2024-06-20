@@ -40,9 +40,11 @@ export default function Termo(){
     }
 
     function getPalavra(){
+        const token = localStorage.getItem('token')
         axios.get("/api/termo", {
             headers:{
-                'Content-Type':'application/json'
+                'Content-Type':'application/json',
+                'token': '$2b$12$pr49czcb.2njRhe4mVgfA.JcIquIQ/fIUrJmtwgkfFnK8gwyt/d9K'
             }
         })
         .then(
