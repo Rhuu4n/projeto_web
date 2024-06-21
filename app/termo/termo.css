@@ -17,6 +17,14 @@
     margin-right: auto;
 }
 
+#termo .lblVoltar{
+    text-align: left;
+}
+
+#termo .lblAjuda{
+    text-align: right;
+}
+
 #termo input{
     margin: 10px;
     font-size: 65px;
@@ -27,6 +35,18 @@
     border-radius: 20px;
     text-shadow: 2px 2px 0px #000;
     caret-color: transparent;
+}
+
+#termo p{
+    font-size: 26px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+}
+
+#termo a{
+    font-size: 26px;
+    color: aliceblue;
 }
 
 #linha{

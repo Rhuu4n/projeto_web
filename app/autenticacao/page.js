@@ -33,6 +33,7 @@ export default function Autenticacao() {
         localStorage.setItem('token', tok)
         rota.push('/')
       })
+      
       .catch(function (error) {
         alert("Usuário ou senha incorretos...");
         console.error('erro:' + error);

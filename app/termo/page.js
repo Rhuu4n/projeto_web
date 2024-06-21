@@ -4,6 +4,8 @@ import axios from "axios";
 import Linha from "./linhas";
 import { useEffect, useState } from "react";
 import "./termo.css"
+import Link from "next/link";
+import { BsAlignStart } from "react-icons/bs";
 
 export default function Termo(){
     
@@ -13,6 +15,7 @@ export default function Termo(){
     const [palavra_certa, alteraPalavraCerta] = useState([]);
     const [i, alterai] = useState(null);
     let random = Math.floor(Math.random() * 6) + 0;
+    const token = localStorage.getItem('token')
 
     let habilitado = [
         { linha1: "", linha2: "disable", linha3: "disable", linha4: "disable", linha5: "disable", linha6: "disable" },
@@ -40,7 +43,6 @@ export default function Termo(){
     }
 
     function getPalavra(){
-        const token = localStorage.getItem('token')
         axios.get("/api/termo", {
             headers:{
                 'Content-Type':'application/json',
@@ -61,10 +63,13 @@ export default function Termo(){
     },[]);
 
     return(
-        palavra_certa.length > 0?
+        palavra_certa.length > 0 && token != null?
         <div id="termo">
             <div className="boxJogo">
+                <Link href={"/jogos"} className="lblAjuda">?</Link>
+                <Link href={"/jogos"} className="lblVoltar">Voltar</Link>
                 <h1 className="lblTermo">Termo</h1>
+                
                 <div className="boxTermo">
                     <Linha i = {i} palavra_certa = {palavra_certa} habilitado={habilitado[linha].linha1} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
                     <Linha i = {i} palavra_certa = {palavra_certa} habilitado={habilitado[linha].linha2} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
@@ -78,8 +83,8 @@ export default function Termo(){
         :
         <div id="termo">
             <div className="boxJogo">
-                <h1 className="lblTermo">Carregando...</h1>
-                
+                <h1 className="lblTermo">Usuario não autenticado!</h1>
+                <p>Faça login <Link href={'/autenticacao'}>AQUI!</Link></p>
             </div>
         </div>
     );
