@@ -16,12 +16,14 @@ const [ranking, alteraRanking] = useState ([]);
 const [estatisticas, alteraEstatisticas] = useState ([]);
 const [numJogadores, alteraNumJogadores] = useState ([]);
 
+const tokenapi = localStorage.getItem('token')
+
 
 function buscaRanking(){
     axios.get("/api/users", {
         headers:{
             'Content-type':'application/json',
-            'token':'$2b$12$pr49czcb.2njRhe4mVgfA.JcIquIQ/fIUrJmtwgkfFnK8gwyt/d9K'
+            'token':tokenapi
         }
     })
     .then(function(response){
@@ -35,7 +37,7 @@ function buscaEstatisticas(){
     axios.get("/api/rooms", {
         headers:{
             'Content-type':'application/json',
-            'token':'$2b$12$pr49czcb.2njRhe4mVgfA.JcIquIQ/fIUrJmtwgkfFnK8gwyt/d9K'
+            'token':tokenapi
         }
     })
     .then(function(response){
@@ -48,7 +50,7 @@ function buscaNumJogadores(){
     axios.get("/api/rooms", {
         headers:{
             'Content-type':'application/json',
-            'token':'$2b$12$pr49czcb.2njRhe4mVgfA.JcIquIQ/fIUrJmtwgkfFnK8gwyt/d9K'
+            'token':tokenapi
         }
     })
     .then(function(response){
@@ -85,7 +87,7 @@ return(
                 </button>
                 <hr/>
                 <button onClick={() => alteraSelecaoTabela("Numerojogadores")}>
-                <IoGameController className="icones" />
+                <IoGameController className="icones" te />
                 <span> Jogadores</span>
                 </button>
             </div>
@@ -106,7 +108,7 @@ return(
                     {
                     selecaoTabela == "Estatisticas" &&   
                     <div className="TabelaEstatisticas" > 
-                    <h1>Jogadores Guilty</h1>
+                    <h1>Estatisticas de partidas Guilty</h1>
                         <table border={"true"} >
                         <thead>
                             <tr>

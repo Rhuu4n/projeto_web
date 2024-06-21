@@ -213,9 +213,6 @@
         max-width: 80px;
     }
     
-    #ADM .Conteudo {
-        max-height: 350px;
-    }
 
     #ADM .icones {
         width: 80px;
@@ -260,9 +257,16 @@
 
     #ADM table {
         margin-top:  3vh;
-        max-width: auto;
         min-width: 150px;
-        max-height: auto;
+        max-height: 500px;
+        margin: 5px;
+        padding: 2px;
+        overflow-x: hidden;
+    }
+
+    #ADM .Conteudo {
+        max-height: 90%;
+        max-width: 100%;
         margin: 5px;
     }
 
