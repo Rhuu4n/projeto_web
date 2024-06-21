@@ -1,6 +1,6 @@
 import "./footer.css"
 
-export default function Footer(){
+export function Footer(){
     return(
         <footer>
 
@@ -10,3 +10,4 @@ export default function Footer(){
 
     )
 }
+export default Footer;

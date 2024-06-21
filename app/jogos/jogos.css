@@ -1,26 +1,15 @@
 
 #container-jogos { 
-  height: 100vh;
-  background-color:hsla(261,0%,0%,1);
-  background-image:
-  radial-gradient(at 65% 100%, hsla(240,100%,14%,1) 0px, transparent 50%),
-  radial-gradient(at 35% 100%, hsla(240,100%,14%,1) 0px, transparent 50%);
+    overflow: hidden;
+    height: 100vh;
+    background-color:hsla(261,0%,0%,1);
+    background-image:
+    radial-gradient(at 65% 100%, hsla(240,100%,14%,1) 0px, transparent 50%),
+    radial-gradient(at 35% 100%, hsla(240,100%,14%,1) 0px, transparent 50%);
 }
 
-
-#container-jogos header{
-    justify-content: space-between;
-    margin: 20px;
-    padding: 20px;
-}
-
-
-
-
-
-    
 #container-jogos .jogos-grid{
-    height: 500px;
+    height: 400px;
     display: flex;
     position: relative;
     align-items: center;
@@ -42,14 +31,8 @@
     width: 300px;
 }
 
-#container-jogos .jogo-img:hover > .jogo-img:not(:hover){
-    opacity: 0.5 !important;
-   
-}
 
-#container-jogos .jogo-img{
-    opacity: 1;
-}
+
 
 
 
