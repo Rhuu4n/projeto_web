@@ -16,6 +16,7 @@ const Partida = props => {
   const jaRodouRef = useRef(false)
   const podeJogarRef = useRef(false)
   const vezDeRef = useRef(0)
+  const moedasAltera = useRef(false)
   const initialized = useRef(false)
 
   let nomeJogadores = props.ordemJogadores
@@ -25,7 +26,13 @@ const Partida = props => {
     podeJogarRef.current = newValue
   }
 
-  async function verificaMoedas(param) {}
+  async function verificaMoedas(param) {
+    console.log('verificando moedas')
+    moedasAltera.current = true
+    
+    setTimeout(moedasAltera.current = false, 2500); 
+
+  }
 
   async function main() {
     const interval = setInterval(async () => {
@@ -61,6 +68,8 @@ const Partida = props => {
         let resAtual = response_room.data.jogadorAtual
 
         if (resAtual != vezDeRef.current) {
+          
+          verificaMoedas()
           vezDeRef.current = resAtual
         }
       }
@@ -94,7 +103,10 @@ const Partida = props => {
       <div className="areaPartida">
         <div className="topo">
           <Jogador
+            index={2}
             moedas={moedas[2]}
+            alteraMoedas={alteraMoedas}
+            moedasAltera={moedasAltera.useRef}
             nome={nomeJogadores[2]}
             idPartida={idJogadores[2]}
           />
@@ -102,7 +114,10 @@ const Partida = props => {
         <div className="meio">
           <div className="esquerda">
             <Jogador
+              index={1}
               moedas={moedas[1]}
+              alteraMoedas={alteraMoedas}
+              moedasAltera={moedasAltera.useRef}
               nome={nomeJogadores[1]}
               idPartida={idJogadores[1]}
               position="esquerda"
@@ -111,7 +126,10 @@ const Partida = props => {
           <div className="centro"></div>
           <div className="direita">
             <Jogador
+              index={3}
               moedas={moedas[3]}
+              alteraMoedas={alteraMoedas}
+              moedasAltera={moedasAltera.current}
               nome={nomeJogadores[3]}
               idPartida={idJogadores[3]}
               position="direita"
@@ -120,7 +138,10 @@ const Partida = props => {
         </div>
         <div className="fim">
           <Jogador
+            index={0}
             moedas={moedas[0]}
+            alteraMoedas={alteraMoedas}
+            moedasAltera={moedasAltera.current}
             podeJogarRef={podeJogarRef.current}
             podeJogar={podeJogar}
             nome={nomeJogadores[0]}

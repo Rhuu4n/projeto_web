@@ -16,6 +16,23 @@ const Jogador = props => {
     toast.success('Sua vez!')
   }
 
+  async function moedas(){
+    const token = localStorage.getItem('token')
+    try {
+      const response = await axios.get(`/api/matches/${props.idPartida}`, {
+        headers: {
+          'Content-Type': 'application/json',
+          token: token
+        }
+      })
+
+      console.log(response.data )
+      console.log("eu sou o: " + props.index)
+    } catch (error) {
+      
+    }
+  }
+
   async function acao(param) {
     if (props.position == 'eu') {
       if (props.podeJogarRef === false) {
@@ -100,6 +117,12 @@ const Jogador = props => {
       showToastMessage()
     }
   }, [props.podeJogarRef])
+
+  useEffect(() => {
+    if(props.moedasAltera === true){
+      moedas()
+    }
+  },[props.moedasAltera])
 
   return (
     <div id="joguin" className={props.position}>
