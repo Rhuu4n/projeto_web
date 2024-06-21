@@ -5,6 +5,7 @@ import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import './jogador.css'
 import axios from 'axios'
+import Botao from '../components/botao'
 
 const Jogador = props => {
   const [carta1, alteraCarta1] = useState('carta.png')
@@ -12,11 +13,13 @@ const Jogador = props => {
   const [acao1, alteraAcao1] = useState(0)
   const [acao2, alteraAcao2] = useState(0)
 
+  const [roubarJ, alteraRoubarJ] = useState(false)
+
   const showToastMessage = () => {
     toast.success('Sua vez!')
   }
 
-  async function moedas(){
+  async function moedas() {
     const token = localStorage.getItem('token')
     try {
       const response = await axios.get(`/api/matches/${props.idPartida}`, {
@@ -26,11 +29,9 @@ const Jogador = props => {
         }
       })
 
-      console.log(response.data )
-      console.log("eu sou o: " + props.index)
-    } catch (error) {
-      
-    }
+      console.log(response.data)
+      console.log('eu sou o: ' + props.index)
+    } catch (error) {}
   }
 
   async function acao(param) {
@@ -84,6 +85,8 @@ const Jogador = props => {
               alert('Erro ao atualizar a partida')
             }
           }
+        } else if (param == 2) {
+          props.alteraRoubar(true)
         }
       }
     }
@@ -119,13 +122,37 @@ const Jogador = props => {
   }, [props.podeJogarRef])
 
   useEffect(() => {
-    if(props.moedasAltera === true){
+    if (props.moedasAltera === true) {
       moedas()
     }
-  },[props.moedasAltera])
+  }, [props.moedasAltera])
+
+  useEffect(() => {
+    if (props.roubar === true && props.index != 0) {
+      alteraRoubarJ(true)
+    } else if (props.roubar === true && props.index != 0) {
+      alteraRoubarJ(false)
+    }
+  }, [props.roubar])
+
+  useEffect(() => {
+    if (props.quemRoubar != 0 && props.index == 0) {
+      alert('Roubar o:' + props.quemRoubar)
+    }
+  }, [props.quemRoubar])
 
   return (
     <div id="joguin" className={props.position}>
+      {roubarJ ? (
+        <Botao
+          acao={() => props.alteraQuemRoubar(props.index)}
+          cl="roubar"
+          content="Roubar"
+        />
+      ) : (
+        <></>
+      )}
+
       <div className="box-infos">
         <p>{props.nome}</p>
         <div className="box-moedas">

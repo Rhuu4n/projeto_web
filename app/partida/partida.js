@@ -12,6 +12,8 @@ const Partida = props => {
   const [jogadorAtual, alteraJogadorAtual] = useState(0)
   const [jaRodou, alteraJaRodou] = useState(false)
   const [attribute, setAttribute] = useState(false)
+  const [roubar, alteraRoubar] = useState(false)
+  const [quemRoubar, alteraQuemRoubar] = useState(0)
   const [moedas, alteraMoedas] = useState([2, 2, 2, 2])
   const jaRodouRef = useRef(false)
   const podeJogarRef = useRef(false)
@@ -29,9 +31,8 @@ const Partida = props => {
   async function verificaMoedas(param) {
     console.log('verificando moedas')
     moedasAltera.current = true
-    
-    setTimeout(moedasAltera.current = false, 2500); 
 
+    setTimeout((moedasAltera.current = false), 2500)
   }
 
   async function main() {
@@ -48,30 +49,21 @@ const Partida = props => {
         })
 
         let resAtual = response_room.data.jogadorAtual
-        vezDeRef.current = resAtual
 
-        if (resAtual == props.ordem && !jaRodouRef.current) {
-          console.log('entrou')
-          alteraPodeJogar(true)
-          alteraJaRodou(true)
-          jaRodouRef.current = true
+        if (resAtual == props.ordem) {
+          console.log('ovo joga')
           podeJogarRef.current = true
+          alteraPodeJogar(true)
         }
-      } else {
-        const response_room = await axios.get(`/api/rooms/${props.idSala}`, {
-          headers: {
-            'Content-Type': 'application/json',
-            token: token
-          }
-        })
-
-        let resAtual = response_room.data.jogadorAtual
 
         if (resAtual != vezDeRef.current) {
-          
+          console.log('mudou ai')
           verificaMoedas()
+
           vezDeRef.current = resAtual
         }
+      } else {
+        console.log('oto jogando')
       }
 
       if (attribute) {
@@ -103,17 +95,24 @@ const Partida = props => {
       <div className="areaPartida">
         <div className="topo">
           <Jogador
+            roubar={roubar}
+            alteraRoubar={alteraRoubar}
+            alteraQuemRoubar={alteraQuemRoubar}
             index={2}
             moedas={moedas[2]}
             alteraMoedas={alteraMoedas}
             moedasAltera={moedasAltera.useRef}
             nome={nomeJogadores[2]}
             idPartida={idJogadores[2]}
+            position="topo"
           />
         </div>
         <div className="meio">
           <div className="esquerda">
             <Jogador
+              roubar={roubar}
+              alteraRoubar={alteraRoubar}
+              alteraQuemRoubar={alteraQuemRoubar}
               index={1}
               moedas={moedas[1]}
               alteraMoedas={alteraMoedas}
@@ -126,6 +125,9 @@ const Partida = props => {
           <div className="centro"></div>
           <div className="direita">
             <Jogador
+              roubar={roubar}
+              alteraRoubar={alteraRoubar}
+              alteraQuemRoubar={alteraQuemRoubar}
               index={3}
               moedas={moedas[3]}
               alteraMoedas={alteraMoedas}
@@ -138,6 +140,10 @@ const Partida = props => {
         </div>
         <div className="fim">
           <Jogador
+            roubar={roubar}
+            alteraRoubar={alteraRoubar}
+            quemRoubar={quemRoubar}
+            alteraQuemRoubar={alteraQuemRoubar}
             index={0}
             moedas={moedas[0]}
             alteraMoedas={alteraMoedas}

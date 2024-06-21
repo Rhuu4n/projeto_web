@@ -129,7 +129,7 @@ const BodyLobby = props => {
 
         alteraJogadores(jogadoresNovo)
 
-        if (controleJogador == 4) {
+        if (controleJogador > 0) {
           props.alteraCheia(true)
         }
 
