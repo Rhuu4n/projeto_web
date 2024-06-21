@@ -2,8 +2,8 @@
     content: "";
     background: linear-gradient(
         45deg,
-        #430DE0,#CE0DE0,#890EE0,#2330E8,
-        #E8138B,#AA54E8, #E00D82, #8705E4
+        #430DE0,#400db8,#7270f1,#2330E8,
+        #0037ad,#1f057a, #0004ff, #4f1adf
     );
     position: absolute;
     top: -2px;
