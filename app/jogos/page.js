@@ -6,33 +6,25 @@ import '../homePage/components/header.css';
 import '../components/AnimatedButton.css';
 import AnimatedCursor from '../components/cursorAnimado';
 import AnimatedButton from '../components/AnimatedButton';
+import LogoLink from '../components/logoLink';
+import Header from '../homePage/components/header';
+import Footer from '../homePage/components/footer';
 
 
 
 const jogos = [
-  { id: 1, title: "Guilty", imgUrl: "https://preview.redd.it/kxov0rcoi4p21.png?auto=webp&s=8edd6e729acc84e01d55ad0853c7d5c07d86bada", link: "/guilty" },
-  { id: 2, title: "Termo", imgUrl: "https://c4.wallpaperflare.com/wallpaper/236/687/679/digital-digital-art-illustration-artwork-drawing-hd-wallpaper-preview.jpg", link: "/termo" },
-  { id: 3, title: "Em breve", imgUrl: "https://c4.wallpaperflare.com/wallpaper/236/687/679/digital-digital-art-illustration-artwork-drawing-hd-wallpaper-preview.jpg" },
-  { id: 4, title: "Em breve", imgUrl: "https://c4.wallpaperflare.com/wallpaper/236/687/679/digital-digital-art-illustration-artwork-drawing-hd-wallpaper-preview.jpg" },
-  { id: 5, title: "Em breve", imgUrl: "https://c4.wallpaperflare.com/wallpaper/236/687/679/digital-digital-art-illustration-artwork-drawing-hd-wallpaper-preview.jpg" },
+  { id: 1, title: "Guilty", imgUrl: "https://i.imgur.com/AkpUYn8.png", link: "/guilty" },
+  { id: 2, title: "Termo", imgUrl: "https://i.imgur.com/yVpzSdX.png", link: "/termo" },
+  { id: 3, title: "Em breve", imgUrl: "https://i.imgur.com/x5TKkcU.png" },
+  { id: 4, title: "Em breve", imgUrl: "https://i.imgur.com/x5TKkcU.png" },
+  { id: 5, title: "Em breve", imgUrl: "https://i.imgur.com/x5TKkcU.png" },
 ];
 
 const Jogos = () => (
     <div id="container-jogos">
         <AnimatedCursor/>
 
-        <header> 
-            
-        </header>
-        
-        
-
-        
-        
-        {/* <div className='logoGames'> }
-            <img src='./img/jogosGIF.gif' />
-
-        </div>*/}
+        <Header/>
 
         <div className="jogos-grid">
             
@@ -53,6 +45,8 @@ const Jogos = () => (
         ))}
 
         </div>
+
+        <Footer/>
 
     </div>
 );

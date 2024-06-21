@@ -1,12 +1,13 @@
 'use client'
 import AnimatedButton from "@/app/components/AnimatedButton";
+import LogoLink from "@/app/components/logoLink";
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react"
 
 
 
-export default function Header(){
+export function Header(){
     const initialized = useRef(false)
     
     const [name, setName] = useState("")
@@ -42,7 +43,7 @@ export default function Header(){
 
             <nav className="menu">
 
-                <div className="logoGuilty">  <img src="icon/logoH1R4.svg" alt="logotipo hira"  /> </div>
+                <LogoLink/>
 
                 <div className="links">
                     <ul className="navegacao">
@@ -57,10 +58,8 @@ export default function Header(){
             </nav>
 
         </header>
-        
-
-
 
     );
 
 }
+export default Header;

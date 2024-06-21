@@ -1,14 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
+import './logoLink.css';
 
-const logoLink = () => {
+const LogoLink = () => {
   return (
-    <div className="logoGuilty">
-      <Link to="/">
-        <img src="icon/logoH1R4.svg" alt="logotipo hira" />
+    <div id="logoGuilty">
+      <Link href="/" legacyBehavior>
+        <a>
+          <img src="icon/logoH1R4.svg" alt="logotipo hira, voltar ao menu principal" />
+        </a>
       </Link>
     </div>
   );
 }
 
-export default logoLink;
+export default LogoLink;

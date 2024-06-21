@@ -14,8 +14,34 @@ export default function Cadastro(){
   const [nascimento, alteraNascimento] = useState('');
   const rota = useRouter();
 
+    
 
     function conectaCadastro() {
+
+      console.log(nascimento)
+      if(nome.length < 3){
+        alert("Digite um nome maior para prosseguir")
+        return
+      }
+
+      if(senha.length < 7){
+        alert("Digite uma senha maior para prosseguir")
+        return
+      }
+
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if(emailRegex.test(email) == false ){
+        alert("Digite Um Email Válido")
+        return
+      }
+
+     
+      const ano = parseInt( nascimento.split("-")[0])
+      if( isNaN(ano) || ano < 1901 || ano > 2020 ){
+        alert("Digite uma data de nascimento válida")
+        return
+      }
+
       const obj = {
           nome: nome,
           senha: senha,
