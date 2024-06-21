@@ -1,5 +1,8 @@
 "use client"
 
+import { FaRankingStar } from "react-icons/fa6";
+import { IoStatsChartSharp } from "react-icons/io5";
+import { IoGameController } from "react-icons/io5";
 import axios from "axios"
 import Link from "next/link";
 import { useState, useEffect } from "react";
@@ -17,7 +20,8 @@ const [numJogadores, alteraNumJogadores] = useState ([]);
 function buscaRanking(){
     axios.get("/api/users", {
         headers:{
-            'Content-type':'application/json'
+            'Content-type':'application/json',
+            'token':'$2b$12$pr49czcb.2njRhe4mVgfA.JcIquIQ/fIUrJmtwgkfFnK8gwyt/d9K'
         }
     })
     .then(function(response){
@@ -30,7 +34,8 @@ function buscaRanking(){
 function buscaEstatisticas(){
     axios.get("/api/rooms", {
         headers:{
-            'Content-type':'application/json'
+            'Content-type':'application/json',
+            'token':'$2b$12$pr49czcb.2njRhe4mVgfA.JcIquIQ/fIUrJmtwgkfFnK8gwyt/d9K'
         }
     })
     .then(function(response){
@@ -42,7 +47,8 @@ function buscaEstatisticas(){
 function buscaNumJogadores(){
     axios.get("/api/rooms", {
         headers:{
-            'Content-type':'application/json'
+            'Content-type':'application/json',
+            'token':'$2b$12$pr49czcb.2njRhe4mVgfA.JcIquIQ/fIUrJmtwgkfFnK8gwyt/d9K'
         }
     })
     .then(function(response){
@@ -65,35 +71,33 @@ return(
          <aside className="PainelLateral" >
             <br/>
             <header>
-            <img id="painelmenor" src="https://i.pinimg.com/736x/a9/97/ca/a997ca78d01388ec1aed5c58464efc39.jpg"></img>
+            <img className="iconeprincipal" src="icon/logoH1R4.svg"></img>
             </header>
             <div className="AreasPainelLateral">
                 <button onClick={() => alteraSelecaoTabela("Estatisticas")}>
-                <i>↗</i> 
+                <IoStatsChartSharp className="icones" />
                 <span>Estatísticas</span>
                 </button>
                 <hr/>
                 <button onClick={() => alteraSelecaoTabela("Ranking")}>
-                    <i>🏆</i>
+                <FaRankingStar className="icones" />
                     <span>Ranking</span> 
                 </button>
                 <hr/>
                 <button onClick={() => alteraSelecaoTabela("Numerojogadores")}>
-                <i>🎮</i>
+                <IoGameController className="icones" />
                 <span> Jogadores</span>
                 </button>
             </div>
         </aside>
         <div className="Conteudo" >
             <header className="PaineladmHeader">
-            <h1><Link href="./">Guilty</Link> </h1>
-            
-                    <nav>
-                        <ul>
-                            <li><a href="./">Home</a></li>
-                            <li><a href="./jogos">Paginas</a></li>
-                        </ul>
-                    </nav>
+                <nav>
+                    <ul>
+                        <li><a href="./">Home</a></li>
+                        <li><a href="./jogos">Paginas</a></li>
+                    </ul>
+                </nav>
             </header>
         
             <main>

@@ -115,5 +115,9 @@
     border-radius: 8px;
     height: 52px;
     width: 52px;
-    z-index: 1;
+    color: #FFF;
+    position: absolute;
+    left:  20px;
+    top:  20px;
+
 }

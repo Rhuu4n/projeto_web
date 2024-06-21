@@ -116,7 +116,7 @@ import { useEffect, useRef, useState } from 'react'
 
         console.log(validarPalavra(palavra));
 
-        if (validarPalavra(palavra) == false){
+        if (validarPalavra(palavra) === true){
             if (palavra == palavra_certa[i].palavra){
                 alteraLinha(6);
                 alteraInput();
@@ -161,34 +161,42 @@ import { useEffect, useRef, useState } from 'react'
     }
 
     function validarPalavra(palavra) {
-        // Verifica se a palavra não tem mais de 2 letras consecutivas iguais
-        const regexLetrasConsecutivas = /([a-zA-Zà-úÀ-Ú])\1{2}/;
-        if (regexLetrasConsecutivas.test(palavra)) {
-            return false;
+        let errado = [
+            {palavra: "AEIOU"},
+            {palavra: "AAAAA"},
+            {palavra: "BBBBB"},
+            {palavra: "CCCCC"},
+            {palavra: "DDDDD"},
+            {palavra: "EEEEE"},
+            {palavra: "FFFFF"},
+            {palavra: "GGGGG"},
+            {palavra: "HHHHH"},
+            {palavra: "IIIII"},
+            {palavra: "JJJJJ"},
+            {palavra: "KKKKK"},
+            {palavra: "LLLLL"},
+            {palavra: "MMMMM"},
+            {palavra: "NNNNN"},
+            {palavra: "OOOOO"},
+            {palavra: "PPPPP"},
+            {palavra: "QQQQQ"},
+            {palavra: "RRRRR"},
+            {palavra: "SSSSS"},
+            {palavra: "TTTTT"},
+            {palavra: "UUUUU"},
+            {palavra: "VVVVV"},
+            {palavra: "WWWWW"},
+            {palavra: "XXXXX"},
+            {palavra: "YYYYY"},
+            {palavra: "ZZZZZ"}
+        ]
+        for (let i = 0; i < errado.length; i++) {
+            if (palavra === errado[i].palavra) {
+                return false;
+            }
         }
-        
-        // Verifica se a palavra não tem mais de 2 consoantes consecutivas
-        const regexConsoantesConsecutivas = /[^aeiou]{3}/;
-        if (regexConsoantesConsecutivas.test(palavra)) {
-            return false;
-        }
-        
-        // Verifica se a palavra não tem mais de 3 vogais consecutivas
-        const regexVogaisConsecutivas = /[aeiou]{4}/;
-        if (regexVogaisConsecutivas.test(palavra)) {
-            return false;
-        }
-        
-        // Verifica se a palavra não tem mais de 2 vogais consecutivas iguais
-        const regexVogaisConsecutivasIguais = /([aeiou])\1{1}/;
-        if (regexVogaisConsecutivasIguais.test(palavra)) {
-            return false;
-        }
-        
-        return true;
+        return true;    
     }
-
-
 
     return (
         <form id="linha">
