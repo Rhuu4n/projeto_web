@@ -30,6 +30,24 @@
     height: 300px;
     width: 300px;
 }
+@media screen and (max-width: 1200px){
+    #headerHome .btnLogin, #headerHome .links{
+        display: none;
+      }
+      #headerHome .menu {
+        margin: 15px;
+      }
+    #container-jogos .jogos-grid {
+        flex-direction: column;
+        overflow: scroll;
+        height: 1200px;
+        gap: 30px;
+       
+    }
+  
+} 
+
+
 
 
 
