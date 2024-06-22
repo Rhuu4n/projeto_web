@@ -1,3 +1,8 @@
+html{
+  padding: 0;
+  box-sizing: border-box;
+}
+
 
 html { width: 100%; height:100%; overflow:hidden; }
 
@@ -12,10 +17,6 @@ html { width: 100%; height:100%; overflow:hidden; }
   font-weight: 500;
   margin-left: 40px;
   transition: 5s; 
-}
-
-#transhov:hover{
-  color:#fff;
 }
 
 #login { 
@@ -34,7 +35,6 @@ html { width: 100%; height:100%; overflow:hidden; }
   letter-spacing: 2px;
   text-shadow: 2px 2px 4px #000000;
   margin-bottom: 12px;
-  
 }
 
 #login input { 
@@ -67,7 +67,6 @@ html { width: 100%; height:100%; overflow:hidden; }
   text-shadow: 5px 2px 4px #000000;
   margin-bottom: 12px;
   line-height: 1.5;
-
 }
 
 #login a{
@@ -76,14 +75,11 @@ html { width: 100%; height:100%; overflow:hidden; }
   transition: all 0.3s ease;
 }
 
-
-
-#login body { 
+#login html { 
   width: 100%;
   height:100%;
   font-family: 'Open Sans', sans-serif;
   background-image: linear-gradient(315deg, #23232c 0%, #273444 74%);
- 
 }
 
 #login .btn-large { padding: 9px 14px; font-size: 15px; line-height: normal; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
@@ -92,4 +88,96 @@ html { width: 100%; height:100%; overflow:hidden; }
 #login .btn-primary {background-image: -webkit-linear-gradient(top, #6eb6de, #4a77d4);background-image: linear-gradient(top, #6eb6de, #4a77d4); background-repeat: repeat-x;  border: 1px solid #3762bc; text-shadow: 1px 5px 5px black }
 #login .btn-primary:hover, .btn-primary:active, .btn-primary.active, .btn-primary.disabled, .btn-primary[disabled] { filter: none; background-color: #4a77d4; }
 #login .btn-block { width: 100%; display:block; }
+
+
+
+:root {
+    --diameter: 35vmax; /* Defina o valor desejado para o diâmetro */
+}
+  .pai * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+.pai{
+    background: #000;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+}
+  
+.pai:before,
+.pai:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    border-radius: 100%;
+    opacity: 0.18;
+}
+  
+.pai:before {
+    box-shadow: 0 0 var(--diameter) var(--diameter) rgb(0, 33, 182);
+    animation: hue 5s 0s linear infinite, move1 10s 0s linear infinite;
+}
+  
+.pai:after {
+    box-shadow: 0 0 var(--diameter) var(--diameter) rgb(74, 0, 170);
+    animation: hue 10s 0s linear infinite, move2 20s 0s linear infinite;
+}
+  
+@keyframes hue {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+    100% {
+      filter: hue-rotate(360deg);
+    }
+}
+  
+@keyframes move1 {
+    0% {
+      top: 0vh;
+      left: 50vw;
+    }
+    25% {
+      left: 0vw;
+    }
+    50% {
+      top: 100vh;
+    }
+    75% {
+      left: 100vw;
+    }
+    100% {
+      top: 0vh;
+      left: 50vw;
+    }
+}
+  
+@keyframes move2 {
+    0% {
+      top: 50vh;
+      left: 100vw;
+    }
+    25% {
+      top: 100vh;
+    }
+    50% {
+      left: 0vw;
+    }
+    75% {
+      top: 0vh;
+    }
+    100% {
+      top: 50vh;
+      left: 100vw;
+    }
+}
+
+ 
+
 
