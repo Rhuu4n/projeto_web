@@ -3,6 +3,7 @@
 import axios from "axios";
 import './termo.css'
 import { useEffect, useRef, useState } from 'react'
+import e from "cors";
 
   export default function Linha( {i, palavra_certa, habilitado, alteraPalavra, alteraSubmit, palavra, submit, mudaLinha, linha, alteraLinha, vetor} ) { 
     
@@ -112,9 +113,8 @@ import { useEffect, useRef, useState } from 'react'
         }
     }
  
-    function verificaPalavra() {
-
-        console.log(validarPalavra(palavra));
+    function verificaPalavra(e) {
+        e.preventDefault();
 
         if (validarPalavra(palavra) === true){
             if (palavra == palavra_certa[i].palavra){
@@ -209,6 +209,13 @@ import { useEffect, useRef, useState } from 'react'
                     ref={(el) => (inputs.current[num - 1] = el)}
                 />
             ))}
+            <button
+              className="btnTeste"
+              onClick={(e)=> verificaPalavra(e)}
+              disabled = {habilitado}
+              >
+                Testar
+            </button>
         </form>
     )
 }

@@ -66,7 +66,7 @@ export default function Termo(){
         palavra_certa.length > 0 && token != null?
         <div id="termo">
             <div className="boxJogo">
-                <Link href={"/jogos"} className="lblAjuda">?</Link>
+                <Link href={"/termo/ajuda"} className="lblAjuda">?</Link>
                 <Link href={"/jogos"} className="lblVoltar">Voltar</Link>
                 <h1 className="lblTermo">Termo</h1>
                 
