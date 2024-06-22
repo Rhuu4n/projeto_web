@@ -33,7 +33,7 @@ export default function Lobby(props) {
       Jogador_ID: props.idUsuario,
       id_sala: props.idSala,
       Ordem: props.ordem,
-      Moedas: 0,
+      Moedas: 2,
       Carta_1: 1,
       Carta_2: 1,
       Acao: null,

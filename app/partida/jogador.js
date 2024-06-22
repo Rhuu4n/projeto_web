@@ -34,6 +34,79 @@ const Jogador = props => {
     } catch (error) {}
   }
 
+  function destroiCartas(){
+    alteraAcao1(0)
+    alteraAcao2(0)
+    alteraCarta1('carta.png')
+    alteraCarta2('carta.png')
+  }
+
+  async function saqueador(){
+    const token =  localStorage.getItem('token')
+    try {
+      const response = await axios.put(
+        `/api/matches/${props.idJogadores[props.quemRoubar]}`,
+        {
+          Moedas: -2,
+          Afetado: 0
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            token: token
+          }
+        }
+      )
+      
+      const response_me = await axios.put(
+        `/api/matches/${props.idJogadores[0]}`,
+        {
+          Moedas: 2,
+          Afetado: 0
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            token: token
+          }
+        }
+      )
+
+      console.log(props.ordem)
+
+      const response_room = await axios.put(
+        `/api/rooms/${props.idSala}`,
+        {
+          jogadorAtual: props.ordem == 4 ? 1 : props.ordem + 1
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            token: token
+          }
+        }
+      )
+
+      destroiCartas()
+      props.alteraRoubar(false)
+
+      console.log(response.data)
+      console.log(response_me.data)
+      console.log(response_room.data)
+      props.updatePodeJogarRef(false)
+    } catch (error) {
+      console.log('erro: ' + error)
+      if (error.response && error.response.status === 404) {
+        alert('Partida nao encontrada')
+      } else if (error.response && error.response.status === 401) {
+        console.error('erro:' + error)
+        router.push('/autenticacao')
+      } else {
+        alert('Erro ao atualizar a partida')
+      }
+    }
+  }
+
   async function acao(param) {
     if (props.position == 'eu') {
       if (props.podeJogarRef === false) {
@@ -70,6 +143,8 @@ const Jogador = props => {
                 }
               }
             )
+
+            destroiCartas()
 
             console.log(response.data)
             console.log(response_room.data)
@@ -123,27 +198,32 @@ const Jogador = props => {
 
   useEffect(() => {
     if (props.moedasAltera === true) {
-      moedas()
+      console.log('mudou moedas')
+      // moedas()
+    }else{
+      console.log('mudou mais n atualizou')
     }
   }, [props.moedasAltera])
 
   useEffect(() => {
     if (props.roubar === true && props.index != 0) {
       alteraRoubarJ(true)
-    } else if (props.roubar === true && props.index != 0) {
+    } else if (props.roubar === false && props.index != 0) {
       alteraRoubarJ(false)
     }
   }, [props.roubar])
 
   useEffect(() => {
     if (props.quemRoubar != 0 && props.index == 0) {
-      alert('Roubar o:' + props.quemRoubar)
+      
+      saqueador()
     }
   }, [props.quemRoubar])
 
+
   return (
     <div id="joguin" className={props.position}>
-      {roubarJ ? (
+      {roubarJ == true ? (
         <Botao
           acao={() => props.alteraQuemRoubar(props.index)}
           cl="roubar"
@@ -156,7 +236,7 @@ const Jogador = props => {
       <div className="box-infos">
         <p>{props.nome}</p>
         <div className="box-moedas">
-          <p className="moedas">0x</p>
+          <p className="moedas">{props.moedas}x</p>
           <img src="img/moedas.png" />
         </div>
       </div>

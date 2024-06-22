@@ -29,10 +29,81 @@ const Partida = props => {
   }
 
   async function verificaMoedas(param) {
-    console.log('verificando moedas')
-    moedasAltera.current = true
+    const token = localStorage.getItem('token')
+    try{
+      console.log(props.idSala)
+      const response = await axios.get(
+        `/api/matches/room?room=${props.idSala}`,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            token: token
+          }
+        }
+      )
 
-    setTimeout((moedasAltera.current = false), 2500)
+      console.log(response.data)
+
+      let moeda1 =
+      response.data[0] == undefined
+        ? '0'
+        : response.data[0].Moedas
+      let moeda2 =
+        response.data[1] == undefined
+          ? '0'
+          : response.data[1].Moedas
+      let moeda3 =
+        response.data[2] == undefined
+          ? '0'
+          : response.data[2].Moedas
+      let moeda4 =
+        response.data[3] == undefined
+          ? '0'
+          : response.data[3].Moedas
+
+      let moedas_new = [2, 2, 2, 2]
+
+      if (props.ordem == 1) {
+        moedas_new[0] = moeda1 
+        moedas_new[1] = moeda2 
+        moedas_new[2] = moeda3 
+        moedas_new[3] = moeda4 
+  
+      } else if (props.ordem == 2) {
+        moedas_new[0] = moeda2 
+        moedas_new[1] = moeda3 
+        moedas_new[2] = moeda4 
+        moedas_new[3] = moeda1 
+  
+      } else if (props.ordem == 3) {
+        moedas_new[0] = moeda3 
+        moedas_new[1] = moeda4 
+        moedas_new[2] = moeda1 
+        moedas_new[3] = moeda2 
+  
+      } else if (props.ordem == 4) {
+        moedas_new[0] = moeda4 
+        moedas_new[1] = moeda1 
+        moedas_new[2] = moeda2 
+        moedas_new[3] = moeda3 
+  
+      }
+
+      alteraMoedas(moedas_new)
+
+    }catch(error)  {
+      console.log('erro: ' + error)
+      if (error.response && error.response.status === 404) {
+        alert('Sala nao encontrada')
+      } else if (error.response && error.response.status === 401) {
+        console.error('erro:' + error)
+        router.push('/autenticacao')
+      } else {
+        alert('Erro ao resgatar dados da partida')
+      }
+    }
+    
+    
   }
 
   async function main() {
@@ -152,6 +223,7 @@ const Partida = props => {
             podeJogar={podeJogar}
             nome={nomeJogadores[0]}
             idPartida={idJogadores[0]}
+            idJogadores={idJogadores}
             position="eu"
             ordem={props.ordem}
             idSala={props.idSala}
