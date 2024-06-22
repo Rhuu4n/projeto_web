@@ -18,18 +18,12 @@
 
 #ADM .Conteudo{
     width: 100%;
-    /* display: flex;
-    flex-direction: column;
-    min-height: auto;
-    float: right; */
 }
 
 
 #ADM .PainelLateral{
-    /* flex: 1 1 auto;
-    display: flex; */
-    /* width: fit-content; */
     width: 280px;
+    height: 100%;
     flex-direction: column;
     border-right: #ccc 1px solid;
     transition: 0.35s all;
@@ -38,14 +32,14 @@
 
 
 #ADM  .AreasPainelLateral {
-    padding: 10px;
-    margin: 10px 0px;
+    padding: 5px;
+    margin: 5px 0px;
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    gap: 60px;
     transition: 0.35s all;
     justify-content: space-between;
-    margin-top: 55px;
+    margin-top: 35px;
     align-items: center;
 }
 
@@ -151,7 +145,7 @@
     margin-left: 0px;
     border: 1px solid #3A434A ;
     border-collapse: collapse;
-    min-width: 150px;
+    min-width: 250px;
     max-height: 700px;
     display: block;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -159,12 +153,13 @@
     margin-top: 35px;
     overflow-y: auto;
     border-radius: 5px;
+    
 }
 
 #ADM th, td{
     border: 1px solid #ccc;
     padding: 12px 15px;
-    text-align: left;
+    text-align: center;
 }
 
 #ADM th{
