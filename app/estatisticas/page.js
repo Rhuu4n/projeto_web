@@ -110,7 +110,7 @@ return(
                 <hr/>
                 <button onClick={() => alteraSelecaoTabela("Ranking")}>
                 <FaRankingStar className="icones" />
-                    <span>Ranking</span> 
+                <span>Ranking</span> 
                 </button>
                 <hr/>
                 <button onClick={() => alteraSelecaoTabela("Termo")}>
@@ -125,11 +125,15 @@ return(
         <div className="Conteudo" >
             <header className="PaineladmHeader">
                 <nav>
-                    <ul>
-                        <button onClick={()=> buscaTermo()} >teste</button>
-                        <Link href="./"> <li>Home</li> </Link>
-                        <Link href="./jogos"> <li>Jogos</li> </Link>
-                    </ul>
+                    <button>
+                    <Link href="./"> <span>Home</span> </Link>
+                    </button>
+                    <button>
+                    <Link href=".jogos"> <span>Jogos</span> </Link>
+                    </button>
+                    <button>
+                    <Link href="#"> <span>Em breve</span> </Link>
+                    </button>
                 </nav>
             </header>
         
@@ -139,7 +143,7 @@ return(
                 {
                 selecaoTabela == "Estatisticas" &&   
                 <div className="TabelaEstatisticas" > 
-                <h1>Estatisticas de partidas Guilty</h1>
+                <h1>Estatisticas Guilty</h1>
                 <table border={"true"}>
         <thead>
             <tr>
