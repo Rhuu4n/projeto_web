@@ -49,7 +49,7 @@ export function Header(){
 
                 <div className="links">
                     <ul className="navegacao">
-                        <li><Link href="#">Blog</Link> </li>
+                        <li><Link href="http://10.60.46.49:8081/wordpress">Blog</Link> </li>
                         <li><Link href="./estatisticas">Estatisticas</Link> </li>
                         <li><Link href="#">Sobre nós</Link> </li>
                     </ul>
