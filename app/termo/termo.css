@@ -53,6 +53,15 @@
     color: black;
 }
 
+#termo .lblErro{
+    color: aliceblue;
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+    font-size: 60px;
+    text-align: center;
+}
+
 #termo .btnTeste{
     height: 60px;
     padding: 10px;
