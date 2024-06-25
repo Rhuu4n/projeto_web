@@ -44,7 +44,6 @@ const BodyLobby = props => {
           controleJogador++
         }
 
-        let nomeJogadores = ['jogador1', 'jogador2', 'jogador3', 'jogador4']
 
         let idJogadores = ['jogador1', 'jogador2', 'jogador3', 'jogador4']
 
@@ -83,40 +82,40 @@ const BodyLobby = props => {
             : response.data[3].id_partida
 
         if (props.numeroJogadores == 1) {
-          nomeJogadores[0] = jogador1 == undefined ? 'jogador' : jogador1
-          nomeJogadores[1] = jogador2 == undefined ? 'jogador' : jogador2
-          nomeJogadores[2] = jogador3 == undefined ? 'jogador' : jogador3
-          nomeJogadores[3] = jogador4 == undefined ? 'jogador' : jogador4
+          jogadoresNovo[0] = jogador1 == undefined ? 'jogador' : jogador1
+          jogadoresNovo[1] = jogador2 == undefined ? 'jogador' : jogador2
+          jogadoresNovo[2] = jogador3 == undefined ? 'jogador' : jogador3
+          jogadoresNovo[3] = jogador4 == undefined ? 'jogador' : jogador4
 
           idJogadores[0] = id1 == undefined ? 'jogador' : id1
           idJogadores[1] = id2 == undefined ? 'jogador' : id2
           idJogadores[2] = id3 == undefined ? 'jogador' : id3
           idJogadores[3] = id4 == undefined ? 'jogador' : id4
         } else if (props.numeroJogadores == 2) {
-          nomeJogadores[0] = jogador2 == undefined ? 'jogador' : jogador2
-          nomeJogadores[1] = jogador3 == undefined ? 'jogador' : jogador3
-          nomeJogadores[2] = jogador4 == undefined ? 'jogador' : jogador4
-          nomeJogadores[3] = jogador1 == undefined ? 'jogador' : jogador1
+          jogadoresNovo[0] = jogador2 == undefined ? 'jogador' : jogador2
+          jogadoresNovo[1] = jogador3 == undefined ? 'jogador' : jogador3
+          jogadoresNovo[2] = jogador4 == undefined ? 'jogador' : jogador4
+          jogadoresNovo[3] = jogador1 == undefined ? 'jogador' : jogador1
 
           idJogadores[0] = id2 == undefined ? 'jogador' : id2
           idJogadores[1] = id3 == undefined ? 'jogador' : id3
           idJogadores[2] = id4 == undefined ? 'jogador' : id4
           idJogadores[3] = id1 == undefined ? 'jogador' : id1
         } else if (props.numeroJogadores == 3) {
-          nomeJogadores[0] = jogador3 == undefined ? 'jogador' : jogador3
-          nomeJogadores[1] = jogador4 == undefined ? 'jogador' : jogador4
-          nomeJogadores[2] = jogador1 == undefined ? 'jogador' : jogador1
-          nomeJogadores[3] = jogador2 == undefined ? 'jogador' : jogador2
+          jogadoresNovo[0] = jogador3 == undefined ? 'jogador' : jogador3
+          jogadoresNovo[1] = jogador4 == undefined ? 'jogador' : jogador4
+          jogadoresNovo[2] = jogador1 == undefined ? 'jogador' : jogador1
+          jogadoresNovo[3] = jogador2 == undefined ? 'jogador' : jogador2
 
           idJogadores[0] = id3 == undefined ? 'jogador' : id3
           idJogadores[1] = id4 == undefined ? 'jogador' : id4
           idJogadores[2] = id1 == undefined ? 'jogador' : id1
           idJogadores[3] = id2 == undefined ? 'jogador' : id2
         } else if (props.numeroJogadores == 4) {
-          nomeJogadores[0] = jogador4 == undefined ? 'jogador' : jogador4
-          nomeJogadores[1] = jogador1 == undefined ? 'jogador' : jogador1
-          nomeJogadores[2] = jogador2 == undefined ? 'jogador' : jogador2
-          nomeJogadores[3] = jogador3 == undefined ? 'jogador' : jogador3
+          jogadoresNovo[0] = jogador4 == undefined ? 'jogador' : jogador4
+          jogadoresNovo[1] = jogador1 == undefined ? 'jogador' : jogador1
+          jogadoresNovo[2] = jogador2 == undefined ? 'jogador' : jogador2
+          jogadoresNovo[3] = jogador3 == undefined ? 'jogador' : jogador3
 
           idJogadores[0] = id4 == undefined ? 'jogador' : id4
           idJogadores[1] = id1 == undefined ? 'jogador' : id1
@@ -124,8 +123,9 @@ const BodyLobby = props => {
           idJogadores[3] = id3 == undefined ? 'jogador' : id3
         }
 
-        props.alteraOrdemJogadores(nomeJogadores)
+        props.alteraOrdemJogadores(jogadoresNovo)
         props.alteraJogadoresIdPartida(idJogadores)
+        alteraJogadores(jogadoresNovo)
 
         if (controleJogador >= 4) {
           props.alteraCheia(true)
