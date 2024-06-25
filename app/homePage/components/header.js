@@ -5,6 +5,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react"
 import { slide as Menu } from 'react-burger-menu';
+import MenuBurger from "./menuBurger";
 
 
 
@@ -56,19 +57,15 @@ export function Header(){
 
                 <AnimatedButton cl="btnLogin" username={name} />
 
+                
+
 
             </nav>
-            <nav>
-            <Menu right className={ "menuMobile" }>
-                    <ul>
-                        <li>
-                            <Link className="menu-item1" href="/"> Blog </Link>
-                            <Link className="menu-item2" href="/estatisticas"> Estatisticas </Link>
-                            <Link className="menu-item3" href="/"> Sobre nós </Link>
-                        </li>
-                    </ul>
-                </Menu>
-            </nav>
+
+
+            <MenuBurger/>
+
+           
 
 
         </header>

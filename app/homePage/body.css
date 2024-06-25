@@ -84,6 +84,12 @@
 }
 
 
+/* responsividade  */
+
+#menuBurger .bm-burger-button {
+  display: none;
+}
+
 @media screen and (max-width: 1450px){
   #container-body .txtinicial p{
     font-size: 32px;
@@ -94,8 +100,12 @@
 }
 
 @media screen and (max-width: 1100px){
+ 
   #headerHome .btnLogin, #headerHome .links{
     display: none;
+  }
+  #menuBurger .bm-burger-button {
+    display: block;
   }
   #headerHome .menu {
     margin: 15px;
