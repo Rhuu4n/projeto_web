@@ -34,6 +34,7 @@ export default function Autenticacao() {
         localStorage.setItem('token', tok)
         rota.push('/')
       })
+      
       .catch(function (error) {
         alert("Usuário ou senha incorretos...");
         console.error('erro:' + error);
@@ -118,7 +119,7 @@ export default function Autenticacao() {
         </button>
 
         <p>
-          Não tem conta? <a href='/cadastro'> Crie uma aqui!</a>
+          Não tem uma conta? <a href='/cadastro'> Registre-se</a>
         </p>
       </div>
     </div>

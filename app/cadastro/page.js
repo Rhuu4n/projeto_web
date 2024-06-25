@@ -1,9 +1,91 @@
 "use client"
 
+import axios from 'axios'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import "./cadastro.css"
 import { BsFillDoorOpenFill, BsCalendar, BsCardHeading, BsLock, BsPersonLock } from 'react-icons/bs'
 
 export default function Cadastro(){
+  const [token, alteraToken] = useState('');
+  const [nome, alteraNome] = useState('');
+  const [senha, alteraSenha] = useState('');
+  const [email, alteraEmail] = useState('');
+  const [nascimento, alteraNascimento] = useState('');
+  const rota = useRouter();
+
+    
+
+    function conectaCadastro() {
+
+      console.log(nascimento)
+      if(nome.length < 3){
+        alert("Digite um nome maior para prosseguir")
+        return
+      }
+
+      if(senha.length < 7){
+        alert("Digite uma senha maior para prosseguir")
+        return
+      }
+
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if(emailRegex.test(email) == false ){
+        alert("Digite Um Email Válido")
+        return
+      }
+
+     
+      const ano = parseInt( nascimento.split("-")[0])
+      if( isNaN(ano) || ano < 1901 || ano > 2020 ){
+        alert("Digite uma data de nascimento válida")
+        return
+      }
+
+      const obj = {
+          nome: nome,
+          senha: senha,
+          email: email,
+          nascimento: nascimento
+        };
+    
+        axios
+          .post('/api/cadastro', obj, {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+          .then(function (response) {
+            console.log(response)
+            
+            if(response.status != 200){
+              alert("Algo deu errado preencha os dados corretamente")
+              return;
+            }
+
+            // autenticacao usuario criado
+            axios
+            .post('/api/login', obj, {
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            })
+            .then(function (response) {
+              console.log(response)
+              let tok = response.data.token
+              alteraToken(tok)
+              localStorage.setItem('token', tok)
+              rota.push('/')
+            })
+            
+          })
+          .catch(function (error) {
+            alert("Uta erradooo burro...");
+            console.error('erro:' + error);
+          });
+    }
+    
+
     return(
 
     <div id="cadastro">
@@ -15,18 +97,21 @@ export default function Cadastro(){
 
         <div>
             <BsPersonLock style={{ position: "absolute", top: "23%", fontSize: "22px" , transform: "translateY(-50%)", right: "15px", color: "#777" }}/>
-            <input type="text" placeholder="Username" required="required" style={{ paddingRight:"30px" }}/>
+            <input  onChange={e => alteraNome(e.target.value)}  type="text" placeholder="Username" required="required" style={{ paddingRight:"30px" }}/>
 
             <BsLock style={{ position: "absolute", top: "38%", fontSize: "20px" , transform: "translateY(-50%)", right: "15px", color: "#777;"}}/>
-            <input type="password" placeholder="Password" required="required" style={{ paddingRight:"30px" }}/>
+            <input  onChange={e => alteraSenha(e.target.value)}  type="password" placeholder="Password" required="required" style={{ paddingRight:"30px" }}/>
 
             <BsCardHeading style={{ position: "absolute", top: "54%", fontSize: "20px" , transform: "translateY(-50%)", right: "15px", color: "#777;"}}/>
-            <input type="email" placeholder="Email" required="required" style={{ paddingRight:"30px" }}/>
+            <input  onChange={e => alteraEmail(e.target.value)}  type="email" placeholder="Email" required="required" style={{ paddingRight:"30px" }}/>
 
-            <input type="date" required="required" style={{ paddingRight: "30px"}}/>
+            <input  onChange={e => alteraNascimento(e.target.value)}  type="date" required="required" style={{ paddingRight: "30px"}}/>
             <BsCalendar style={{ position: "absolute", top: "70%", transform: "translateY(-50%)", right: "16px", fontSize: "18px", color: "#777" }}/>   
 
-            <button type="submit" class="btn btn-primary btn-block btn-large">Cadastre-se</button> 
+            <button
+                onClick={()=> conectaCadastro()}
+                className="btn btn-primary btn-block btn-large"
+            >Cadastre-se</button>
 
             <p>Já Tem uma Conta ?  <a href='/autenticacao'>Faça Login </a></p>
 

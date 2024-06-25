@@ -7,18 +7,13 @@ html, body {
     height: 100%;
 }
 
-
-
-
-
 /* estilizando background  */
 :root {
-    --diameter: 35vmax; /* Defina o valor desejado para o diâmetro */
+    --diameter: 35vmax; 
   }
   
   #homePage * {
     margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
   
@@ -100,10 +95,6 @@ html, body {
     }
 }
 
-
-
-
-
 /* ------------------------------------- */
 
 /* estilizando menu de navegacao */
@@ -120,13 +111,3 @@ html, body {
     bottom: 0;
     left: 0;
 }
-
-
-
-
-
-
-
-
-
-
