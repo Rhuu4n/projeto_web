@@ -22,6 +22,7 @@ const jogos = [
 
 const Jogos = () => (
     <div id="container-jogos">
+
         <AnimatedCursor/>
 
         <Header/>
@@ -31,18 +32,20 @@ const Jogos = () => (
 
             {jogos.map((jogo) => (
 
-        <div key={jogo.id} className="jogos">
+            <div key={jogo.id} className="jogos">
 
-                <a href={jogo.link ? jogo.link : '#'} >
+                    <a href={jogo.link ? jogo.link : '#'} >
 
-                    <img src={jogo.imgUrl} alt={jogo.title} className="jogo-img" />
-                    <h3>{jogo.title}</h3>
+                        <img src={jogo.imgUrl} alt={jogo.title} className="jogo-img" />
+                        <h3>{jogo.title}</h3>
 
-                </a>
+                    </a>
 
-        </div>
+            </div>
 
-        ))}
+          
+
+            ))}
 
         </div>
 
