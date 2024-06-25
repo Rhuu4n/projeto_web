@@ -21,9 +21,6 @@ export default function Lobby(props) {
     } else {
       props.alteraOrdem(props.numeroJogadores)
       setOrdemUpdated(true)
-      console.log(
-        'm$2b$12$UUHV3tb4EwJSDcapdpu9heL2xCOzbq6oI1kv733vrqWXc3FlF48uuembro'
-      )
       console.log(props.numeroJogadores)
       atualizaSala()
     }
@@ -36,7 +33,7 @@ export default function Lobby(props) {
       Jogador_ID: props.idUsuario,
       id_sala: props.idSala,
       Ordem: props.ordem,
-      Moedas: 0,
+      Moedas: 2,
       Carta_1: 1,
       Carta_2: 1,
       Acao: null,

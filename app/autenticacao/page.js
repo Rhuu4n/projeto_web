@@ -1,4 +1,5 @@
 'use client'
+
 import ReactDOM from 'react-dom'
 import axios from 'axios'
 import './style.css'

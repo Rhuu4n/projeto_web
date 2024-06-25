@@ -12,32 +12,129 @@ const Partida = props => {
   const [jogadorAtual, alteraJogadorAtual] = useState(0)
   const [jaRodou, alteraJaRodou] = useState(false)
   const [attribute, setAttribute] = useState(false)
+  const [roubar, alteraRoubar] = useState(false)
+  const [quemRoubar, alteraQuemRoubar] = useState(0)
+  const [moedas, alteraMoedas] = useState([2, 2, 2, 2])
   const jaRodouRef = useRef(false)
   const podeJogarRef = useRef(false)
+  const vezDeRef = useRef(0)
+  const moedasAltera = useRef(false)
   const initialized = useRef(false)
 
   let nomeJogadores = props.ordemJogadores
   let idJogadores = props.jogadoresIdPartida
 
+  const updatePodeJogarRef = newValue => {
+    podeJogarRef.current = newValue
+  }
+
+  async function verificaMoedas(param) {
+    const token = localStorage.getItem('token')
+    try{
+      console.log(props.idSala)
+      const response = await axios.get(
+        `/api/matches/room?room=${props.idSala}`,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            token: token
+          }
+        }
+      )
+
+      console.log(response.data)
+
+      let moeda1 =
+      response.data[0] == undefined
+        ? '0'
+        : response.data[0].Moedas
+      let moeda2 =
+        response.data[1] == undefined
+          ? '0'
+          : response.data[1].Moedas
+      let moeda3 =
+        response.data[2] == undefined
+          ? '0'
+          : response.data[2].Moedas
+      let moeda4 =
+        response.data[3] == undefined
+          ? '0'
+          : response.data[3].Moedas
+
+      let moedas_new = [2, 2, 2, 2]
+
+      if (props.ordem == 1) {
+        moedas_new[0] = moeda1 
+        moedas_new[1] = moeda2 
+        moedas_new[2] = moeda3 
+        moedas_new[3] = moeda4 
+  
+      } else if (props.ordem == 2) {
+        moedas_new[0] = moeda2 
+        moedas_new[1] = moeda3 
+        moedas_new[2] = moeda4 
+        moedas_new[3] = moeda1 
+  
+      } else if (props.ordem == 3) {
+        moedas_new[0] = moeda3 
+        moedas_new[1] = moeda4 
+        moedas_new[2] = moeda1 
+        moedas_new[3] = moeda2 
+  
+      } else if (props.ordem == 4) {
+        moedas_new[0] = moeda4 
+        moedas_new[1] = moeda1 
+        moedas_new[2] = moeda2 
+        moedas_new[3] = moeda3 
+  
+      }
+
+      alteraMoedas(moedas_new)
+
+    }catch(error)  {
+      console.log('erro: ' + error)
+      if (error.response && error.response.status === 404) {
+        alert('Sala nao encontrada')
+      } else if (error.response && error.response.status === 401) {
+        console.error('erro:' + error)
+        router.push('/autenticacao')
+      } else {
+        alert('Erro ao resgatar dados da partida')
+      }
+    }
+    
+    
+  }
+
   async function main() {
     const interval = setInterval(async () => {
       console.log('inicio interval')
       const token = localStorage.getItem('token')
-      const response_room = await axios.get(`/api/rooms/${props.idSala}`, {
-        headers: {
-          'Content-Type': 'application/json',
-          token: token
+
+      if (!podeJogarRef.current) {
+        const response_room = await axios.get(`/api/rooms/${props.idSala}`, {
+          headers: {
+            'Content-Type': 'application/json',
+            token: token
+          }
+        })
+
+        let resAtual = response_room.data.jogadorAtual
+
+        if (resAtual == props.ordem) {
+          console.log('ovo joga')
+          podeJogarRef.current = true
+          alteraPodeJogar(true)
         }
-      })
 
-      let resAtual = response_room.data.jogadorAtual
+        if (resAtual != vezDeRef.current) {
+          console.log('mudou ai')
+          verificaMoedas()
 
-      if (resAtual == props.ordem && !jaRodouRef.current) {
-        console.log('entrou')
-        alteraPodeJogar(true)
-        alteraJaRodou(true)
-        jaRodouRef.current = true
-        podeJogarRef.current = true
+          vezDeRef.current = resAtual
+        }
+      } else {
+        console.log('oto jogando')
       }
 
       if (attribute) {
@@ -68,11 +165,29 @@ const Partida = props => {
       <HeaderPartida />
       <div className="areaPartida">
         <div className="topo">
-          <Jogador nome={nomeJogadores[2]} idPartida={idJogadores[2]} />
+          <Jogador
+            roubar={roubar}
+            alteraRoubar={alteraRoubar}
+            alteraQuemRoubar={alteraQuemRoubar}
+            index={2}
+            moedas={moedas[2]}
+            alteraMoedas={alteraMoedas}
+            moedasAltera={moedasAltera.useRef}
+            nome={nomeJogadores[2]}
+            idPartida={idJogadores[2]}
+            position="topo"
+          />
         </div>
         <div className="meio">
           <div className="esquerda">
             <Jogador
+              roubar={roubar}
+              alteraRoubar={alteraRoubar}
+              alteraQuemRoubar={alteraQuemRoubar}
+              index={1}
+              moedas={moedas[1]}
+              alteraMoedas={alteraMoedas}
+              moedasAltera={moedasAltera.useRef}
               nome={nomeJogadores[1]}
               idPartida={idJogadores[1]}
               position="esquerda"
@@ -81,6 +196,13 @@ const Partida = props => {
           <div className="centro"></div>
           <div className="direita">
             <Jogador
+              roubar={roubar}
+              alteraRoubar={alteraRoubar}
+              alteraQuemRoubar={alteraQuemRoubar}
+              index={3}
+              moedas={moedas[3]}
+              alteraMoedas={alteraMoedas}
+              moedasAltera={moedasAltera.current}
               nome={nomeJogadores[3]}
               idPartida={idJogadores[3]}
               position="direita"
@@ -89,11 +211,23 @@ const Partida = props => {
         </div>
         <div className="fim">
           <Jogador
+            roubar={roubar}
+            alteraRoubar={alteraRoubar}
+            quemRoubar={quemRoubar}
+            alteraQuemRoubar={alteraQuemRoubar}
+            index={0}
+            moedas={moedas[0]}
+            alteraMoedas={alteraMoedas}
+            moedasAltera={moedasAltera.current}
             podeJogarRef={podeJogarRef.current}
             podeJogar={podeJogar}
             nome={nomeJogadores[0]}
             idPartida={idJogadores[0]}
+            idJogadores={idJogadores}
             position="eu"
+            ordem={props.ordem}
+            idSala={props.idSala}
+            updatePodeJogarRef={updatePodeJogarRef}
           />
         </div>
       </div>

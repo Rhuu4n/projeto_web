@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import "./termo.css"
 import Link from "next/link";
 import { BsAlignStart } from "react-icons/bs";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Termo(){
     
@@ -66,24 +68,25 @@ export default function Termo(){
         palavra_certa.length > 0 && token != null?
         <div id="termo">
             <div className="boxJogo">
-                <Link href={"/jogos"} className="lblAjuda">?</Link>
+                <Link href={"/termo/ajuda"} className="lblAjuda">?</Link>
                 <Link href={"/jogos"} className="lblVoltar">Voltar</Link>
                 <h1 className="lblTermo">Termo</h1>
                 
                 <div className="boxTermo">
-                    <Linha i = {i} palavra_certa = {palavra_certa} habilitado={habilitado[linha].linha1} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
-                    <Linha i = {i} palavra_certa = {palavra_certa} habilitado={habilitado[linha].linha2} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
-                    <Linha i = {i} palavra_certa = {palavra_certa} habilitado={habilitado[linha].linha3} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
-                    <Linha i = {i} palavra_certa = {palavra_certa} habilitado={habilitado[linha].linha4} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
-                    <Linha i = {i} palavra_certa = {palavra_certa} habilitado={habilitado[linha].linha5} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
-                    <Linha i = {i} palavra_certa = {palavra_certa} habilitado={habilitado[linha].linha6} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
+                    <Linha toast = {toast} i = {i} palavra_certa = {palavra_certa} habilitado={habilitado[linha].linha1} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
+                    <Linha toast = {toast} i = {i} palavra_certa = {palavra_certa} habilitado={habilitado[linha].linha2} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
+                    <Linha toast = {toast} i = {i} palavra_certa = {palavra_certa} habilitado={habilitado[linha].linha3} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
+                    <Linha toast = {toast} i = {i} palavra_certa = {palavra_certa} habilitado={habilitado[linha].linha4} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
+                    <Linha toast = {toast} i = {i} palavra_certa = {palavra_certa} habilitado={habilitado[linha].linha5} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
+                    <Linha toast = {toast} i = {i} palavra_certa = {palavra_certa} habilitado={habilitado[linha].linha6} alteraPalavra={alteraPalavra} alteraSubmit={alteraSubmit} mudaLinha = {mudaLinha} palavra = {palavra} submit = {submit} linha = {linha} alteraLinha={alteraLinha}/>
                 </div>
+                <ToastContainer />
             </div>
         </div>
         :
         <div id="termo">
             <div className="boxJogo">
-                <h1 className="lblTermo">Usuario não autenticado!</h1>
+                <h1 className="lblErro">Usuario não autenticado!</h1>
                 <p>Faça login <Link href={'/autenticacao'}>AQUI!</Link></p>
             </div>
         </div>

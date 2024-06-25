@@ -3,8 +3,9 @@
 import axios from "axios";
 import './termo.css'
 import { useEffect, useRef, useState } from 'react'
+import e from "cors";
 
-  export default function Linha( {i, palavra_certa, habilitado, alteraPalavra, alteraSubmit, palavra, submit, mudaLinha, linha, alteraLinha, vetor} ) { 
+  export default function Linha( {toast, i, palavra_certa, habilitado, alteraPalavra, alteraSubmit, palavra, submit, mudaLinha, linha, alteraLinha, vetor} ) { 
     
     const [letra, alteraLetra] = useState()
     const [campo, alteraCampo] = useState(1)
@@ -112,19 +113,23 @@ import { useEffect, useRef, useState } from 'react'
         }
     }
  
-    function verificaPalavra() {
-
-        console.log(validarPalavra(palavra));
+    function verificaPalavra(e) {
+        e.preventDefault();
 
         if (validarPalavra(palavra) === true){
             if (palavra == palavra_certa[i].palavra){
                 alteraLinha(6);
                 alteraInput();
-                alert("Acertou!!")
+                toast.success("ACERTOU!!");
+                alteraPalavra(palavra + ".")
             }
             else if(palavra.length == 5){
                 mudaLinha();
                 alteraInput();
+            }
+            if(linha == 5){
+                alteraLinha(6);
+                toast.error("Errou a palavra certa è " + palavra_certa[i].palavra);
             }
         }
     }
@@ -140,24 +145,27 @@ import { useEffect, useRef, useState } from 'react'
     function confereCor(caractere, posicao, num) {
         const extracao = palavra_certa[0].palavra.charAt(0);
         alteraCaractere1(extracao);
+        input1 = document.getElementsByClassName(`txt${num}`)[linha]
         
         if (posicao <= palavra_certa[i].palavra.length){
         }
 
-        if (caractere == palavra_certa[i].palavra.charAt(index1) ||
-            caractere == palavra_certa[i].palavra.charAt(index2) ||
-            caractere == palavra_certa[i].palavra.charAt(index3) ||
-            caractere == palavra_certa[i].palavra.charAt(index4) ||
-            caractere == palavra_certa[i].palavra.charAt(index5)) {
-            input1 = document.getElementsByClassName(`txt${num}`)[linha]
-            input1 = input1.style.background = "rgb(207, 204, 0)"
+        try{
+            if (input1.style.background != "green"){
+                if (caractere == palavra_certa[i].palavra.charAt(index1) ||
+                    caractere == palavra_certa[i].palavra.charAt(index2) ||
+                    caractere == palavra_certa[i].palavra.charAt(index3) ||
+                    caractere == palavra_certa[i].palavra.charAt(index4) ||
+                    caractere == palavra_certa[i].palavra.charAt(index5)) {
+                    input1.style.background = "rgb(207, 204, 0)"
+                }
+        
+                if (caractere == palavra_certa[i].palavra.charAt(posicao)) {
+                    input1.style.background = "green"
+                }
+            }
+        }catch{
         }
-
-        if (caractere == palavra_certa[i].palavra.charAt(posicao)) {
-            input1 = document.getElementsByClassName(`txt${num}`)[linha]
-            input1 = input1.style.background = "green"
-        }
-
     }
 
     function validarPalavra(palavra) {
@@ -209,6 +217,13 @@ import { useEffect, useRef, useState } from 'react'
                     ref={(el) => (inputs.current[num - 1] = el)}
                 />
             ))}
+            <button
+              className="btnTeste"
+              onClick={(e)=> verificaPalavra(e)}
+              disabled = {habilitado}
+              >
+                Testar
+            </button>
         </form>
     )
 }
