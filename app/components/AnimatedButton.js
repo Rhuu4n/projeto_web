@@ -1,5 +1,5 @@
 import Link from "next/link";
-import './AnimatedButton.css'
+import './AnimatedButton.css';
 
 const AnimatedButton = ({username, cl}) => {
     return ( 

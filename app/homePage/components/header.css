@@ -119,3 +119,73 @@
     left:  20px;
     top:  20px;
 }
+
+#headerHome .bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    right: 36px; 
+
+
+    top: 36px;
+}
+
+/*menu hamburger mobile*/
+
+
+
+/* Customizações para react-burger-menu */
+#headerHome .menuHamburger {
+    position: fixed;
+}
+
+#headerHome .bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    right: 36px; /* Altera para 'right' para que o botão fique à direita */
+    top: 36px;
+}
+
+#headerHome .bm-burger-bars {
+    background: #fff;
+}
+
+#headerHome .bm-burger-bars-hover {
+    background: #1d009e;
+}
+
+#headerHome .bm-cross-button {
+    display: flex;
+    justify-content: right;
+    height: 24px;
+    width: 24px;
+}
+
+#headerHome .bm-cross {
+    background: #bdc3c7;
+}
+
+#headerHome .bm-menu-wrap {
+    position: fixed;
+    height: 100%;
+}
+
+#headerHome .bm-menu {
+    background: transparent;
+    padding: 2.5em 1.5em 0;
+    font-size: 1.15em;
+}
+
+#headerHome .bm-morph-shape {
+    fill: #373a47;
+}
+
+#headerHome .bm-item-list {
+    color: #fff;
+    padding: 0.8em;
+}
+
+#headerHome .bm-item {
+    display: inline-block;
+}

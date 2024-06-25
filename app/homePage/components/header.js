@@ -4,6 +4,7 @@ import LogoLink from "@/app/components/logoLink";
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react"
+import { slide as Menu } from 'react-burger-menu';
 
 
 
@@ -47,7 +48,7 @@ export function Header(){
 
                 <div className="links">
                     <ul className="navegacao">
-                        <li><Link href="#">Forúm</Link> </li>
+                        <li><Link href="#">Blog</Link> </li>
                         <li><Link href="./estatisticas">Estatisticas</Link> </li>
                         <li><Link href="#">Sobre nós</Link> </li>
                     </ul>
@@ -55,7 +56,20 @@ export function Header(){
 
                 <AnimatedButton cl="btnLogin" username={name} />
 
+
             </nav>
+            <nav>
+            <Menu right className={ "menuMobile" }>
+                    <ul>
+                        <li>
+                            <Link className="menu-item1" href="/"> Blog </Link>
+                            <Link className="menu-item2" href="/estatisticas"> Estatisticas </Link>
+                            <Link className="menu-item3" href="/"> Sobre nós </Link>
+                        </li>
+                    </ul>
+                </Menu>
+            </nav>
+
 
         </header>
 
