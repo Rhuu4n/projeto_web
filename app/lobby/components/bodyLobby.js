@@ -127,9 +127,7 @@ const BodyLobby = props => {
         props.alteraOrdemJogadores(nomeJogadores)
         props.alteraJogadoresIdPartida(idJogadores)
 
-        alteraJogadores(jogadoresNovo)
-
-        if (controleJogador > 0) {
+        if (controleJogador >= 4) {
           props.alteraCheia(true)
         }
 

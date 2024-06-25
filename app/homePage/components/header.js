@@ -53,7 +53,7 @@ export function Header(){
                     </ul>
                 </div>
 
-                <AnimatedButton username={name} />
+                <AnimatedButton cl="btnLogin" username={name} />
 
             </nav>
 

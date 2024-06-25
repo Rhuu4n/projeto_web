@@ -29,7 +29,7 @@ export default function Cadastro(){
         return
       }
 
-      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{0,}$/;
       if(emailRegex.test(email) == false ){
         alert("Digite Um Email Válido")
         return
@@ -87,7 +87,7 @@ export default function Cadastro(){
     
 
     return(
-
+  <div className='father'>
     <div id="cadastro">
 
         <a href= "/" > <BsFillDoorOpenFill style={{ position: "fixed" , top: "45px" , right: "45px" , color: "#777" , fontSize: "46px" , cursor: "pointer"}}/> <p style={{position: "fixed" , top: "75px" , right: "19px" , color: "#777" , fontSize: "10.9px" , cursor: "pointer"}}>Voltar Para <br/> Tela Inicíal</p> </a>
@@ -118,5 +118,6 @@ export default function Cadastro(){
         </div>
 
         </div>
+  </div>
     )
 }

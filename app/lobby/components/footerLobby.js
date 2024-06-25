@@ -38,7 +38,7 @@ const FooterLobby = props => {
       <Botao
         acao={() => {
           if (!props.cheia) {
-            alert('a sala nao esta cheia, aguarde jogadores: ' + props.cheia)
+            alert('a sala nao esta cheia, aguarde jogadores')
           } else {
             iniciaPartida()
           }
