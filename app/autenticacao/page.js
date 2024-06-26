@@ -1,5 +1,6 @@
 'use client'
 
+import 'react-toastify/dist/ReactToastify.css'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
 import './style.css'
@@ -8,6 +9,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 import { BsFillDoorOpenFill, BsLock, BsPersonLock } from 'react-icons/bs'
+import { ToastContainer, toast } from 'react-toastify'
 
 export default function Autenticacao() {
   const [token, alteraToken] = useState('');
@@ -36,13 +38,25 @@ export default function Autenticacao() {
       })
       
       .catch(function (error) {
-        alert("Usuário ou senha incorretos...");
+        toast.error(("Usuário ou Senha Incorretos!"), {
+          position: "top-left",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark ",
+          });
         console.error('erro:' + error);
       });
   }
 
   return (
     <div className='pai'>
+ 
+    <ToastContainer/>
+    
       <div id="login">
         <a className="" href="/">
           {' '}

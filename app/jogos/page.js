@@ -9,6 +9,7 @@ import AnimatedButton from '../components/AnimatedButton';
 import LogoLink from '../components/logoLink';
 import Header from '../homePage/components/header';
 import Footer from '../homePage/components/footer';
+import { ToastContainer } from 'react-toastify';
 
 
 
@@ -28,7 +29,6 @@ const Jogos = () => (
         <Header/>
 
         <div className="jogos-grid">
-            
 
             {jogos.map((jogo) => (
 

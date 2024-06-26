@@ -135,6 +135,9 @@
     display: flex;
     justify-content: space-between;
 }
+#ADM .PaineladmHeader ul{
+   list-style-type: none;
+}
 
 
 #ADM .PaineladmHeader button{
@@ -219,7 +222,7 @@
 
 #ADM tbody tr:hover {
     background-color: #00152c;
-    color: aqua;
+    color: #fff;
     transition: background-color 0.3s, color 0.3s;
 }
 #ADM td{
@@ -244,14 +247,6 @@
 }
 
 @media (max-width: 960px) {
-
-    /*
-
-    #ADM .Conteudo {
-       
-    }
-    
-    */
 
     #ADM .PainelLateral {
         width: 80px;
@@ -288,7 +283,7 @@
         max-height: 500px;
         margin: 5px;
         padding: 2px;
-        overflow-x: hidden;
+        overflow-y: auto;
     }
 
     #ADM .Conteudo {

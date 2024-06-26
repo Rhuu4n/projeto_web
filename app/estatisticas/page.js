@@ -18,6 +18,9 @@ const [ranking, alteraRanking] = useState ([]);
 const [estatisticas, alteraEstatisticas] = useState ([]);
 const [numJogadores, alteraNumJogadores] = useState ([]);
 const [termo, alteraTermo] = useState ([]);
+const [numAleatorio, alteraNumAleatorio] = useState(null);
+let randomInt = Math.floor(Math.random() * 250) + 0;
+
 
 const tokenapi = localStorage.getItem('token')
 
@@ -75,15 +78,6 @@ function buscaNumJogadores(){
         })
 }
 
-
-useEffect(()=> {
-    buscaRanking();
-    buscaEstatisticas();
-    buscaNumJogadores();
-    buscaTermo();
-}, []);
-
-
 const reverseIds = (arr) => {
     if (!Array.isArray(arr)) return [];
     return [...arr].reverse();
@@ -91,18 +85,34 @@ const reverseIds = (arr) => {
 
 const reversedEstatisticas = reverseIds(estatisticas);
 
-function randomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+function randomNum() {
+    console.log(numAleatorio);
+    if (numAleatorio == null){
+        alteraNumAleatorio(randomInt)
+        return alteraNumAleatorio
+    }
+    
+
 }
+
+useEffect(()=> {
+    buscaRanking();
+    buscaEstatisticas();
+    buscaNumJogadores();
+    buscaTermo();
+    randomNum();
+}, []);
 
 return(
     <div id="ADM">
         <aside className="PainelLateral" >
             <br/>
-            <header>
-            <Link href="./jogos">  <img className="iconeprincipal" src="icon/logoH1R4.svg"></img> </Link>
+            <header>      
+               
+            <Link href="./">  <img className="iconeprincipal" src="icon/logoH1R4.svg"></img> </Link>
             </header>
             <div className="AreasPainelLateral">
+                <button onClick={()=> randomNum()} >aaaa</button>
                 <button onClick={() => alteraSelecaoTabela("Estatisticas")}>
                 <IoStatsChartSharp className="icones" />
                 <span>Estatísticas</span>
@@ -129,10 +139,10 @@ return(
                     <Link href="./"> <span>Home</span> </Link>
                     </button>
                     <button>
-                    <Link href=".jogos"> <span>Jogos</span> </Link>
+                    <Link href="./jogos"> <span>Jogos</span> </Link>
                     </button>
                     <button>
-                    <Link href="#"> <span>Em breve</span> </Link>
+                    <Link href="http://10.60.46.49:8081/wordpress"> <span>Blog</span> </Link>
                     </button>
                 </nav>
             </header>
@@ -205,7 +215,7 @@ return(
                     <tbody>
                         {termo?.map(T => {return <tr>
                             <td>{T.palavra}</td>
-                            <td>{randomInt(10, 100)}</td>
+                            <td>{numAleatorio}</td>
                         </tr> })}
                     </tbody>
                     </table>
