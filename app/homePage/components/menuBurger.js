@@ -14,9 +14,11 @@ export function MenuBurger(){
                 <ul>
                     <li>
                         <Link className="menu-item" href="/"> Blog </Link>
-                        <Link className="menu-item" href="/estatisticas"> Estatisticas </Link>
-                        <Link className="menu-item" href="/"> Sobre nós </Link>
+                        
                     </li>
+                    <li><Link className="menu-item" href="/estatisticas"> Estatisticas </Link></li>
+                    <li>
+                    <Link className="menu-item" href="/"> Sobre nós </Link></li>
                 </ul>
             </Menu>
 
