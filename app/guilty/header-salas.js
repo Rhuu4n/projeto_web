@@ -1,19 +1,22 @@
-import Botao from "../components/botao";
-import "./header-salas.css"
+import Botao from '../components/botao'
+import './header-salas.css'
+import { useRouter } from 'next/navigation'
 
-export default function Header_Salas(props){
-    return( 
-        <div id="headerSalas">
+export default function Header_Salas(props) {
+  const router = useRouter()
 
-            <div className="boxUser">
+  return (
+    <div id="headerSalas">
+      <div className="boxUser">
+        <Botao
+          acao={() => {
+            router.push(`/jogos`)
+          }}
+          content="Voltar"
+        />
+      </div>
 
-                <p className="lblUser">Usuario: {props.nome}, conectado</p>
-
-                <Botao content="Sign out"/>
-
-            </div>
-            
-            <p className="lblLogo">Guilty</p>
-        </div>
-     );
+      <p className="lblLogo">Guilty</p>
+    </div>
+  )
 }

@@ -14,9 +14,16 @@ const BodyLobby = props => {
     'jogador4'
   ])
   const initialized = useRef(false)
+  const parar = useRef(false)
 
   function main() {
     const interval = setInterval(async () => {
+      if (parar.current) {
+        clearInterval(interval)
+
+        props.alteraLiberado(true)
+      }
+
       const token = localStorage.getItem('token')
       try {
         const response = await axios.get(
@@ -37,13 +44,16 @@ const BodyLobby = props => {
         })
 
         let jogadoresNovo = ['jogador1', 'jogador2', 'jogador3', 'jogador4']
+
+        let jogadoresLobby = ['jogador1', 'jogador2', 'jogador3', 'jogador4']
+
         let controleJogador = 0
         for (let res of response.data) {
           let nome = await pegaUser(res.Jogador_ID)
           jogadoresNovo[controleJogador] = nome
+          jogadoresLobby[controleJogador] = nome
           controleJogador++
         }
-
 
         let idJogadores = ['jogador1', 'jogador2', 'jogador3', 'jogador4']
 
@@ -125,9 +135,9 @@ const BodyLobby = props => {
 
         props.alteraOrdemJogadores(jogadoresNovo)
         props.alteraJogadoresIdPartida(idJogadores)
-        alteraJogadores(jogadoresNovo)
+        alteraJogadores(jogadoresLobby)
 
-        if (controleJogador >= 4) {
+        if (controleJogador >= 1) {
           props.alteraCheia(true)
         }
 
@@ -145,11 +155,6 @@ const BodyLobby = props => {
         } else {
           alert('Erro ao resgatar dados da partida')
         }
-      }
-
-      if (attribute) {
-        clearInterval(interval) // Para a rotina se o atributo mudar
-        console.log('Atributo mudou, rotina parada')
       }
     }, 800) // Executa a rotina a cada segundo
   }
@@ -183,11 +188,18 @@ const BodyLobby = props => {
 
       main()
 
-      return () => setAttribute(true) // Limpeza do intervalo quando o componente for desmontado
+      return () => (parar.current = true) // Limpeza do intervalo quando o componente for desmontado
     }
   }, [])
 
   useEffect(() => {}, [jogadores])
+
+  useEffect(() => {
+    if (props.sairRef === true) {
+      console.log(`acionou`)
+      parar.current = true
+    }
+  }, [props.sairRef])
 
   const checkAttribute = () => {
     // Lógica para verificar o atributo
