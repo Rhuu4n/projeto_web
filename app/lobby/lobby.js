@@ -9,9 +9,69 @@ import axios from 'axios'
 
 export default function Lobby(props) {
   const [cheia, alteraCheia] = useState(false)
+  const [sair, alteraSair] = useState(false)
+  const [liberado, alteraLiberado] = useState(false)
   const [userInfoLoaded, setUserInfoLoaded] = useState(false)
   const [ordemUpdated, setOrdemUpdated] = useState(false)
+  const sairRef = useRef(false)
   const initialized = useRef(false)
+
+  async function sairSala() {
+    console.log('sair da sala')
+    console.log(props.idPartida)
+
+    const token = localStorage.getItem('token')
+
+    try {
+      if (props.numeroJogadores == 1) {
+        const response = await axios.delete(`/api/rooms/${props.idSala}`, {
+          headers: {
+            'Content-Type': 'application/json',
+            token: token
+          }
+        })
+        console.log(response.data)
+      } else {
+        const response = await axios.put(
+          `/api/rooms/${props.idSala}`,
+          {
+            numeroJogadores: props.numeroJogadores - 1
+          },
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              token: token
+            }
+          }
+        )
+        console.log(response.data)
+      }
+
+      const response_delete = await axios.delete(
+        `/api/matches/${props.idPartida}`,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            token: token
+          }
+        }
+      )
+      console.log(response_delete.data)
+
+      sairRef.current = true
+    } catch (error) {
+      console.log(error.response.data)
+      console.log('erro: ' + error)
+      if (error.response && error.response.status === 404) {
+        alert('Sala nao encontrada')
+      } else if (error.response && error.response.status === 401) {
+        console.error('erro:' + error)
+        router.push('/autenticacao')
+      } else {
+        alert('Erro ao atualizar a sala')
+      }
+    }
+  }
 
   function avaliaInicio() {
     if (props.criadorSala == true) {
@@ -49,7 +109,7 @@ export default function Lobby(props) {
       })
       .then(function (response) {
         console.log(response.data)
-        props.alteraIdPartida(response.data.idPartida)
+        props.alteraIdPartida(response.data.id_partida)
       })
       .catch(function (error) {
         console.log('erro: ' + error)
@@ -120,6 +180,18 @@ export default function Lobby(props) {
   }
 
   useEffect(() => {
+    if (sair === true) {
+      sairRef.current = true
+    }
+  }, [sair])
+
+  useEffect(() => {
+    if (liberado === true) {
+      console.log('acionou')
+    }
+  }, [liberado])
+
+  useEffect(() => {
     if (!initialized.current) {
       initialized.current = true
       resgataInfoUsuario()
@@ -141,8 +213,13 @@ export default function Lobby(props) {
   return (
     <div id="lobby">
       <div className="container">
-        <HeaderLobby idSala={props.idSala} className="container" />
+        <HeaderLobby
+          alteraSair={alteraSair}
+          idSala={props.idSala}
+          className="container"
+        />
         <BodyLobby
+          alteraLiberado={alteraLiberado}
           ordemJogadores={props.ordemJogadores}
           ordem={props.ordem}
           alteraOrdemJogadores={props.alteraOrdemJogadores}
@@ -160,6 +237,7 @@ export default function Lobby(props) {
           alteraSalaOrLobby={props.alteraSalaOrLobby}
           jogadoresIdPartida={props.jogadoresIdPartida}
           alteraJogadoresIdPartida={props.alteraJogadoresIdPartida}
+          sairRef={sairRef.current}
         />
         {props.criadorSala ? (
           <FooterLobby cheia={cheia} idSala={props.idSala} />

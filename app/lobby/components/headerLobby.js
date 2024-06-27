@@ -4,7 +4,12 @@ import './headerLobby.css'
 const HeaderLobby = props => {
   return (
     <header id="headerLobby">
-      <Botao content="Voltar" />
+      <Botao
+        acao={() => {
+          props.alteraSair(true)
+        }}
+        content="Voltar"
+      />
       <p>ID da sala: {props.idSala}</p>
     </header>
   )
