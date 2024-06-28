@@ -42,6 +42,7 @@ export function Header(){
     return(
 
         <header id="headerHome">
+            <MenuBurger/>
 
             <nav className="menu">
 
@@ -63,7 +64,6 @@ export function Header(){
             </nav>
 
 
-            <MenuBurger/>
 
            
 

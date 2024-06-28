@@ -3,6 +3,7 @@ import HeaderPartida from './headerPartida'
 import Jogador from './jogador'
 import './partida.css'
 import axios from 'axios'
+import { toast } from 'react-toastify'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -30,7 +31,7 @@ const Partida = props => {
 
   async function verificaMoedas(param) {
     const token = localStorage.getItem('token')
-    try{
+    try {
       console.log(props.idSala)
       const response = await axios.get(
         `/api/matches/room?room=${props.idSala}`,
@@ -44,54 +45,48 @@ const Partida = props => {
 
       console.log(response.data)
 
-      let moeda1 =
-      response.data[0] == undefined
-        ? '0'
-        : response.data[0].Moedas
-      let moeda2 =
-        response.data[1] == undefined
-          ? '0'
-          : response.data[1].Moedas
-      let moeda3 =
-        response.data[2] == undefined
-          ? '0'
-          : response.data[2].Moedas
-      let moeda4 =
-        response.data[3] == undefined
-          ? '0'
-          : response.data[3].Moedas
+      let moeda1 = response.data[0] == undefined ? '0' : response.data[0].Moedas
+      let moeda2 = response.data[1] == undefined ? '0' : response.data[1].Moedas
+      let moeda3 = response.data[2] == undefined ? '0' : response.data[2].Moedas
+      let moeda4 = response.data[3] == undefined ? '0' : response.data[3].Moedas
 
       let moedas_new = [2, 2, 2, 2]
 
       if (props.ordem == 1) {
-        moedas_new[0] = moeda1 
-        moedas_new[1] = moeda2 
-        moedas_new[2] = moeda3 
-        moedas_new[3] = moeda4 
-  
+        moedas_new[0] = moeda1
+        moedas_new[1] = moeda2
+        moedas_new[2] = moeda3
+        moedas_new[3] = moeda4
       } else if (props.ordem == 2) {
-        moedas_new[0] = moeda2 
-        moedas_new[1] = moeda3 
-        moedas_new[2] = moeda4 
-        moedas_new[3] = moeda1 
-  
+        moedas_new[0] = moeda2
+        moedas_new[1] = moeda3
+        moedas_new[2] = moeda4
+        moedas_new[3] = moeda1
       } else if (props.ordem == 3) {
-        moedas_new[0] = moeda3 
-        moedas_new[1] = moeda4 
-        moedas_new[2] = moeda1 
-        moedas_new[3] = moeda2 
-  
+        moedas_new[0] = moeda3
+        moedas_new[1] = moeda4
+        moedas_new[2] = moeda1
+        moedas_new[3] = moeda2
       } else if (props.ordem == 4) {
-        moedas_new[0] = moeda4 
-        moedas_new[1] = moeda1 
-        moedas_new[2] = moeda2 
-        moedas_new[3] = moeda3 
-  
+        moedas_new[0] = moeda4
+        moedas_new[1] = moeda1
+        moedas_new[2] = moeda2
+        moedas_new[3] = moeda3
       }
 
       alteraMoedas(moedas_new)
 
-    }catch(error)  {
+      for (let i = 0; i < moedas_new.length; i++) {
+        if (moedas_new[i] >= 15) {
+          toast.warning(
+            `O ${props.ordemJogadores[i]} juntou 15 moedas e venceu a partida!`
+          )
+          setTimeout(() => {
+            props.alteraSalaOrLobby('sala')
+          }, 5500)
+        }
+      }
+    } catch (error) {
       console.log('erro: ' + error)
       if (error.response && error.response.status === 404) {
         alert('Sala nao encontrada')
@@ -102,8 +97,6 @@ const Partida = props => {
         alert('Erro ao resgatar dados da partida')
       }
     }
-    
-    
   }
 
   async function main() {

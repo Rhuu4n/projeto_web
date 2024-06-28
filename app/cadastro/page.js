@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import "./cadastro.css"
 import { BsFillDoorOpenFill, BsCalendar, BsCardHeading, BsLock, BsPersonLock } from 'react-icons/bs'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default function Cadastro(){
   const [token, alteraToken] = useState('');
@@ -20,25 +22,61 @@ export default function Cadastro(){
 
       console.log(nascimento)
       if(nome.length < 3){
-        alert("Digite um nome maior para prosseguir")
+        toast((("Digite um nome maior para prosseguir")), {
+          position: "top-left",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark ",
+          });
         return
       }
 
       if(senha.length < 7){
-        alert("Digite uma senha maior para prosseguir")
+        toast((("Digite uma senha maior para prosseguir")), {
+          position: "top-left",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark ",
+        });
         return
       }
 
       const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{0,}$/;
       if(emailRegex.test(email) == false ){
-        alert("Digite Um Email Válido")
+        toast((("Digite Um Email Válido")), {
+          position: "top-left",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark ",
+        });
         return
       }
 
      
       const ano = parseInt( nascimento.split("-")[0])
       if( isNaN(ano) || ano < 1901 || ano > 2020 ){
-        alert("Digite uma data de nascimento válida")
+        toast((("Digite uma data de nascimento válida")), {
+          position: "top-left",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark ",
+        });
         return
       }
 
@@ -59,7 +97,16 @@ export default function Cadastro(){
             console.log(response)
             
             if(response.status != 200){
-              alert("Algo deu errado preencha os dados corretamente")
+              toast.error(("Usuário ou Senha Incorretos!"), {
+                position: "top-left",
+                autoClose: 1950,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark ",
+                });("Algo deu errado preencha os dados corretamente")
               return;
             }
 
@@ -84,11 +131,13 @@ export default function Cadastro(){
             console.error('erro:' + error);
           });
     }
-    
-
+  
     return(
-  <div className='father'>
-    <div id="cadastro">
+    <div className='father'>
+
+      <ToastContainer/>
+
+      <div id="cadastro">
 
         <a href= "/" > <BsFillDoorOpenFill style={{ position: "fixed" , top: "45px" , right: "45px" , color: "#777" , fontSize: "46px" , cursor: "pointer"}}/> <p style={{position: "fixed" , top: "75px" , right: "19px" , color: "#777" , fontSize: "10.9px" , cursor: "pointer"}}>Voltar Para <br/> Tela Inicíal</p> </a>
 
@@ -99,10 +148,10 @@ export default function Cadastro(){
             <BsPersonLock style={{ position: "absolute", top: "23%", fontSize: "22px" , transform: "translateY(-50%)", right: "15px", color: "#777" }}/>
             <input  onChange={e => alteraNome(e.target.value)}  type="text" placeholder="Username" required="required" style={{ paddingRight:"30px" }}/>
 
-            <BsLock style={{ position: "absolute", top: "38%", fontSize: "20px" , transform: "translateY(-50%)", right: "15px", color: "#777;"}}/>
+            <BsLock style={{ position: "absolute", top: "38%", fontSize: "20px" , transform: "translateY(-50%)", right: "15px", color: "#777"}}/>
             <input  onChange={e => alteraSenha(e.target.value)}  type="password" placeholder="Password" required="required" style={{ paddingRight:"30px" }}/>
 
-            <BsCardHeading style={{ position: "absolute", top: "54%", fontSize: "20px" , transform: "translateY(-50%)", right: "15px", color: "#777;"}}/>
+            <BsCardHeading style={{ position: "absolute", top: "54%", fontSize: "20px" , transform: "translateY(-50%)", right: "15px", color: "#777"}}/>
             <input  onChange={e => alteraEmail(e.target.value)}  type="email" placeholder="Email" required="required" style={{ paddingRight:"30px" }}/>
 
             <input  onChange={e => alteraNascimento(e.target.value)}  type="date" required="required" style={{ paddingRight: "30px"}}/>
@@ -117,7 +166,7 @@ export default function Cadastro(){
 
         </div>
 
-        </div>
-  </div>
+      </div>
+    </div>
     )
 }
