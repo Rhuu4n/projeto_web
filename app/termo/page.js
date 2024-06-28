@@ -16,7 +16,7 @@ export default function Termo(){
     const [linha, alteraLinha] = useState(0);
     const [palavra_certa, alteraPalavraCerta] = useState([]);
     const [i, alterai] = useState(null);
-    let random = Math.floor(Math.random() * 6) + 0;
+    let random = Math.floor(Math.random() * 54) + 0;
     const token = localStorage.getItem('token')
 
     let habilitado = [

@@ -74,6 +74,11 @@
     color: aliceblue;
 }
 
+#termo .btnTeste:enabled:hover{
+    background: antiquewhite;
+    color: #000;
+}
+
 #termo .btnTeste:disabled{
     height: 60px;
     padding: 10px;
