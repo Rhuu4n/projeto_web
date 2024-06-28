@@ -58,7 +58,8 @@ export default function Lobby(props) {
       )
       console.log(response_delete.data)
 
-      sairRef.current = true
+      props.alteraSalaOrLobby('sala')
+
     } catch (error) {
       console.log(error.response.data)
       console.log('erro: ' + error)
@@ -181,13 +182,16 @@ export default function Lobby(props) {
 
   useEffect(() => {
     if (sair === true) {
+      console.log(`acionou sair`)
       sairRef.current = true
     }
   }, [sair])
 
   useEffect(() => {
     if (liberado === true) {
-      console.log('acionou')
+      console.log(`acionou liberado`)
+      sairRef.current = false
+      sairSala()
     }
   }, [liberado])
 

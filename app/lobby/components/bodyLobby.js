@@ -18,9 +18,10 @@ const BodyLobby = props => {
 
   function main() {
     const interval = setInterval(async () => {
-      if (parar.current) {
+      if (parar.current === true) {
         clearInterval(interval)
 
+        console.log('chamei aqui')
         props.alteraLiberado(true)
       }
 
@@ -137,7 +138,7 @@ const BodyLobby = props => {
         props.alteraJogadoresIdPartida(idJogadores)
         alteraJogadores(jogadoresLobby)
 
-        if (controleJogador >= 1) {
+        if (controleJogador >= 4) {
           props.alteraCheia(true)
         }
 
@@ -187,8 +188,7 @@ const BodyLobby = props => {
       initialized.current = true
 
       main()
-
-      return () => (parar.current = true) // Limpeza do intervalo quando o componente for desmontado
+ // Limpeza do intervalo quando o componente for desmontado
     }
   }, [])
 
@@ -196,18 +196,11 @@ const BodyLobby = props => {
 
   useEffect(() => {
     if (props.sairRef === true) {
-      console.log(`acionou`)
+      console.log(`acionou bodylobby`)
       parar.current = true
     }
   }, [props.sairRef])
 
-  const checkAttribute = () => {
-    // Lógica para verificar o atributo
-    // Por exemplo, fazer uma chamada API ou checar uma condição
-    // Vamos simular que após 5 segundos, o atributo muda para verdadeiro
-    const randomValue = Math.random() > 0.8 // Simulação de mudança de atributo
-    return randomValue
-  }
 
   return (
     <main id="bodylobby">
