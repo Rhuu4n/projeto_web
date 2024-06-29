@@ -126,10 +126,7 @@ return(
                 <button onClick={() => alteraSelecaoTabela("Termo")}>
                 <AiOutlineLineHeight className="icones" />
                 <span>Termo</span>
-                </button>
-                
-                
-                
+                </button>  
             </div>
         </aside>
         <div className="Conteudo" >
