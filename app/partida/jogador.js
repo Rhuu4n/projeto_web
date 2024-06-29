@@ -19,35 +19,20 @@ const Jogador = props => {
     toast.success('Sua vez!')
   }
 
-  async function moedas() {
-    const token = localStorage.getItem('token')
-    try {
-      const response = await axios.get(`/api/matches/${props.idPartida}`, {
-        headers: {
-          'Content-Type': 'application/json',
-          token: token
-        }
-      })
-
-      console.log(response.data)
-      console.log('eu sou o: ' + props.index)
-    } catch (error) {}
-  }
-
-  function destroiCartas(){
+  function destroiCartas() {
     alteraAcao1(0)
     alteraAcao2(0)
     alteraCarta1('carta.png')
     alteraCarta2('carta.png')
   }
 
-  async function saqueador(){
-    const token =  localStorage.getItem('token')
+  async function saqueador() {
+    const token = localStorage.getItem('token')
     try {
       const response = await axios.put(
         `/api/matches/${props.idJogadores[props.quemRoubar]}`,
         {
-          Moedas: -2,
+          Moedas: -1,
           Afetado: 0
         },
         {
@@ -57,7 +42,7 @@ const Jogador = props => {
           }
         }
       )
-      
+
       const response_me = await axios.put(
         `/api/matches/${props.idJogadores[0]}`,
         {
@@ -162,6 +147,52 @@ const Jogador = props => {
           }
         } else if (param == 2) {
           props.alteraRoubar(true)
+        } else if (param == 3) {
+          const token = localStorage.getItem('token')
+          try {
+            const response = await axios.put(
+              `/api/matches/${props.idPartida}`,
+              {
+                Moedas: 4,
+                Afetado: 0
+              },
+              {
+                headers: {
+                  'Content-Type': 'application/json',
+                  token: token
+                }
+              }
+            )
+
+            const response_room = await axios.put(
+              `/api/rooms/${props.idSala}`,
+              {
+                jogadorAtual: props.ordem == 4 ? 1 : props.ordem + 1
+              },
+              {
+                headers: {
+                  'Content-Type': 'application/json',
+                  token: token
+                }
+              }
+            )
+
+            destroiCartas()
+
+            console.log(response.data)
+            console.log(response_room.data)
+            props.updatePodeJogarRef(false)
+          } catch (error) {
+            console.log('erro: ' + error)
+            if (error.response && error.response.status === 404) {
+              alert('Partida nao encontrada')
+            } else if (error.response && error.response.status === 401) {
+              console.error('erro:' + error)
+              router.push('/autenticacao')
+            } else {
+              alert('Erro ao atualizar a partida')
+            }
+          }
         }
       }
     }
@@ -169,8 +200,8 @@ const Jogador = props => {
 
   useEffect(() => {
     if (props.podeJogarRef === true) {
-      let num1 = Math.floor(Math.random() * 2) + 1
-      let num2 = Math.floor(Math.random() * 2) + 1
+      let num1 = Math.floor(Math.random() * 3) + 1
+      let num2 = Math.floor(Math.random() * 3) + 1
 
       if (num1 === 1) {
         alteraAcao1(1)
@@ -178,6 +209,9 @@ const Jogador = props => {
       } else if (num1 === 2) {
         alteraAcao1(2)
         alteraCarta1('saqueador.jpg')
+      } else if (num1 === 3) {
+        alteraAcao1(3)
+        alteraCarta1('nobre.jpg')
       } else {
         alert('1 outro numero' + num1)
       }
@@ -188,6 +222,9 @@ const Jogador = props => {
       } else if (num2 === 2) {
         alteraAcao2(2)
         alteraCarta2('saqueador.jpg')
+      } else if (num2 === 3) {
+        alteraAcao2(3)
+        alteraCarta2('nobre.jpg')
       } else {
         alert('2 outro numero' + num2)
       }
@@ -200,7 +237,7 @@ const Jogador = props => {
     if (props.moedasAltera === true) {
       console.log('mudou moedas')
       // moedas()
-    }else{
+    } else {
       console.log('mudou mais n atualizou')
     }
   }, [props.moedasAltera])
@@ -215,11 +252,9 @@ const Jogador = props => {
 
   useEffect(() => {
     if (props.quemRoubar != 0 && props.index == 0) {
-      
       saqueador()
     }
   }, [props.quemRoubar])
-
 
   return (
     <div id="joguin" className={props.position}>

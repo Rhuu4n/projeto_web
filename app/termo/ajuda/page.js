@@ -17,9 +17,9 @@ export default function Ajuda(){
 
                     <div>
                         <p>
+                        Termo é um jogo de palavras onde o objetivo é adivinhar uma palavra secreta de cinco letras em até seis tentativas.<br/>
                         A cada tentativa, o jogo dá feedback usando cores para indicar o quão perto você está de adivinhar a palavra correta.<br/>
                         As cores têm os seguintes significados:
-                        Termo é um jogo de palavras onde o objetivo é adivinhar uma palavra secreta de cinco letras em até seis tentativas.<br/>
                         </p>
                     </div>
                     <hr/>

@@ -78,6 +78,7 @@ export default function Jogo() {
     } else {
       return (
         <Partida
+          alteraSalaOrLobby={alteraSalaOrLobby}
           ordemJogadores={ordemJogadores}
           alteraOrdemJogadores={alteraOrdemJogadores}
           jogadoresIdPartida={jogadoresIdPartida}

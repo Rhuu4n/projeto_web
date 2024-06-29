@@ -14,9 +14,17 @@ const BodyLobby = props => {
     'jogador4'
   ])
   const initialized = useRef(false)
+  const parar = useRef(false)
 
   function main() {
     const interval = setInterval(async () => {
+      if (parar.current === true) {
+        clearInterval(interval)
+
+        console.log('chamei aqui')
+        props.alteraLiberado(true)
+      }
+
       const token = localStorage.getItem('token')
       try {
         const response = await axios.get(
@@ -37,13 +45,16 @@ const BodyLobby = props => {
         })
 
         let jogadoresNovo = ['jogador1', 'jogador2', 'jogador3', 'jogador4']
+
+        let jogadoresLobby = ['jogador1', 'jogador2', 'jogador3', 'jogador4']
+
         let controleJogador = 0
         for (let res of response.data) {
           let nome = await pegaUser(res.Jogador_ID)
           jogadoresNovo[controleJogador] = nome
+          jogadoresLobby[controleJogador] = nome
           controleJogador++
         }
-
 
         let idJogadores = ['jogador1', 'jogador2', 'jogador3', 'jogador4']
 
@@ -125,7 +136,7 @@ const BodyLobby = props => {
 
         props.alteraOrdemJogadores(jogadoresNovo)
         props.alteraJogadoresIdPartida(idJogadores)
-        alteraJogadores(jogadoresNovo)
+        alteraJogadores(jogadoresLobby)
 
         if (controleJogador >= 4) {
           props.alteraCheia(true)
@@ -145,11 +156,6 @@ const BodyLobby = props => {
         } else {
           alert('Erro ao resgatar dados da partida')
         }
-      }
-
-      if (attribute) {
-        clearInterval(interval) // Para a rotina se o atributo mudar
-        console.log('Atributo mudou, rotina parada')
       }
     }, 800) // Executa a rotina a cada segundo
   }
@@ -182,20 +188,19 @@ const BodyLobby = props => {
       initialized.current = true
 
       main()
-
-      return () => setAttribute(true) // Limpeza do intervalo quando o componente for desmontado
+ // Limpeza do intervalo quando o componente for desmontado
     }
   }, [])
 
   useEffect(() => {}, [jogadores])
 
-  const checkAttribute = () => {
-    // Lógica para verificar o atributo
-    // Por exemplo, fazer uma chamada API ou checar uma condição
-    // Vamos simular que após 5 segundos, o atributo muda para verdadeiro
-    const randomValue = Math.random() > 0.8 // Simulação de mudança de atributo
-    return randomValue
-  }
+  useEffect(() => {
+    if (props.sairRef === true) {
+      console.log(`acionou bodylobby`)
+      parar.current = true
+    }
+  }, [props.sairRef])
+
 
   return (
     <main id="bodylobby">

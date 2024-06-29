@@ -148,10 +148,10 @@ export default function Cadastro(){
             <BsPersonLock style={{ position: "absolute", top: "23%", fontSize: "22px" , transform: "translateY(-50%)", right: "15px", color: "#777" }}/>
             <input  onChange={e => alteraNome(e.target.value)}  type="text" placeholder="Username" required="required" style={{ paddingRight:"30px" }}/>
 
-            <BsLock style={{ position: "absolute", top: "38%", fontSize: "20px" , transform: "translateY(-50%)", right: "15px", color: "#777;"}}/>
+            <BsLock style={{ position: "absolute", top: "38%", fontSize: "20px" , transform: "translateY(-50%)", right: "15px", color: "#777"}}/>
             <input  onChange={e => alteraSenha(e.target.value)}  type="password" placeholder="Password" required="required" style={{ paddingRight:"30px" }}/>
 
-            <BsCardHeading style={{ position: "absolute", top: "54%", fontSize: "20px" , transform: "translateY(-50%)", right: "15px", color: "#777;"}}/>
+            <BsCardHeading style={{ position: "absolute", top: "54%", fontSize: "20px" , transform: "translateY(-50%)", right: "15px", color: "#777"}}/>
             <input  onChange={e => alteraEmail(e.target.value)}  type="email" placeholder="Email" required="required" style={{ paddingRight:"30px" }}/>
 
             <input  onChange={e => alteraNascimento(e.target.value)}  type="date" required="required" style={{ paddingRight: "30px"}}/>
