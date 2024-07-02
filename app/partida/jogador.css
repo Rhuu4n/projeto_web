@@ -23,6 +23,11 @@
     width: 80px;
 }
 
+#joguin.eu .box-cartas img:hover{
+    transition: 0.3s;
+    transform: translateY(-100%) scale(5);
+}
+
 #joguin .box-moedas{
     display: flex;
     align-items: center;
@@ -114,5 +119,10 @@
     
     #joguin.direita{
         justify-content: end;
+    }
+    
+    #joguin.eu .box-cartas img:hover{
+        transition: 0.3s;
+        transform: translateY(-100%) scale(4.5);
     }
 }

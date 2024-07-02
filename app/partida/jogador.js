@@ -46,7 +46,7 @@ const Jogador = props => {
       const response_me = await axios.put(
         `/api/matches/${props.idJogadores[0]}`,
         {
-          Moedas: 2,
+          Moedas: 1,
           Afetado: 0
         },
         {
