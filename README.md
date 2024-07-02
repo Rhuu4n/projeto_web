@@ -1,6 +1,6 @@
 # Projeto integrador Guilty
 
-Repositório do projeto integrador web, UC 15, do jogo Guilty.
+Repositório do projeto integrador web, UC 15, Portal de jogos.
 
 ## Como clonar o projeto
 1. Abrir o CMD ou o Git Bash Here
@@ -11,11 +11,11 @@ Repositório do projeto integrador web, UC 15, do jogo Guilty.
 
 ## Páginas
 
-- _Página inicial_ (home): Responsável por apresentar o produto e levar o usuário para o download dekstop, autenticação e painel administrador.
+- _Página inicial_ (home): Responsável por apresentar o produto e levar o usuário para os jogos, autenticação e painel com estatisticas.
 - _Pagina de jogos: Responsavel por levar os usuarios a area de jogos disponiveis no site
 - _Autenticação_: Login e cadastro
 - _Painel Administrativo_: Painel disponível apenas para administradores, contendo informações das jogatinas dos jogadores (informações do banco), exemplo: quantas partidas foram jogadas, lista de usuários, etc
-- _Jogo online_: Página de jogatina do Guilty
+- _Jogo online_: Página de jogatina 
 
 ## Atribuição de tarefas
 

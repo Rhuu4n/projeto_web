@@ -12,15 +12,17 @@ export default function Body () {
 
         <div id="container-body">
 
-            
             <AnimatedCursor/>
-
-            
 
             <div className="contentBody">
 
                 <div className="txtinicial">
                     <p> Uma plataforma de jogos para voce passar o tempo. =] </p>
+                </div>
+
+                <div className="txtinicialMobile">
+                    <p> Uma plataforma de jogos <br/>para voce passar o tempo. =] </p>
+
                 </div>
 
             </div>

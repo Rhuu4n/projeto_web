@@ -92,6 +92,17 @@
   display: none;
 }
 
+#container-body .txtinicialMobile p{
+    display: none;
+    white-space: nowrap;
+    font-family: "Space Mono", sans-serif;
+    font-size: 20px;
+    color: #fFF;
+    padding: 32px 88px;
+    text-align: center;
+    margin-top: 50px;
+}
+
 
 
 /*dispositivos menores que 1450px*/
@@ -118,6 +129,14 @@
 /*dispositivos menores que 900px*/
 @media screen and (max-width: 900px){
  
+  #container-body .txtinicialMobile p{
+    display: block;
+  }
+
+  #container-body .txtinicial p{
+    display: none;
+  }
+ 
   #headerHome .btnLogin, #headerHome .links{
     display: none;
   }
@@ -134,5 +153,5 @@
     font-size: 16px;
     font-weight: bold;
   }
-  
+
 } 

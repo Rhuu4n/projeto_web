@@ -13,6 +13,8 @@ export function MenuBurger(){
 
             <Menu right >
                 <ul>
+                    <li> <Link className="menu-item" href="/autenticacao"> Log In </Link> </li>
+
                     <li> <Link className="menu-item" href="/"> Blog </Link> </li>
 
                     <li> <Link className="menu-item" href="/estatisticas"> Estatisticas </Link> </li>

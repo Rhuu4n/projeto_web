@@ -1,6 +1,4 @@
-
 #container-jogos { 
-    overflow: hidden;
     height: 100vh;
     background-color:hsla(261,0%,0%,1);
     background-image:
@@ -30,50 +28,27 @@
     height: 300px;
     width: 300px;
 }
-@media screen and (max-width: 900px){
-  
-      #headerHome .menu {
+
+#menuBurger .bm-burger-button {
+    display: none;
+}
+
+@media screen and (max-width: 900px) {
+    #headerHome .btnLogin, #headerHome .links {
+        display: none;
+    }
+    #menuBurger .bm-burger-button {
+        display: block;
+    }
+    #headerHome .menu {
         margin: 15px;
-      }
+    }
+    #container-jogos {
+        overflow-y: auto; 
+    }
     #container-jogos .jogos-grid {
         flex-direction: column;
-        overflow: scroll;
-        height: 1200px;
+        height: auto;
         gap: 30px;
-       
     }
-  
-} 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
