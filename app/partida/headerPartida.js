@@ -1,13 +1,20 @@
-import Botao from "../components/botao";
-import "./headerPartida.css"
+import Botao from '../components/botao'
+import { useRouter } from 'next/navigation'
+import './headerPartida.css'
 
 const HeaderPartida = () => {
-    return (
-        <header id="header">
-            <Botao content="Pausar"/>
-            <p>Vez de: jogador1</p>
-        </header>
-    );
+  const router = useRouter()
+
+  function sair() {
+    console.log(`oto saindo`)
+    router.push('/')
+  }
+
+  return (
+    <header id="header-p">
+      <Botao acao={() => sair()} content="Sair" />
+    </header>
+  )
 }
- 
-export default HeaderPartida;
+
+export default HeaderPartida

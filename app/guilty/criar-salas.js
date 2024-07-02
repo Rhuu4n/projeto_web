@@ -22,7 +22,6 @@ export default function Criar_Salas(props) {
   async function entrarSala(event) {
     const token = localStorage.getItem('token')
     event.preventDefault()
-    console.log('tentou')
     try {
       const response = await axios.get(`/api/rooms/${props.idSala}`, {
         headers: {
@@ -30,12 +29,19 @@ export default function Criar_Salas(props) {
           token: token
         }
       })
+
+      const estadoSala = response.data.estadoSala
       const numeroJogadores = response.data.numeroJogadores
-      if (numeroJogadores < 4) {
-        props.alteraNumeroJogadores(numeroJogadores + 1)
-        props.alteraSalaOrLobby('lobby')
+
+      if (estadoSala == 2) {
+        alert('a partida ja foi iniciada')
       } else {
-        alert('Sala cheia')
+        if (numeroJogadores < 4) {
+          props.alteraNumeroJogadores(numeroJogadores + 1)
+          props.alteraSalaOrLobby('lobby')
+        } else {
+          alert('Sala cheia')
+        }
       }
     } catch (error) {
       console.log('erro: ' + error)
@@ -96,7 +102,7 @@ export default function Criar_Salas(props) {
 
   return (
     <div className="boxPartida">
-      <img className='logo' src={props.link} />
+      <img className="logo" src={props.link} />
       <div className="center">
         <Botao acao={() => criarSalaBanco()} content="Criar sala" />
       </div>

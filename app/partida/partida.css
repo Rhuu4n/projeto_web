@@ -10,24 +10,47 @@
 
 #partida .areaPartida{
     height: calc(100vh - 40px);
+    position: relative;
 }
 
 #partida .topo{
+    position: fixed;
+    width: 100vw;
+    top: 40px;
     display: flex;
     justify-content: center ;
 }
 
 #partida .fim{
+    width: 100vw;
     display: flex;
+    align-items: center;
     justify-content: center ;
+    position: fixed;
+    bottom: 10px;
 }
 
 #partida .meio{
-    height: 350px;
+    height: calc(100vh - 40px);
     width: 100vw;
-    display: grid;
+    display: flex;
+    align-items: center;
     padding: 0 20px;
-    grid-template-columns: 200px calc(100vw - 440px) 200px;
+    position: fixed;
+    top: 0;
+}
+
+#partida .meio .cont{
+    
+    height: calc(100vh - 40px);
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+#partida .centro{
+    width: calc(100vw - 400px);
 }
 
 
@@ -49,4 +72,15 @@
 
 #partida .direita .box-cartas{
     transform: rotate(-90deg);
+}
+
+@media(max-width: 600px){
+    #partida .centro{
+        display: none;
+    }
+
+    #partida .meio .cont{
+        justify-content: space-around;
+    }
+
 }

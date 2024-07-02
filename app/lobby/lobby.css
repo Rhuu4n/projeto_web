@@ -1,6 +1,5 @@
 #lobby{
     background-image: url("https://i.imgur.com/55m44KZ.jpeg");
-    height: 100vh;
     position: relative;
 }
 
@@ -24,6 +23,6 @@
 }
 
 #lobby footer{
-    position: absolute;
+    position: fixed;
     bottom: 0;
 }

@@ -77,3 +77,42 @@
 #joguin.eu .roubar{
     display: none;
 }
+
+@media(max-width: 600px){
+    .esquerda .box-cartas, .direita .box-cartas, .topo .box-cartas{
+        display: none !important;
+    }
+
+    #joguin.direita .roubar{
+        position: absolute;
+        right: 50%;
+        top: 150px;
+        transform: translateX(50%);
+    }
+    
+    #joguin.esquerda .roubar{
+        position: absolute;
+        top: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #joguin.topo .roubar{
+        top: 76px;
+    }
+
+    #joguin .box-infos{
+        width: 160px;
+        padding: 8px 27px;
+    }
+
+    #joguin.esquerda{
+        padding-top: 30px;
+        justify-content: start;
+    }
+    
+    
+    #joguin.direita{
+        justify-content: end;
+    }
+}

@@ -16,6 +16,8 @@ export default function Lobby(props) {
   const sairRef = useRef(false)
   const initialized = useRef(false)
 
+  const alturaVisivelJanela = window.innerHeight
+
   async function sairSala() {
     console.log('sair da sala')
     console.log(props.idPartida)
@@ -59,7 +61,6 @@ export default function Lobby(props) {
       console.log(response_delete.data)
 
       props.alteraSalaOrLobby('sala')
-
     } catch (error) {
       console.log(error.response.data)
       console.log('erro: ' + error)
@@ -215,7 +216,7 @@ export default function Lobby(props) {
   }, [ordemUpdated])
 
   return (
-    <div id="lobby">
+    <div id="lobby" style={{ height: alturaVisivelJanela }}>
       <div className="container">
         <HeaderLobby
           alteraSair={alteraSair}

@@ -138,7 +138,7 @@ const BodyLobby = props => {
         props.alteraJogadoresIdPartida(idJogadores)
         alteraJogadores(jogadoresLobby)
 
-        if (controleJogador >= 4) {
+        if (controleJogador >= 1) {
           props.alteraCheia(true)
         }
 
@@ -188,7 +188,7 @@ const BodyLobby = props => {
       initialized.current = true
 
       main()
- // Limpeza do intervalo quando o componente for desmontado
+      // Limpeza do intervalo quando o componente for desmontado
     }
   }, [])
 
@@ -200,7 +200,6 @@ const BodyLobby = props => {
       parar.current = true
     }
   }, [props.sairRef])
-
 
   return (
     <main id="bodylobby">

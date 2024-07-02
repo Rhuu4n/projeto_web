@@ -172,34 +172,36 @@ const Partida = props => {
           />
         </div>
         <div className="meio">
-          <div className="esquerda">
-            <Jogador
-              roubar={roubar}
-              alteraRoubar={alteraRoubar}
-              alteraQuemRoubar={alteraQuemRoubar}
-              index={1}
-              moedas={moedas[1]}
-              alteraMoedas={alteraMoedas}
-              moedasAltera={moedasAltera.useRef}
-              nome={nomeJogadores[1]}
-              idPartida={idJogadores[1]}
-              position="esquerda"
-            />
-          </div>
-          <div className="centro"></div>
-          <div className="direita">
-            <Jogador
-              roubar={roubar}
-              alteraRoubar={alteraRoubar}
-              alteraQuemRoubar={alteraQuemRoubar}
-              index={3}
-              moedas={moedas[3]}
-              alteraMoedas={alteraMoedas}
-              moedasAltera={moedasAltera.current}
-              nome={nomeJogadores[3]}
-              idPartida={idJogadores[3]}
-              position="direita"
-            />
+          <div className="cont">
+            <div className="esquerda">
+              <Jogador
+                roubar={roubar}
+                alteraRoubar={alteraRoubar}
+                alteraQuemRoubar={alteraQuemRoubar}
+                index={1}
+                moedas={moedas[1]}
+                alteraMoedas={alteraMoedas}
+                moedasAltera={moedasAltera.useRef}
+                nome={nomeJogadores[1]}
+                idPartida={idJogadores[1]}
+                position="esquerda"
+              />
+            </div>
+            <div className="centro"></div>
+            <div className="direita">
+              <Jogador
+                roubar={roubar}
+                alteraRoubar={alteraRoubar}
+                alteraQuemRoubar={alteraQuemRoubar}
+                index={3}
+                moedas={moedas[3]}
+                alteraMoedas={alteraMoedas}
+                moedasAltera={moedasAltera.current}
+                nome={nomeJogadores[3]}
+                idPartida={idJogadores[3]}
+                position="direita"
+              />
+            </div>
           </div>
         </div>
         <div className="fim">
