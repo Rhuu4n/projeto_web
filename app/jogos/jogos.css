@@ -33,7 +33,7 @@
     display: none;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1090px) {
     #headerHome .btnLogin, #headerHome .links {
         display: none;
     }
@@ -52,3 +52,4 @@
         gap: 30px;
     }
 }
+

@@ -1,7 +1,7 @@
 #headerHome nav{
     display: flex;
     justify-content: space-between;
-    margin: 44px;
+    padding: 44px;
     align-items: center;
 }
 
