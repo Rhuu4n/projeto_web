@@ -31,20 +31,21 @@
 }
 
 #partida .meio{
-    height: calc(100vh - 40px);
+    height: calc(100vh - 640px);
     width: 100vw;
     display: flex;
     align-items: center;
     padding: 0 20px;
     position: fixed;
-    top: 0;
+    top: 300px;
 }
 
 #partida .meio .cont{
     
-    height: calc(100vh - 40px);
+    height: calc(100vh - 640px);
     width: 100vw;
     display: flex;
+    padding-right: 18px;
     align-items: center;
     position: relative;
 }

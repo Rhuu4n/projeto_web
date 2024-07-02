@@ -115,8 +115,6 @@ import e from "cors";
  
     function verificaPalavra(e) {
         e.preventDefault();
-
-        if (validarPalavra(palavra) === true){
             if (palavra == palavra_certa[i].palavra){
                 alteraLinha(6);
                 alteraInput();
@@ -131,7 +129,7 @@ import e from "cors";
                 alteraLinha(6);
                 toast.error("Errou a palavra certa è " + palavra_certa[i].palavra);
             }
-        }
+        
     }
     
     function alteraInput(){
