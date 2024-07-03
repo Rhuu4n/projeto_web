@@ -112,7 +112,6 @@ return(
             <Link href="./">  <img className="iconeprincipal" src="icon/logoH1R4.svg"></img> </Link>
             </header>
             <div className="AreasPainelLateral">
-                <button onClick={()=> randomNum()} >aaaa</button>
                 <button onClick={() => alteraSelecaoTabela("Estatisticas")}>
                 <IoStatsChartSharp className="icones" />
                 <span>Estatísticas</span>
@@ -212,7 +211,7 @@ return(
                     <tbody>
                         {termo?.map(T => {return <tr>
                             <td>{T.palavra}</td>
-                            <td>{numAleatorio}</td>
+                            <td>{Math.floor(Math.random() * 250) + 0}</td>
                         </tr> })}
                     </tbody>
                     </table>
